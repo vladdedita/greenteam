@@ -1,6 +1,7 @@
 package bookingapp.pack.Controllers;
 
 
+import bookingapp.pack.Models.Company;
 import bookingapp.pack.Services.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.RequestEntity;
@@ -23,13 +24,13 @@ public class CompanyController {
 
 
 
-    @RequestMapping(value="/register",method=RequestMethod.GET)
+    @RequestMapping(value="/register",method=RequestMethod.POST)
     @CrossOrigin
-    public void addCompany(@RequestParam(name="cp_name") String name, @RequestParam(name="cp_email") String email, @RequestParam(name="cp_password") String password)
+    public void addCompany(@RequestBody Company c)
     {
         try {
-            if(!name.isEmpty() && !email.isEmpty() && !password.isEmpty())
-                companyService.addCompany(name, email, password);
+            if(!c.getName().isEmpty() && !c.getEmail().isEmpty() && !c.getPassword().equals(null))
+                companyService.addCompany(c);
         }
         catch(Exception e)
         {

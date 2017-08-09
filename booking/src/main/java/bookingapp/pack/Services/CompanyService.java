@@ -58,6 +58,26 @@ public class CompanyService {
         
     }
 
+    public boolean addCompany(Company c) throws NoSuchAlgorithmException {
+
+
+
+        MessageDigest md=MessageDigest.getInstance("SHA-512");
+        byte[] hash=md.digest(c.getPassword());
+
+        try{
+            dao.save(new Company(c.getName() ,c.getName(), hash));
+            return true;
+        }
+        catch(Exception e)
+        {
+            System.out.println(e.toString());
+            return false;
+        }
+
+
+    }
+
     public boolean changeDescription(String name,String description)
     {
 
