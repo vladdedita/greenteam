@@ -3,10 +3,8 @@ package bookingapp.pack.Controllers;
 
 import bookingapp.pack.Services.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.RequestEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class CompanyController {
@@ -15,16 +13,48 @@ public class CompanyController {
     @Autowired
     private CompanyService companyService;
 
+
     @RequestMapping(value="/companies")
+    @CrossOrigin
     public String getCompanies()
     {
         return companyService.getAllCompanies();
     }
 
-    @RequestMapping(value="/add",method=RequestMethod.GET)
-    public void addCompany(@RequestParam(value="name") String name, @RequestParam(value="desc") String desc, @RequestParam(value="email") String email, @RequestParam(value="pass") String pass)
+
+
+    @RequestMapping(value="/register",method=RequestMethod.POST)
+    @CrossOrigin
+    public void addCompany(@RequestParam(name="cp_name") String name, @RequestParam(name="cp_email") String email, @RequestParam(name="cp_password") String password)
     {
-        companyService.addCompany(name,desc,email,pass);
+        try {
+            if(!name.isEmpty() && !email.isEmpty() && !password.isEmpty())
+                companyService.addCompany(name, email, password);
+        }
+        catch(Exception e)
+        {
+            System.out.println(e.toString());
+        }
+    }
+
+
+    @RequestMapping(value="/desc")
+    @CrossOrigin
+    public void addCompanyDescription(@RequestParam(name="cp_desc", required=false) String description, @RequestParam(name="cp_logopath") String logopath)
+    {
+
+        if(!description.isEmpty())
+        {
+            try {
+
+
+            }
+            catch(Exception e)
+            {
+                System.out.println(e.toString());
+            }
+        }
+
     }
 
 

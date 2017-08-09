@@ -31,9 +31,9 @@ public class Company {
     protected Company() { }
 
 
-    public Company(String name, String description, String email, String password) {
+    public Company(String name,  String email, String password) {
         this.name = name;
-        this.description = description;
+
         this.email = email;
         this.password = password;
     }

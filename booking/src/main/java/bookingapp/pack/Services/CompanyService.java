@@ -17,7 +17,7 @@ public class CompanyService {
 
 
     @Autowired
-    CompanyDao dao;
+             CompanyDao dao;
 
 
     public String getAllCompanies()
@@ -32,13 +32,13 @@ public class CompanyService {
         return companies.toString();
     }
 
-    public boolean addCompany(String name,String description,String email, String password)
+    public boolean addCompany(String name,String email, String password)
     {
         /*SHA3.DigestSHA3 digest=new SHA3.Digest512();
         digest.digest(password.getBytes());*/
 
         try{
-        dao.save(new Company(name,description,email, password));
+        dao.save(new Company(name ,email, password));
         return true;
         }
         catch(Exception e)
@@ -47,6 +47,12 @@ public class CompanyService {
             return false;
         }
     }
+
+    public boolean changeDescription(String name,String description)
+    {
+        return true;
+    }
+
 
 
 
