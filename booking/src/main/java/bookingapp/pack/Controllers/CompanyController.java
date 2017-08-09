@@ -23,7 +23,7 @@ public class CompanyController {
 
 
 
-    @RequestMapping(value="/register",method=RequestMethod.POST)
+    @RequestMapping(value="/register",method=RequestMethod.GET)
     @CrossOrigin
     public void addCompany(@RequestParam(name="cp_name") String name, @RequestParam(name="cp_email") String email, @RequestParam(name="cp_password") String password)
     {

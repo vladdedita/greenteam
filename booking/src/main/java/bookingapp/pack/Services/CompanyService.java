@@ -3,11 +3,17 @@ package bookingapp.pack.Services;
 
 import bookingapp.pack.Dao.CompanyDao;
 import bookingapp.pack.Models.Company;
+import javassist.bytecode.ByteArray;
+import org.aspectj.bridge.Message;
+import org.bouncycastle.crypto.generators.BCrypt;
+import org.bouncycastle.jcajce.provider.digest.SHA1;
 import org.bouncycastle.jcajce.provider.digest.SHA3;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,13 +38,15 @@ public class CompanyService {
         return companies.toString();
     }
 
-    public boolean addCompany(String name,String email, String password)
-    {
-        /*SHA3.DigestSHA3 digest=new SHA3.Digest512();
-        digest.digest(password.getBytes());*/
+    public boolean addCompany(String name,String email, String password) throws NoSuchAlgorithmException {
+
+
+
+        MessageDigest md=MessageDigest.getInstance("SHA-512");
+        byte[] hash=md.digest(password.getBytes());
 
         try{
-        dao.save(new Company(name ,email, password));
+        dao.save(new Company(name ,email, hash));
         return true;
         }
         catch(Exception e)
@@ -46,13 +54,13 @@ public class CompanyService {
             System.out.println(e.toString());
             return false;
         }
+
+        
     }
 
     public boolean changeDescription(String name,String description)
     {
 
-
-        Company cp=new Company(description);
 
         List<Company> companies=new ArrayList<Company>();
 
@@ -62,12 +70,12 @@ public class CompanyService {
             {
                 c.setDescription(description);
                 dao.save(c);
+                return true;
             }
         }
 
+        return false;
 
-
-        return true;
     }
 
 
