@@ -50,6 +50,23 @@ public class CompanyService {
 
     public boolean changeDescription(String name,String description)
     {
+
+
+        Company cp=new Company(description);
+
+        List<Company> companies=new ArrayList<Company>();
+
+        for(Company c : dao.findAll())
+        {
+            if(c.getName().equals(name))
+            {
+                c.setDescription(description);
+                dao.save(c);
+            }
+        }
+
+
+
         return true;
     }
 

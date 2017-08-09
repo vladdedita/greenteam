@@ -40,14 +40,13 @@ public class CompanyController {
 
     @RequestMapping(value="/desc")
     @CrossOrigin
-    public void addCompanyDescription(@RequestParam(name="cp_desc", required=false) String description, @RequestParam(name="cp_logopath") String logopath)
+    public void changeInfo(@RequestParam(name="cp_desc", required=false) String description, @RequestParam(name="cp_name", required=false) String name, @RequestParam(name="cp_logo",required = false) String logopath)
     {
 
         if(!description.isEmpty())
         {
             try {
-
-
+                companyService.changeDescription(name,description);
             }
             catch(Exception e)
             {
@@ -56,6 +55,8 @@ public class CompanyController {
         }
 
     }
+
+
 
 
 

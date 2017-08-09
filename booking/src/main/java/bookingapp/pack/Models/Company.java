@@ -38,6 +38,10 @@ public class Company {
         this.password = password;
     }
 
+    public Company(String description) {
+        this.description = description;
+    }
+
     public long getId() {
         return id;
     }
@@ -60,6 +64,30 @@ public class Company {
 
     public String getLogoPath() {
         return logopath;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setLogopath(String logopath) {
+        this.logopath = logopath;
     }
 
     @Override
