@@ -24,17 +24,18 @@ public class Company {
     @Column(name="password")
     private String password;
 
-    @Column(name="logo_path")
-    private String logoPath;
+    @Column(name="logopath")
+    private String logopath;
 
 
     protected Company() { }
-    public Company(String name, String description, String email, String password, String logoPath) {
+
+
+    public Company(String name,  String email, String password) {
         this.name = name;
-        this.description = description;
+
         this.email = email;
         this.password = password;
-        this.logoPath = logoPath;
     }
 
     public long getId() {
@@ -58,8 +59,18 @@ public class Company {
     }
 
     public String getLogoPath() {
-        return logoPath;
+        return logopath;
     }
 
-
+    @Override
+    public String toString() {
+        return "Company{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", logopath='" + logopath + '\'' +
+                '}';
+    }
 }
