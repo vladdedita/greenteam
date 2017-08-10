@@ -40,8 +40,6 @@ public class CompanyService {
 
     public boolean addCompany(String name,String email, String password) throws NoSuchAlgorithmException {
 
-
-
         MessageDigest md=MessageDigest.getInstance("SHA-512");
         byte[] hash=md.digest(password.getBytes());
 
@@ -89,6 +87,28 @@ public class CompanyService {
             if(c.getName().equals(name))
             {
                 c.setDescription(description);
+                dao.save(c);
+                return true;
+            }
+        }
+
+        return false;
+
+    }
+
+    public boolean changePassword (String email,String password) throws NoSuchAlgorithmException
+    {
+
+        MessageDigest md=MessageDigest.getInstance("SHA-512");
+        byte[] hash=md.digest(password.getBytes());
+
+        List<Company> companies=new ArrayList<Company>();
+
+        for(Company c : dao.findAll())
+        {
+            if(c.getEmail().equals(email))
+            {
+                c.setPassword(hash);
                 dao.save(c);
                 return true;
             }
