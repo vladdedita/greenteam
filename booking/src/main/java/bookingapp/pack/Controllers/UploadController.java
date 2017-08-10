@@ -22,12 +22,12 @@ public class UploadController {
 
     @RequestMapping(value = "company/uploadlogo", method = RequestMethod.POST)
     public @ResponseBody
-    String uploadFileHandler(
-                             @RequestParam("file") MultipartFile file) {
+    String uploadFileHandler(@RequestParam("file") MultipartFile file) {
 
 
         if (!file.isEmpty()) {
-            String name=file.getName();
+
+            String name=file.getOriginalFilename();
             try {
                 byte[] bytes = file.getBytes();
 
