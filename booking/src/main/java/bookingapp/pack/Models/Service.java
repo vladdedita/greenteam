@@ -1,12 +1,15 @@
 package bookingapp.pack.Models;
 
 
-import javax.persistence.*;
 
+
+import com.fasterxml.jackson.core.JsonEncoding;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name="service")
-public class Cservice {
+public class Service {
 
 
     @Id
@@ -20,22 +23,22 @@ public class Cservice {
     private String description;
 
     @Column(name="duration")
-    private int duration;
+    private String duration;
 
-    @Column(name="spaces")
-    private int spaces;
+    @Column(name="places")
+    private String places;
 
     @Column(name="price")
-    private int price;
+    private String price;
 
     @Column(name="available")
     private int available;
 
-    @Column(name="companyid")
+    @Column(name="id_company")
     private long idCompany;
 
     @Column(name="calendar")
-    private String calendar;
+    private JsonEncoding calendar;
 
     public long getId() {
         return id;
@@ -61,27 +64,27 @@ public class Cservice {
         this.description = description;
     }
 
-    public int getDuration() {
+    public String getDuration() {
         return duration;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(String duration) {
         this.duration = duration;
     }
 
-    public int getSpaces() {
-        return spaces;
+    public String getPlaces() {
+        return places;
     }
 
-    public void setSpaces(int spaces) {
-        this.spaces = spaces;
+    public void setPlaces(String places) {
+        this.places = places;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
@@ -101,46 +104,27 @@ public class Cservice {
         this.idCompany = idCompany;
     }
 
-
-    public String getCalendar() {
+    public JsonEncoding getCalendar() {
         return calendar;
     }
 
-    public void setCalendar(String calendar) {
+    public void setCalendar(JsonEncoding calendar) {
         this.calendar = calendar;
 
+
     }
 
+    protected Service(){
 
-    @Override
-    public String toString() {
-        return "Cservice{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", duration=" + duration +
-                ", spaces=" + spaces +
-                ", price=" + price +
-                ", available=" + available +
-                ", idCompany=" + idCompany +
-                ", calendar='" + calendar + '\'' +
-                '}';
     }
-
-
-    protected Cservice(){
-    }
-
-    public Cservice(String name, String description, int duration, int spaces, int price, int available, long idCompany, String calendar) {
+    public Service(String name, String description, String duration, String places, String price, int available, long idCompany) {
         this.name = name;
         this.description = description;
         this.duration = duration;
-        this.spaces = spaces;
+        this.places = places;
         this.price = price;
         this.available = available;
         this.idCompany = idCompany;
-        this.calendar=calendar;
-
     }
 
 }
