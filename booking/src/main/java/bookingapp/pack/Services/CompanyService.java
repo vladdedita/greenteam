@@ -26,7 +26,7 @@ public class CompanyService {
              CompanyDao dao;
 
 
-    public String getAllCompanies()
+    public List<Company> getAllCompanies()
     {
         List<Company> companies=new ArrayList<Company>();
 
@@ -35,7 +35,7 @@ public class CompanyService {
             companies.add(c);
         }
 
-        return companies.toString();
+        return companies;
     }
 
     public boolean addCompany(String name,String email, String password) throws NoSuchAlgorithmException {
@@ -89,6 +89,27 @@ public class CompanyService {
             if(c.getName().equals(name))
             {
                 c.setDescription(description);
+                dao.save(c);
+                return true;
+            }
+        }
+
+        return false;
+
+    }
+
+
+    public boolean changeLogoPath(String name,String logopath)
+    {
+
+
+        List<Company> companies=new ArrayList<Company>();
+
+        for(Company c : dao.findAll())
+        {
+            if(c.getName().equals(name))
+            {
+
                 dao.save(c);
                 return true;
             }

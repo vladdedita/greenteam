@@ -6,6 +6,9 @@ import bookingapp.pack.Services.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.RequestEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @RestController
 public class CompanyController {
@@ -17,7 +20,7 @@ public class CompanyController {
 
     @RequestMapping(value="/companies")
     @CrossOrigin
-    public String getCompanies()
+    public List<Company> getCompanies()
     {
         return companyService.getAllCompanies();
     }
@@ -41,7 +44,7 @@ public class CompanyController {
 
     @RequestMapping(value="/desc")
     @CrossOrigin
-    public void changeInfo(@RequestParam(name="cp_desc", required=false) String description, @RequestParam(name="cp_name", required=false) String name, @RequestParam(name="cp_logo",required = false) String logopath)
+    public void changeInfo(@RequestParam(name="cp_desc", required=false) String description, @RequestParam(name="cp_name", required=false) String name)
     {
 
         if(!description.isEmpty())
@@ -55,8 +58,11 @@ public class CompanyController {
             }
         }
 
+
+
     }
 
+    
 
 
 
