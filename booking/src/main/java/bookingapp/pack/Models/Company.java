@@ -1,8 +1,6 @@
 package bookingapp.pack.Models;
 
 
-import javassist.bytecode.ByteArray;
-
 import javax.persistence.*;
 
 @Entity
@@ -24,7 +22,7 @@ public class Company {
     private String email;
 
     @Column(name="password")
-    private byte[] password;
+    private String password;
 
     @Column(name="logopath")
     private String logopath;
@@ -33,15 +31,11 @@ public class Company {
     protected Company() { }
 
 
-    public Company(String name,  String email, byte[] password) {
+    public Company(String name,  String email, String password) {
         this.name = name;
 
         this.email = email;
         this.password = password;
-    }
-
-    public Company(String description) {
-        this.description = description;
     }
 
     public long getId() {
@@ -60,36 +54,12 @@ public class Company {
         return email;
     }
 
-    public byte[] getPassword() {
+    public String getPassword() {
         return password;
     }
 
     public String getLogoPath() {
         return logopath;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setPassword(byte[] password) {
-        this.password = password;
-    }
-
-    public void setLogopath(String logopath) {
-        this.logopath = logopath;
     }
 
     @Override

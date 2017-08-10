@@ -9,7 +9,4 @@ import org.springframework.stereotype.Repository;
 public interface CompanyDao extends CrudRepository<Company,Long> {
 
 
-
-
-
 }
