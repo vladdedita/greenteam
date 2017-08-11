@@ -1,13 +1,13 @@
 <template>
 	<div class="addServ">
 		<navigation></navigation>
-    <router-view></router-view>
+    	<router-view></router-view>
 		
 		<div class="add-title">
 			<p>Add new service</p>
 		</div> 
 		<div class="add-new-serv">
-			<button class="newService1">+</button>
+			<router-link to="/dashboard"><button class="newService1">+</button></router-link>
 			<p class="new-serv">New service</p>
 		</div>
 
@@ -70,7 +70,15 @@
 			border-radius: 100%;
 			font-family: Courier;
 			font-size: 55px;
+			cursor: pointer;
+			text-decoration: none;
 		}
+	a:hover{
+	text-decoration: none;
+	}
+	a:focus{
+		text-decoration: none;
+	}
 	.new-serv{
 		font-size: 17px;
 		color: #4C4C4C;
