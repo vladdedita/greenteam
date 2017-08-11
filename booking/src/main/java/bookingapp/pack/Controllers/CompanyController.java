@@ -4,6 +4,7 @@ package bookingapp.pack.Controllers;
 import bookingapp.pack.Models.Company;
 import bookingapp.pack.Services.CompanyService;
 import bookingapp.pack.Services.MailService;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -13,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.apache.commons.lang.RandomStringUtils;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 @RestController
@@ -97,6 +99,18 @@ public class CompanyController {
         }
 
     }
+
+    @RequestMapping("/calendar")
+    public  String getCalendar()
+    {
+
+        return new Gson().toJson(companyService.initCalendar("asd"));
+
+
+    }
+
+
+
 
     
 

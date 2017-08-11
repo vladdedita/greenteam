@@ -27,5 +27,5 @@ public class BookingController {
         bookingService.addBooking(b);
     }
 
-    
+
 }
