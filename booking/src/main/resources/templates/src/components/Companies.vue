@@ -22,7 +22,7 @@
 
         <div class="card-block">
           <p class="card-text">
-          		Card subtitbhulhyuuhukyigtitc ivtctickvkvvvvvkkvvkvvkvhkgchvghvkvcvkgkvvvvvv vvvvvvvvvvvvvvvvvvvvvvvv vvvvvvvv vvvvvvvvvvvv vvvvvvvvvvvv vvvvvvvvvvvvvvvv vvvvvvvv vvvvvvvvv vvvvvvvvvv vvvvvvvvvvvvv vvvvvvvvvvvv vvvvvvvvvvvvv vvvvvvvvvvvv vvvvvvvvvvvv vvvvvvvvvvv vvvvvvvvv vvvvvv vvvvvvvvvvv vvvvvvvvvvv vvvvvvvvvvv vvvvvvvvvvvvvv vvvvvvvv vvvvvvvvvvvvvv vvvvvvvvvvhh hhhhhhhhhhh hhhhhhhhhhhh hhhhhhhhhhh hhhhhhhhh hhhhhh hhhhh hhhhle
+          		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae pariatur ducimus illo temporibus, consequatur vitae iusto, ipsa dolor vero. Non ratione natus atque quisquam quam architecto, deserunt minus quibusdam odio.
           </p>
         </div>
     		<small slot="footer">
@@ -40,7 +40,7 @@
        				<td class="td-details">Price</td>
        			</tr>
        		</table>
-       		<button class="save">BOOK NOW</button>
+       		<router-link to="/confirmation"><button class="save">BOOK NOW</button></router-link>
      		</small>
   		</b-card>
 		</div>
