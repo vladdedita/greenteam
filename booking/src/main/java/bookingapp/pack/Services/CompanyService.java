@@ -3,6 +3,7 @@ package bookingapp.pack.Services;
 
 import bookingapp.pack.Dao.CompanyDao;
 import bookingapp.pack.Models.Company;
+import com.google.gson.Gson;
 import javassist.bytecode.ByteArray;
 import org.aspectj.bridge.Message;
 import org.bouncycastle.crypto.generators.BCrypt;
@@ -15,7 +16,9 @@ import org.springframework.stereotype.Service;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @Service
@@ -139,6 +142,51 @@ public class CompanyService {
 
     }
 
+
+    public String getCalendar(String name)
+    {
+
+
+        return null;
+
+
+    }
+
+    public  Map<String,Map<Integer,Integer>> initCalendar(String name)
+    {
+
+
+        Map<String,Map<Integer,Integer>> calendar=new HashMap<String, Map<Integer, Integer>>();
+
+        List<String> zi=new ArrayList<String>();
+
+        zi.add("Monday");
+        zi.add("Tuesday");
+        zi.add("Wednesday");
+        zi.add("Thursday");
+        zi.add("Friday");
+        zi.add("Saturday");
+        zi.add("Sunday");
+
+        Map<Integer,Integer> ora=new HashMap<Integer, Integer>();
+        for(int i=8;i<=23;i++)
+        {
+            ora.put(i,0);
+        }
+
+        for(String s : zi)
+        {
+            calendar.put(s,ora);
+        }
+
+
+
+        return calendar;
+
+
+
+
+    }
 
 
 
