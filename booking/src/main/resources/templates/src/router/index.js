@@ -7,6 +7,9 @@ import LogIn from '@/components/LogIn'
 import Dashboard from '@/components/Dashboard'
 import AddServ from '@/components/AddServ'
 import Companies from '@/components/Companies'
+import Recover from '@/components/Recover'
+import Profile from '@/components/Profile'
+import Confirmation from '@/components/Confirmation'
 
 
 
@@ -45,6 +48,19 @@ export default new Router({
       path: '/companies',
         name: 'Companies',
         component: Companies 
+    },
+    {
+      path: '/recover',
+      name: 'Recover',
+      component: Recover
+    },{
+      path: '/profile',
+      name: 'Profile',
+      component: Profile
+    },{
+      path: '/confirmation',
+      name: 'Confirmation',
+      component: Confirmation
     }
   ],
     mode: 'history'
