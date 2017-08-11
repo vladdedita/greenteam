@@ -24,10 +24,10 @@
               <input v-model="email" v-validate.initial="email" data-rules="required|email" class="form-control" type="email" placeholder="email@email.com">
               <p class="text-danger" v-if="errors.has('email')">{{ errors.first('email') }}</p>
           </div>
-          <div class="form-group" :class="{'has-error': errors.has('name') }">
-              <label class="control-label" for="name">Password</label>
-              <input v-model="name" v-validate.initial="name" data-rules="required|alpha|min:3" class="form-control" type="password">
-              <p class="text-danger" v-if="errors.has('name')">{{ errors.first('name') }}</p>
+          <div class="form-group" :class="{'has-error': errors.has('password') }">
+              <label class="control-label" for="password">Password</label>
+              <input v-model="password" v-validate.initial="password" data-rules="required|alpha|min:3" class="form-control" type="password">
+              <p class="text-danger" v-if="errors.has('password')">{{ errors.first('password') }}</p>
           </div>
               <button class="log-in" type="submit">REGISTER</button>
               <p class="bottom-text">You already have an account?</p>
@@ -40,15 +40,7 @@
 </template>
 
 <script>
-  import Vue from 'vue'
-  import VeeValidate from 'vee-validate'
 
-  Vue.use(VeeValidate);
-
-  VeeValidate.Validator.extend('passphrase', {
-   getMessage: field => 'Sorry dude, wrong pass phrase.',
-   validate: value => value.toUpperCase() == 'Demogorgon'.toUpperCase()
-  });
     export default {
         name: 'register',
         data () {
