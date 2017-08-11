@@ -4,15 +4,15 @@
         <h2>Booking App</h2>
         <ul>
           <li>
-            <router-link to="/dashboard">Dashboard</router-link>
+            <router-link to="/dashboard" exact-active-class="active">Dashboard</router-link>
           </li> <li>
-            <router-link to="/booking">Booking</router-link>
+            <router-link to="/booking" exact-active-class="active">Booking</router-link>
           </li>
           <li>
-            <router-link to="/calendar">Calendar</router-link>
+            <router-link to="/calendar" exact-active-class="active">Calendar</router-link>
           </li>
           <li>
-            <router-link to="/profile">Profile</router-link>
+            <router-link to="/profile" exact-active-class="active">Profile</router-link>
           </li>
         </ul>
       </nav>
@@ -27,6 +27,11 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+  .active {
+    font-weight: bold;
+  }
+
   p{
     color: red;
   }
