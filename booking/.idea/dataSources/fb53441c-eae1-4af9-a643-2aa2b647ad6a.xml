@@ -9,8 +9,8 @@
     </database>
     <schema id="3" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2017-08-10.07:19:34.469</IntrospectionTimestamp>
-      <IntrospectionStateNumber>745</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2017-08-11.13:40:47.985</IntrospectionTimestamp>
+      <IntrospectionStateNumber>751</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -43,11 +43,11 @@
     </sequence>
     <table id="11" parent="3" name="company">
       <ObjectId>16396</ObjectId>
-      <StateNumber>702</StateNumber>
+      <StateNumber>751</StateNumber>
     </table>
     <table id="12" parent="3" name="service">
       <ObjectId>16422</ObjectId>
-      <StateNumber>702</StateNumber>
+      <StateNumber>751</StateNumber>
     </table>
     <table id="13" parent="3" name="users">
       <ObjectId>16438</ObjectId>
@@ -160,7 +160,16 @@
       <UnderlyingIndexName>service_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="33" parent="13" name="id">
+    <foreign-key id="33" parent="12" name="service_companyid_fkey">
+      <ObjectId>24576</ObjectId>
+      <ColNames>companyid</ColNames>
+      <RefTableId>16396</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>company</RefTableName>
+      <RefKeyName>Company_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="34" parent="13" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
@@ -168,30 +177,30 @@
       <SequenceName>user_id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;user_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="34" parent="13" name="name">
+    <column id="35" parent="13" name="name">
       <Position>2</Position>
       <DataType>text|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>727</StateNumber>
     </column>
-    <column id="35" parent="13" name="email">
+    <column id="36" parent="13" name="email">
       <Position>3</Position>
       <DataType>text|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>727</StateNumber>
     </column>
-    <column id="36" parent="13" name="phone">
+    <column id="37" parent="13" name="phone">
       <Position>4</Position>
       <DataType>text|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>727</StateNumber>
     </column>
-    <index id="37" parent="13" name="user_id_pk">
+    <index id="38" parent="13" name="user_id_pk">
       <ObjectId>16449</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="38" parent="13" name="user_id_pk">
+    <key id="39" parent="13" name="user_id_pk">
       <ObjectId>16450</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>user_id_pk</UnderlyingIndexName>
