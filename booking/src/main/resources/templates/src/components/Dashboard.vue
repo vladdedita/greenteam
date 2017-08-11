@@ -7,7 +7,7 @@
 			<p>Add new service</p>
 		</div> -->
 		<div class="add-new-serv">
-			<button class="newService1">+</button>
+			 <router-link to="/addServ"><button class="newService1">+</button></router-link>
 			<p class="new-serv">New service</p>
 		</div>
 
@@ -64,26 +64,33 @@
 </script>
 <style scoped>
 	button{
-			height: 55px;
-			background-color: #DC2DE9;
-		  color: white;
-		  font-size: 22px;
-		  text-align: center;
-		  font-family: Arial;
-		  display: block;
-		  border-radius: 4%;
-		  border: transparent;
-		  margin: auto;
-		  padding: 10px;
-		    
-		}
+		height: 55px;
+		background-color: #DC2DE9;
+		color: white;
+		font-size: 22px;
+		text-align: center;
+		font-family: Arial;
+		display: block;
+		border-radius: 4%;
+		border: transparent;
+		margin: auto;
+		padding: 10px;	    
+	}
 	.newService1{
 			height: 82px;
 			width: 82px;
 			border-radius: 100%;
 			font-family: Courier;
 			font-size: 55px;
-		}
+			cursor: pointer;
+	}
+	
+	a:hover{
+	text-decoration: none;
+	}
+	a:focus{
+		text-decoration: none;
+	}
 	.new-serv{
 		font-size: 17px;
 		color: #4C4C4C;
@@ -96,6 +103,7 @@
     margin-right: 22%;
 
 	}
+
 
 	/*.add-title{
 		margin-top: 55px;
