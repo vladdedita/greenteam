@@ -2,66 +2,104 @@
     <div class="register">
       <div class="logo"><img src="../assets/logo.png"/></div>
         <p class="hero-title">Booking <span class="apl">App</span></p>
-       
 
-        <form class="clearfix" @keyup.esc="clearData" @keyup.enter="nextStep">
-        <div>
+        <form method="POST" action="/register" class="clearfix" @keyup.esc="clearData" @keyup.enter="nextStep">
+          <div>
               <label>Name</label>
               <input 
-                class="register" 
+                class="input_log" 
                 type="text"
                 v-model="name"
                 v-on:input="$v.name.$touch"
                 v-bind:class="{error: $v.name.$error, valid: $v.name.$dirty && !$v.name.$invalid}"
                 placeholder="Name" 
                 />
-
         </div>
-          <div>
-              <label>Email</label>
-              <input 
-              class="register" 
+        <div>
+          <label>Email</label>
+          <input 
+              class="input_log" 
               type="email"
               v-model="email"
               v-on:input="$v.email.$touch"
               v-bind:class="{error: $v.email.$error, valid: $v.email.$dirty && !$v.email.$invalid}"
               placeholder="Email@email.com"
-              />
-          </div>
-          <div id="next-button">
-            <button 
-            type="button" 
-            class="btn btn-secondary btn-md" 
-
-            @click="nextStep"
-            >Next</button>
-          </div> 
+          />
+        </div>
+        <div>
+          <label>Password</label>
+          <input 
+              class="input_log" 
+              type="password"
+              v-model="password"
+              v-on:input="$v.password.$touch"
+              v-bind:class="{error: $v.password.$error, valid: $v.password.$dirty && !$v.password.$invalid}"
+          />
+        </div>
+        <button class="log-in" @click="nextStep">REGISTER</button>
+        <router-link to="/logIn"><p class="stil">You already have an account?</p></router-link>
       </form>
     </div>
+
 </template>
-
 <script>
-import { required, minLength, maxLength, between, numeric, email } from 'vuelidate/lib/validators'
-
+  import Vue from 'vue'
+  import VeeValidate from 'vee-validate'
+  import { required, between, numeric, email, alpha, } from 'vuelidate/lib/validators'
+ 
     export default {
-        name: 'register',
+        name: 'logIn',
         data () {
         return {
-          email: '',
           name: '',
+          email: '',
           password: '',
           formSubmitted: false
-        }
-      },
-      validations: {
-      name: {
-      required,
-      minLength: minLength(10),
-      maxLength: maxLength(10)
-    }
-  }
+          }
+        },
+        methods: {
+          nextStep() {
+          if(this.checkValidation()){
+            this.step++;
+          }
+          else{
+            alert('You must provide valid information!')
+          }
+        },
+        previousStep() {
+          if(this.step > 0 ) {
+            this.step--;
+          } 
+         },
+        checkValidation(){
+          var validElements = document.getElementsByClassName('valid');
+          if(validElements.length === 3) {
+            return true;
+          }
+            return false;
+         },
+          clearData(){
+            this.name='';
+            this.phone='';
+            this.email='';
+         }
+        },
+            
+        validations: {
+          name: {
+          required,
+          alpha,
+          },
+          email: {
+          required,
+          email
+          },
+          password: {
+          required
+          }
+       }
 
-}
+    }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -111,5 +149,33 @@ import { required, minLength, maxLength, between, numeric, email } from 'vuelida
     .bottom-text{
     padding-bottom: 8px;
     margin-top: 15px;
+    }
+    .error {
+    border-color: red;
+    background: #FDD;
+    }
+
+    .error:focus {
+      outline-color: #F99;
+    }
+
+    .valid {
+      border-color: #5A5;
+      background: #EFE;
+    }
+
+    .valid:focus {
+      outline-color: #8E8;
+    }
+    .input_log{
+      width: 360px;
+      height: 53px;
+      border-radius: 5px;
+      border: 1px solid #8A8A8A;
+      margin-bottom: 25px;
+    }
+    a{
+      text-decoration: none;
+      color: #474747;
     }
 </style>
