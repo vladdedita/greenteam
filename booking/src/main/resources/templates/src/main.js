@@ -13,6 +13,7 @@ Vue.use(BootstrapVue);
 
 Vue.config.productionTip = false
 
+window.ApiUrl = "http://localhost:8081/";
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

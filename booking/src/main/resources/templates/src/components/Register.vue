@@ -1,45 +1,47 @@
 <template>
     <div class="register">
-      <img src="../assets/logo.png">
+      <div class="logo"><img src="../assets/logo.png"/></div>
         <p class="hero-title">Booking <span class="apl">App</span></p>
-        <!-- <form method="POST">
-          <label>{{name}}</label>
-          <input type="text" class="reg_input" name="cp_name"> 
-          <label>{{email}}</label>
-          <input  type="email" class="reg_input" name="cp_email" placeholder="email@email.com"> 
-          <label>{{password}}</label>
-          <input type="password" class="reg_input" name="cp_password"> 
-        </form>
-        <button class="log-in">REGISTER</button>
-        <p class="bottom-text">You already have an account?</p> -->
+       
 
-        <form @submit.prevent="validateBeforeSubmit" v-if="!formSubmitted">
-          <div class="form-group" :class="{'has-error': errors.has('name') }">
-              <label class="control-label" for="name">Your name</label>
-              <input v-model="name" v-validate.initial="name" data-rules="required|alpha|min:3" class="form-control" type="text">
-              <p class="text-danger" v-if="errors.has('name')">{{ errors.first('name') }}</p>
-          </div>
-          <div class="form-group" :class="{'has-error': errors.has('email') }" >
-              <label class="control-label" for="email">Email address</label>
-              <input v-model="email" v-validate.initial="email" data-rules="required|email" class="form-control" type="email" placeholder="email@email.com">
-              <p class="text-danger" v-if="errors.has('email')">{{ errors.first('email') }}</p>
-          </div>
-          <div class="form-group" :class="{'has-error': errors.has('password') }">
-              <label class="control-label" for="password">Password</label>
-              <input v-model="password" v-validate.initial="password" data-rules="required|alpha|min:3" class="form-control" type="password">
-              <p class="text-danger" v-if="errors.has('password')">{{ errors.first('password') }}</p>
-          </div>
-              <button class="log-in" type="submit">REGISTER</button>
-              <p class="bottom-text">You already have an account?</p>
-        </form>
-        <div v-else>
-          <h1 class="submitted">Form submitted successfully!</h1>
+        <form class="clearfix" @keyup.esc="clearData" @keyup.enter="nextStep">
+        <div>
+              <label>Name</label>
+              <input 
+                class="register" 
+                type="text"
+                v-model="name"
+                v-on:input="$v.name.$touch"
+                v-bind:class="{error: $v.name.$error, valid: $v.name.$dirty && !$v.name.$invalid}"
+                placeholder="Name" 
+                />
+
         </div>
-        
+          <div>
+              <label>Email</label>
+              <input 
+              class="register" 
+              type="email"
+              v-model="email"
+              v-on:input="$v.email.$touch"
+              v-bind:class="{error: $v.email.$error, valid: $v.email.$dirty && !$v.email.$invalid}"
+              placeholder="Email@email.com"
+              />
+          </div>
+          <div id="next-button">
+            <button 
+            type="button" 
+            class="btn btn-secondary btn-md" 
+
+            @click="nextStep"
+            >Next</button>
+          </div> 
+      </form>
     </div>
 </template>
 
 <script>
+import { required, minLength, maxLength, between, numeric, email } from 'vuelidate/lib/validators'
 
     export default {
         name: 'register',
@@ -51,22 +53,23 @@
           formSubmitted: false
         }
       },
-      methods: {
-        validateBeforeSubmit(e) {
-            this.$validator.validateAll();
-            if (!this.errors.any()) {
-                this.submitForm()
-            }
-          },
-        submitForm(){
-          this.formSubmitted = true
-        }
-      }
+      validations: {
+      name: {
+      required,
+      minLength: minLength(10),
+      maxLength: maxLength(10)
+    }
   }
+
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+    .logo{
+      text-align: center;
+      margin-top: 115px;
+    }
    .hero-title{
       font-size: 65px;
       color: #6880D5;

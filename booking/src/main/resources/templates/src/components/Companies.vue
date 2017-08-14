@@ -3,8 +3,8 @@
 		<div class="company-details">
 			<div id='img-logo'><img id="logo-comp" src="../assets/default-logo.png" alt="logo-company"/></div>
 			<div class="details-comp">
-				 <p class="add-title">Company name</p>
-				 <div class='add-details'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet obcaecati dolor inventore ipsam, pariatur quis consequuntur corporis, molestias rerum vitae dignissimos. Itaque enim numquam sunt nobis, quaerat tenetur ad temporibus.</div>
+				 <p class="add-title">{{companies[0].name}}</p>
+				 <div class='add-details'>{{companies[0].description}}</div>
 			</div>
 		</div>
 
@@ -57,12 +57,43 @@
 	import 'vue-awesome/icons/pencil'
  	import 'vue-awesome/icons/trash'
  	import Icon from 'vue-awesome/components/Icon'
+ 	import axios from 'axios'
 	
 	export default {
-  name: 'companies',
-   components: {
+  	name: 'companies',
+  	data() {
+  		return {
+  			companies: '',
+  			services: ''
+  		}
+  	},
+   	components: {
      Icon:Icon
-  }
+  	},
+  	mounted() {
+  		this.getCompanies();
+  	},
+  	methods: {
+  		getCompanies() {
+  			axios.get(window.ApiUrl + "companies").then((res) => {
+  				this.companies = res.data;
+  				//this.getServices();
+  				console.log("companies ", res);
+  			})
+  			.catch((err) => {
+  				console.log("err", err);
+  			})
+  		},
+  		getServices() {
+  			axios.get(window.ApiUrl + "services").then((res) => {
+  				this.services = res.data;
+  				console.log("services ", res);
+  			})
+  			.catch((err) => {
+  				console.log("err", err);
+  			})
+  		}
+  	}
   	
 }
 </script>
