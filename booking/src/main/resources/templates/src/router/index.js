@@ -18,7 +18,7 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/register',
+      path: '/',
       name: 'Register',
       component: Register
     },
