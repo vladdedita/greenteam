@@ -17,7 +17,7 @@
 				<label>Service name</label>
 				<input class="register">
 				<label>Service description</label>
-				<input class="detail">
+				<textarea cols="50" class="detail"></textarea>
 			</div>
 			<div class=right-side>
 				<label>Service duration</label>
@@ -74,7 +74,7 @@
 			text-decoration: none;
 		}
 	a:hover{
-	text-decoration: none;
+		text-decoration: none;
 	}
 	a:focus{
 		text-decoration: none;

@@ -40,7 +40,7 @@
        				<td class="td-details">Price</td>
        			</tr>
        		</table>
-       		<router-link to="/confirmation"><button class="save">BOOK NOW</button></router-link>
+       		<router-link to="/confirmation"><b-btn v-b-modal.modal1 id="save">BOOK NOW</b-btn></router-link>
      		</small>
   		</b-card>
 		</div>
