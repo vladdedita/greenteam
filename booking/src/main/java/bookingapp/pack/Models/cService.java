@@ -3,8 +3,6 @@ package bookingapp.pack.Models;
 
 
 
-import com.fasterxml.jackson.core.JsonEncoding;
-
 import javax.persistence.*;
 
 @Entity
@@ -38,7 +36,7 @@ public class cService {
     private long idCompany;
 
     @Column(name="calendar")
-    private JsonEncoding calendar;
+    private String calendar;
 
     public long getId() {
         return id;
@@ -104,11 +102,11 @@ public class cService {
         this.idCompany = idCompany;
     }
 
-    public JsonEncoding getCalendar() {
+    public String getCalendar() {
         return calendar;
     }
 
-    public void setCalendar(JsonEncoding calendar) {
+    public void setCalendar(String calendar) {
         this.calendar = calendar;
 
 

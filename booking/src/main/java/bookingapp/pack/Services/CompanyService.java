@@ -3,12 +3,6 @@ package bookingapp.pack.Services;
 
 import bookingapp.pack.Dao.CompanyDao;
 import bookingapp.pack.Models.Company;
-import com.google.gson.Gson;
-import javassist.bytecode.ByteArray;
-import org.aspectj.bridge.Message;
-import org.bouncycastle.crypto.generators.BCrypt;
-import org.bouncycastle.jcajce.provider.digest.SHA1;
-import org.bouncycastle.jcajce.provider.digest.SHA3;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +20,7 @@ public class CompanyService {
 
 
     @Autowired
-             CompanyDao dao;
+    CompanyDao dao;
 
 
     public List<Company> getAllCompanies()
@@ -47,8 +41,8 @@ public class CompanyService {
         byte[] hash=md.digest(password.getBytes());
 
         try{
-        dao.save(new Company(name ,email, hash));
-        return true;
+            dao.save(new Company(name ,email, hash.toString()));
+            return true;
         }
         catch(Exception e)
         {
@@ -56,7 +50,7 @@ public class CompanyService {
             return false;
         }
 
-        
+
     }
 
     public boolean addCompany(Company c) throws NoSuchAlgorithmException {
@@ -64,10 +58,10 @@ public class CompanyService {
 
 
         MessageDigest md=MessageDigest.getInstance("SHA-512");
-        byte[] hash=md.digest(c.getPassword());
+        byte[] hash=md.digest(c.getPassword().getBytes());
 
         try{
-            dao.save(new Company(c.getName() ,c.getName(), hash));
+            dao.save(new Company(c.getName() ,c.getName(), hash.toString()));
             return true;
         }
         catch(Exception e)
@@ -103,7 +97,10 @@ public class CompanyService {
     {
 
         MessageDigest md=MessageDigest.getInstance("SHA-512");
-        byte[] hash=md.digest(password.getBytes());
+
+        byte[] hash= md.digest(password.getBytes());
+
+
 
         List<Company> companies=new ArrayList<Company>();
 
@@ -111,7 +108,7 @@ public class CompanyService {
         {
             if(c.getEmail().equals(email))
             {
-                c.setPassword(hash);
+                c.setPassword(hash.toString());
                 dao.save(c);
                 return true;
             }
