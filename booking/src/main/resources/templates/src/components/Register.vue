@@ -3,7 +3,7 @@
       <div class="logo"><img src="../assets/logo.png"/></div>
         <p class="hero-title">Booking <span class="apl">App</span></p>
 
-        <form method="POST" action="/register" class="clearfix" @keyup.esc="clearData" @keyup.enter="nextStep">
+        <form class="clearfix" @keyup.esc="clearData" @keyup.enter="submitForm">
           <div>
               <label>Name</label>
               <input 
@@ -36,7 +36,7 @@
               v-bind:class="{error: $v.password.$error, valid: $v.password.$dirty && !$v.password.$invalid}"
           />
         </div>
-        <button class="log-in" @click="nextStep">REGISTER</button>
+        <button class="log-in" @click="submitForm">REGISTER</button>
         <router-link to="/logIn"><p class="stil">You already have an account?</p></router-link>
       </form>
     </div>
@@ -46,7 +46,7 @@
   import Vue from 'vue'
   import VeeValidate from 'vee-validate'
   import { required, between, numeric, email, alpha, } from 'vuelidate/lib/validators'
- 
+  import axios from 'axios'
     export default {
         name: 'logIn',
         data () {
@@ -66,6 +66,20 @@
             alert('You must provide valid information!')
           }
         },
+            submitForm() {
+                axios.post("http://localhost:9000/register",{name : this.name,
+                email:this.email,
+                password:this.password}).then((res) => {
+
+
+                    this.submitForm=true;
+                    console.log("res ", res);
+
+                })
+                    .catch((err) => {
+                        console.log("err", err);
+                    })
+            },
         previousStep() {
           if(this.step > 0 ) {
             this.step--;
