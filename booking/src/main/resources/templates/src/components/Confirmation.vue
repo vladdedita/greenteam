@@ -1,10 +1,5 @@
 <template>
 <div class="confirmation">
-  
-  <input type="text" v-model="name"
-    v-on:input="$v.name.$touch"
-    v-bind:class="{error: $v.name.$error, valid: $v.name.$dirty && !$v.name.$invalid}"
-  >
 
   <b-btn v-b-modal.modal1 id="save">BOOK NOW</b-btn>
 
@@ -15,49 +10,79 @@
       <div class="modal-sent">Make your booking</div>
       <div class="info">PERSONAL DETAILS</div>
  
-      <form class="clearfix">
+      <form class="clearfix" @keyup.esc="clearData" @keyup.enter="nextStep">
       <div class="details float-left">
         <div>
               <label>Name</label>
               <input 
                 class="register" 
-                type="text" 
-                name="name"
-                
+                type="text"
+                v-model="name"
+                v-on:input="$v.name.$touch"
+                v-bind:class="{error: $v.name.$error, valid: $v.name.$dirty && !$v.name.$invalid}"
+                placeholder="Name" 
                 />
 
         </div>
         <div >
               <label>Phone number</label>
-              <input class="register" type="phone" name="usertel" />
+              <input 
+                class="register" 
+                type="phone" 
+                v-model="phone"
+                v-on:input="$v.phone.$touch"
+                v-bind:class="{error: $v.phone.$error, valid: $v.phone.$dirty && !$v.phone.$invalid}"
+                placeholder="Phone number" 
+                />
          </div>
       </div>
          
       <div class="details float-right">
         <div>
             <label>Email</label>
-            <input class="register" type="email" name="email" required >
+            <input 
+            class="register" 
+            type="email"
+            v-model="email"
+            v-on:input="$v.email.$touch"
+            v-bind:class="{error: $v.email.$error, valid: $v.email.$dirty && !$v.email.$invalid}"
+            placeholder="Email@email.com"
+            />
         </div>
         <div id="next-button">
-          <button data-v-1b4cbb68="" type="button" class="btn btn-secondary btn-md" @click="nextStep">Next</button>
+          <button 
+          type="button" 
+          class="btn btn-secondary btn-md" 
+
+          @click="nextStep"
+          >Next</button>
         </div>
       </div>   
       </form>
 
     </div>
 
-    <div id="calendar" v-show="step == 1">
+    <div id="calendar" v-show="step == 1" @keyup.enter="sendBooking">
 
       <div class="modal-sent">Make your booking</div>
       <div class="info">BOOKING INFORMATION</div>
         
-      <button data-v-1b4cbb68="" type="button" class="btn btn-secondary btn-md" @click="previousStep" id="back">Back</button>
+      <button 
+      type="button"
+      class="btn btn-secondary btn-md" 
+      @click="previousStep" 
+      id="back"
+      >Back</button>
 
-      <button data-v-1b4cbb68="" type="button" class="btn btn-secondary btn-md" @click="sendBooking">Send booking</button>
+      <button 
+      type="button" 
+      class="btn btn-secondary btn-md" 
+      @click="sendBooking"
+      >Send booking</button>
 
     </div>
 
-    <div id="conf" v-show="step == 2">
+    <div id="conf" v-show="step == 2" @keyup.enter="hideModal">
       <div class="modal-card">
         <img src="../assets/PostalCard.png" />
       </div>
@@ -66,7 +91,10 @@
       <div class="modal-text">In a couple of seconds a confirmation email will be sent to your email address with all the details for you reservation. Thank you for using our services!
       </div>
       
-      <button type="button" class="btn btn-secondary btn-md" @click="hideModal">Close</button>
+      <button 
+      type="button" 
+      class="btn btn-secondary submit-btn btn-md" 
+      >Close</button>
     </div>
 
   </b-modal>
@@ -74,7 +102,7 @@
 </template>
 
 <script>
-import { required, minLength, maxLength, between, numeric, email } from 'vuelidate/lib/validators'
+import { required, minLength, maxLength, between, numeric, email, alpha, } from 'vuelidate/lib/validators'
 
 
 
@@ -84,8 +112,10 @@ export default {
     return {
       step:0,
       msg: 'test',
-      name: 'nume',
-      // hideFooter: false
+      name: '',
+      phone: '',
+      email: '',
+      checkSubmit: false
     }
   },
   methods: {
@@ -100,22 +130,56 @@ export default {
 
    },
    nextStep() {
-    this.step++;
+    if(this.checkValidation()){
+      this.step++;
+    }
+    else{
+      alert('You must provide valid information!')
+    }
    },
    previousStep() {
     if(this.step > 0 ) {
       this.step--;
     } 
    },
-   
+   // checkValidation(){
+   //  var invalidElements = document.getElementsByClass('error');
+   //  if(invalidElements.length) {
+   //    this.checkSubmit = false;
+   //  } else {
+    
+   //  }
+   // },
+
+   checkValidation(){
+    var validElements = document.getElementsByClassName('valid');
+    if(validElements.length === 3) {
+      return true;
+    }
+    return false;
+   },
+   clearData(){
+    this.name='';
+    this.phone='';
+    this.email='';
+   }
   },
 
   validations: {
     name: {
       required,
+      alpha,
+    },
+    phone: {
+      required,
+      numeric,
       minLength: minLength(10),
       maxLength: maxLength(10)
-    }
+    },
+    email: {
+      required,
+      email,
+    },
   }
 
   
@@ -123,6 +187,9 @@ export default {
 </script>
 
 <style>
+  .btn-disabled: {
+    cursor: not-allowed;
+  }
   /*Form style*/
   .error {
     border-color: red;
