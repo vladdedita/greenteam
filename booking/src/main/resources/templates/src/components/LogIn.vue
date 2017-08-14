@@ -5,35 +5,39 @@
 			<div class="logo"><img src="../assets/logo.png"/></div>
 			<p class="hero-title">Booking <span class="apl">App</span></p>
 		</div>
-		<form @submit.prevent="validateBeforeSubmit" v-if="!formSubmitted">
-          <div class="form-group" :class="{'has-error': errors.has('email') }" >
-              <label class="control-label" for="email">Email address</label>
-              <input v-model="email" v-validate.initial="email" data-rules="required|email" class="form-control" type="email" placeholder="email@email.com">
-              <p class="text-danger" v-if="errors.has('email')">{{ errors.first('email') }}</p>
-          </div>
-          <div class="form-group" :class="{'has-error': errors.has('password') }">
-              <label class="control-label" for="password">Password</label>
-              <input v-model="password" v-validate.initial="passwords" data-rules="required|password|min:10" class="form-control" type="password">
-              <p class="text-danger" v-if="errors.has('name')">{{ errors.first('name') }}</p>
-          </div>
-				<button class="log-in">LOGIN</button>
-				<p class="stil">Recover password</p>
+		<form class="clearfix" @keyup.esc="clearData" @keyup.enter="nextStep">
+      <div>
+        <label>Email</label>
+        <input 
+            class="input_log" 
+            type="email"
+            v-model="email"
+            v-on:input="$v.email.$touch"
+            v-bind:class="{error: $v.email.$error, valid: $v.email.$dirty && !$v.email.$invalid}"
+            placeholder="Email@email.com"
+        />
+      </div>
+      <div>
+        <label>Password</label>
+        <input 
+            class="input_log" 
+            type="password"
+            v-model="password"
+            v-on:input="$v.password.$touch"
+            v-bind:class="{error: $v.password.$error, valid: $v.password.$dirty && !$v.password.$invalid}"
+        />
+      </div>
+				<button class="log-in" @click="nextStep">LOGIN</button>
+				<router-link to="/recover"><p class="stil">Recover password</p></router-link>
         </form>
-        <div v-else>
-          <h1 class="submitted">Form submitted successfully!</h1>
-        </div>
  	</div>
 </template>
 
 <script>
   import Vue from 'vue'
   import VeeValidate from 'vee-validate'
-
-  Vue.use(VeeValidate);
-  VeeValidate.Validator.extend('passphrase', {
-   getMessage: field => 'Sorry dude, wrong pass phrase.',
-   validate: value => value.toUpperCase() == 'Demogorgon'.toUpperCase()
-  });
+  import { required, between, numeric, email, alpha, } from 'vuelidate/lib/validators'
+ 
     export default {
         name: 'logIn',
         data () {
@@ -41,20 +45,47 @@
           email: '',
           password: '',
           formSubmitted: false
-        }
-      },
-      methods: {
-        validateBeforeSubmit(e) {
-            this.$validator.validateAll();
-            if (!this.errors.any()) {
-                this.submitForm()
-            }
-          },
-        submitForm(){
-          this.formSubmitted = true
-        }
-      }
-  }
+        	}
+      	},
+      	methods: {
+   nextStep() {
+    if(this.checkValidation()){
+      this.step++;
+    }
+    else{
+      alert('You must provide valid information!')
+    }
+   },
+   previousStep() {
+    if(this.step > 0 ) {
+      this.step--;
+    } 
+   },
+   checkValidation(){
+    var validElements = document.getElementsByClassName('valid');
+    if(validElements.length === 3) {
+      return true;
+    }
+    return false;
+   },
+   clearData(){
+    this.name='';
+    this.phone='';
+    this.email='';
+   }
+  },
+			
+      	validations: {
+			    email: {
+			      required,
+			      email
+			    },
+			     password: {
+			      required
+			    }
+			  }
+
+  	}
 </script>
 
 <style scoped>
@@ -122,4 +153,23 @@
 			font-size: 17px;
 			margin-top: 10px;
 		}
+		/*Form style*/
+		.error {
+    border-color: red;
+    background: #FDD;
+  }
+
+  .error:focus {
+    outline-color: #F99;
+  }
+
+  .valid {
+    border-color: #5A5;
+    background: #EFE;
+  }
+
+  .valid:focus {
+    outline-color: #8E8;
+  }
+	
 </style>
