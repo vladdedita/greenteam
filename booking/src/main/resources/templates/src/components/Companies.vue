@@ -128,20 +128,49 @@
 
 <script>
 	import { required, minLength, maxLength, between, numeric, email, alpha, } from 'vuelidate/lib/validators'
+	import 'vue-awesome/icons/pencil'
+  import 'vue-awesome/icons/trash'
+  import Icon from 'vue-awesome/components/Icon'
+  import axios from 'axios'
 
 	export default {
 		name: 'companies',
 		data() {
 			return {
+				companies: '',
+        services: '',
 				step:0,
-				msg: 'test',
 				name: '',
 				phone: '',
 				email: '',
 				checkSubmit: false
 			}
 		},
+		components: {
+     Icon:Icon
+      },
+    mounted() {
+      this.getCompanies();
+      },
 		methods: {
+			getCompanies() {
+				axios.get(window.ApiUrl + "companies").then((res) => {
+					this.companies = res.data;
+          console.log("companies ", res);
+          })
+				.catch((err) => {
+					console.log("err", err);
+				})
+			},
+			getServices() {
+				axios.get(window.ApiUrl + "services").then((res) => {
+					this.services = res.data;
+					console.log("services ", res);
+				})
+				.catch((err) => {
+					console.log("err", err);
+				})
+			},
 			hideModal() {
 				this.step = 0;
 				this.$root.$emit('hide::modal', 'modal1');
@@ -277,6 +306,7 @@
 		border-radius: 5px;
 		border: 1px solid #8A8A8A;
 	}
+	/*Modal form*/
 	.modal-card{
 		height: 130px;
 		width: 255px;
@@ -305,6 +335,9 @@
 		padding-left: 160px;
 		margin-top: 35px;
 		margin-bottom: 85px;
+	}
+	.close{
+		float:right;
 	}
 	.btn-secondary{
 		height: 55px;
@@ -335,6 +368,7 @@
 		background-color: #dee1e5;
 		margin-left: 15%;
 	}
+	/*Company details*/
 	.company-details{
 		width: 70%;
 		margin-left: 20%;
@@ -383,11 +417,7 @@
 		float: left;
 		margin: 15px 0 0 10px;
 	}
-	.close{
-		float:right;
-	}
-
-
+	
 	/*Card*/
 	.container{
 		margin-top: 60px;

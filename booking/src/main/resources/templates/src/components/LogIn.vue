@@ -138,7 +138,7 @@
    text-align: center;
    font-family: Arial;
    display: block;
-   border-radius: 4%;
+   border-radius: 5px;
    border: transparent;
    margin: auto;
    padding: 10px;
