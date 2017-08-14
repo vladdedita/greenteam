@@ -9,7 +9,7 @@ import AddServ from '@/components/AddServ'
 import Companies from '@/components/Companies'
 import Recover from '@/components/Recover'
 import Profile from '@/components/Profile'
-import Confirmation from '@/components/Confirmation'
+
 
 
 
@@ -57,10 +57,6 @@ export default new Router({
       path: '/profile',
       name: 'Profile',
       component: Profile
-    },{
-      path: '/confirmation',
-      name: 'Confirmation',
-      component: Confirmation
     }
   ],
     mode: 'history'
