@@ -24,7 +24,7 @@ public class Company {
     private String email;
 
     @Column(name="password")
-    private byte[] password;
+    private String password;
 
     @Column(name="logopath")
     private String logopath;
@@ -33,7 +33,7 @@ public class Company {
     protected Company() { }
 
 
-    public Company(String name,  String email, byte[] password) {
+    public Company(String name,  String email, String password) {
         this.name = name;
 
         this.email = email;
@@ -60,7 +60,7 @@ public class Company {
         return email;
     }
 
-    public byte[] getPassword() {
+    public String getPassword() {
         return password;
     }
 
@@ -84,7 +84,7 @@ public class Company {
         this.email = email;
     }
 
-    public void setPassword(byte[] password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 

@@ -1,11 +1,10 @@
 package bookingapp.pack.Dao;
 
-import bookingapp.pack.Models.Service;
+import bookingapp.pack.Models.cService;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
 
 
-public interface ServiceDao extends CrudRepository<Service,Long> {
+public interface ServiceDao extends CrudRepository<cService,Long> {
 
 
 }
