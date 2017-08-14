@@ -4,7 +4,7 @@
   <b-btn v-b-modal.modal1 id="save">BOOK NOW</b-btn>
 
   <!-- Modal Component -->
-  <b-modal id="modal1" ref="my_modal1" hide-footer="true">
+  <b-modal id="modal1" ref="my_modal1" hide-footer>
 
     <div id="client-details" v-show="step == 0">
       <div class="modal-sent">Make your booking</div>
@@ -62,7 +62,7 @@
 
     </div>
 
-    <div id="calendar" v-show="step == 1" @keyup.enter="sendBooking">
+    <div id="calendar" v-show="step == 1" @keyup.esc="clearData" @keyup.enter="sendBooking">
 
       <div class="modal-sent">Make your booking</div>
       <div class="info">BOOKING INFORMATION</div>
@@ -83,6 +83,7 @@
     </div>
 
     <div id="conf" v-show="step == 2" @keyup.enter="hideModal">
+
       <div class="modal-card">
         <img src="../assets/PostalCard.png" />
       </div>
@@ -94,6 +95,7 @@
       <button 
       type="button" 
       class="btn btn-secondary submit-btn btn-md" 
+      @click="hideModal"
       >Close</button>
     </div>
 
@@ -122,6 +124,7 @@ export default {
     hideModal() {
      this.step = 0;
      this.$root.$emit('hide::modal', 'modal1');
+     this.clearData();
    },
    sendBooking() {
     //server request
