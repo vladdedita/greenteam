@@ -7,9 +7,16 @@
       </div>
       <p class="hero-title">Booking <span class="apl">App</span></p>
     </div>
+
     <form>
-      <label class="text-center">Email address</label>
-      <input class="input_log">
+      <label >Email address</label>
+      <input 
+      class="input_log"
+      v-model="email"
+      v-on:input="$v.email.$touch"
+      v-bind:class="{error: $v.email.$error, valid: $v.email.$dirty && !$v.email.$invalid}"
+      placeholder="Email@email.com"
+      >
     </form>
 
     <div id="space"></div>
@@ -20,13 +27,28 @@
 </template>
 
 <script>
+import { required, email, } from 'vuelidate/lib/validators'
+
 export default {
   name: 'recover',
   data () {
-   
+    return {
+      msg: 'recoverPage',
+      email: '',
+    }
+  },
+
+  validations: {
+    email: {
+      required,
+      email,
+    }
   }
+
 }
+
 </script>
+
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
@@ -93,4 +115,23 @@ export default {
     .login{
       width: 365px;
     }
+
+     /*Form style*/
+  .error {
+    border-color: red;
+    background: #FDD;
+  }
+
+  .error:focus {
+    outline-color: #F99;
+  }
+
+  .valid {
+    border-color: #5A5;
+    background: #EFE;
+  }
+
+  .valid:focus {
+    outline-color: #8E8;
+  }
 </style>
