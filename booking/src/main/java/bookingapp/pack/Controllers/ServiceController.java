@@ -26,6 +26,7 @@ public class ServiceController {
     public String addService(@RequestBody cService s)
     {
         try {
+            System.out.println(s.toString());
             serviceService.addCservice(s);
         }
         catch(Exception e)

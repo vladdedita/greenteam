@@ -21,18 +21,19 @@ public class cService {
     private String description;
 
     @Column(name="duration")
-    private String duration;
+    private Integer duration;
 
     @Column(name="places")
-    private String places;
+    private Integer places;
 
     @Column(name="price")
-    private String price;
+    private Integer price;
 
     @Column(name="available")
     private int available;
 
     @Column(name="id_company")
+
     private long idCompany;
 
     @Column(name="calendar")
@@ -62,27 +63,27 @@ public class cService {
         this.description = description;
     }
 
-    public String getDuration() {
+    public Integer getDuration() {
         return duration;
     }
 
-    public void setDuration(String duration) {
+    public void setDuration(Integer duration) {
         this.duration = duration;
     }
 
-    public String getPlaces() {
+    public Integer getPlaces() {
         return places;
     }
 
-    public void setPlaces(String places) {
+    public void setPlaces(Integer places) {
         this.places = places;
     }
 
-    public String getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 
@@ -117,7 +118,7 @@ public class cService {
     protected cService(){
 
     }
-    public cService(String name, String description, String duration, String places, String price, int available, long idCompany) {
+    public cService(String name, String description, Integer duration, Integer places, Integer price, int available, long idCompany) {
         this.name = name;
         this.description = description;
         this.duration = duration;
