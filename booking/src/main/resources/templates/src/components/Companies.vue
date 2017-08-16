@@ -11,166 +11,193 @@
 		</div>
 
 		<div class="container">
-			<b-card no-block>
-				<div class="row">
-					<div class="col-sm-6 text-left">
-						<h2 class="card-title">title</h2>
-					</div>
-					<div class="col-sm-6 text-right">
+
+			<b-card no-block v-for="service in services">
+			<div class="row">
+				<div class="col-sm-6 text-left">
+					<h2 class="card-title">{{service.name}}</h2>
+				</div>
+				<div class="col-sm-6 text-right">
+					<span>
 						<icon class="icon-card" name="pencil" scale="2"></icon>
+					</span>
+					<span @click="deleteService(service.id)">
 						<icon class="icon-card" name="trash" scale="2"></icon>
-					</div>
+					</span>
+				</div>
+			</div>
+
+			<div class="card-block">
+				<p class="card-text">
+					{{service.body}}
+				</p>
+			</div>
+			<small slot="footer">
+				<table>
+					<tr class="tab-details">
+						<td class="td-details">{{service.id}}</td>
+						<td class="td-details">{{service.postId}}</td>
+						<td class="td-details">{{service.email}}</td>
+						<td class="td-details"></td>
+					</tr>
+					<tr class="tdata">
+						<td class="td-details">Availability</td>
+						<td class="td-details">Spaces</td>
+						<td class="td-details">Duration</td>
+						<td class="td-details">Price</td>
+					</tr>
+				</table>
+				<b-btn v-b-modal.modal1 id="save" @click="selectService(service)">BOOK NOW</b-btn>
+			</small>
+		</b-card>
+		
+		<b-modal id="modal1" ref="my_modal1" hide-footer>
+		<div id="client-details" v-show="step == 0">
+			<p class="modal-sent">Make your booking</p>
+			<p class="info">PERSONAL DETAILS</p>
+			<form class="clearfix" @keyup.esc="clearData" @keyup.enter="nextStep">
+				<div class="details float-left">
+					<label>Name</label>
+					<input 
+					class="register" 
+					type="text"
+					v-model="name"
+					v-on:input="$v.name.$touch"
+					v-bind:class="{error: $v.name.$error, valid: $v.name.$dirty && !$v.name.$invalid}"
+					placeholder="Name" 
+					/>
+					<label>Phone number</label>
+					<input 
+					class="register" 
+					type="phone" 
+					v-model="phone"
+					v-on:input="$v.phone.$touch"
+					v-bind:class="{error: $v.phone.$error, valid: $v.phone.$dirty && !$v.phone.$invalid}"
+					placeholder="Phone number" 
+					/>
 				</div>
 
-				<div class="card-block">
-					<p class="card-text">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae pariatur ducimus illo temporibus, consequatur vitae iusto, ipsa dolor vero. Non ratione natus atque quisquam quam architecto, deserunt minus quibusdam odio.
-					</p>
+				<div class="details float-right">
+					<label>Email</label>
+					<input 
+					class="register" 
+					type="email"
+					v-model="email"
+					v-on:input="$v.email.$touch"
+					v-bind:class="{error: $v.email.$error, valid: $v.email.$dirty && !$v.email.$invalid}"
+					placeholder="Email@email.com"
+					/>
+					<div id="next-button">
+						<button 
+						type="button" 
+						class="btn btn-secondary btn-md" 
+						@click="nextStep">Next
+					</button>
 				</div>
-				<small slot="footer">
-					<table>
-						<tr class="tab-details">
-							<td class="td-details"></td>
-							<td class="td-details"></td>
-							<td class="td-details"></td>
-							<td class="td-details"></td>
-						</tr>
-						<tr class="tdata">
-							<td class="td-details">Availability</td>
-							<td class="td-details">Spaces</td>
-							<td class="td-details">Duration</td>
-							<td class="td-details">Price</td>
-						</tr>
-					</table>
-					<b-btn v-b-modal.modal1 id="save">BOOK NOW</b-btn>
-					<b-modal id="modal1" ref="my_modal1" hide-footer>
-						<div id="client-details" v-show="step == 0">
-							<p class="modal-sent">Make your booking</p>
-							<p class="info">PERSONAL DETAILS</p>
-							<form class="clearfix" @keyup.esc="clearData" @keyup.enter="nextStep">
-								<div class="details float-left">
-									<label>Name</label>
-									<input 
-									class="register" 
-									type="text"
-									v-model="name"
-									v-on:input="$v.name.$touch"
-									v-bind:class="{error: $v.name.$error, valid: $v.name.$dirty && !$v.name.$invalid}"
-									placeholder="Name" 
-									/>
-									<label>Phone number</label>
-									<input 
-									class="register" 
-									type="phone" 
-									v-model="phone"
-									v-on:input="$v.phone.$touch"
-									v-bind:class="{error: $v.phone.$error, valid: $v.phone.$dirty && !$v.phone.$invalid}"
-									placeholder="Phone number" 
-									/>
-								</div>
-
-								<div class="details float-right">
-									<label>Email</label>
-									<input 
-									class="register" 
-									type="email"
-									v-model="email"
-									v-on:input="$v.email.$touch"
-									v-bind:class="{error: $v.email.$error, valid: $v.email.$dirty && !$v.email.$invalid}"
-									placeholder="Email@email.com"
-									/>
-									<div id="next-button">
-										<button 
-										type="button" 
-										class="btn btn-secondary btn-md" 
-										@click="nextStep">Next
-										</button>
-									</div>
-								</div>   
-							</form>
-						</div>
-						<div id="calendar" v-show="step == 1" @keyup.esc="clearData" @keyup.enter="sendBooking">
-							<p class="modal-sent">Make your booking</p>
-							<p class="info">BOOKING INFORMATION</p>
-							<button 
-							type="button"
-							class="btn btn-secondary btn-md" 
-							@click="previousStep" 
-							id="back">Back
-							</button>
-							<button 
-							type="button" 
-							class="btn btn-secondary btn-md" 
-							@click="sendBooking">Send booking
-							</button>
-						</div>
-
-						<div id="conf" v-show="step == 2" @keyup.enter="hideModal">
-							<div class="modal-card">
-								<img class="send-img" src="../assets/PostalCard.png" />
-							</div>
-							<p class="modal-sent">Your request was sent!
-							</p>
-							<p class="modal-text">In a couple of seconds a confirmation email will be sent to your email address with all the details for you reservation. Thank you for using our services!
-							</p>
-							<button 
-							type="button" 
-							class="btn btn-secondary submit-btn btn-md" 
-							@click="hideModal">Close
-							</button>
-						</div>
-					</b-modal>
-				</small>
-			</b-card>
-		</div>
+			</div>   
+		</form>
 	</div>
+	<div id="calendar" v-show="step == 1" @keyup.esc="clearData" @keyup.enter="sendBooking">
+		<p class="modal-sent">Make your booking</p>
+		<p class="info">BOOKING INFORMATION</p>
+		<button 
+		type="button"
+		class="btn btn-secondary btn-md" 
+		@click="previousStep" 
+		id="back">Back
+	</button>
+	<button 
+	type="button" 
+	class="btn btn-secondary btn-md" 
+	@click="sendBooking">Send booking
+</button>
+</div>
+
+<div id="conf" v-show="step == 2" @keyup.enter="hideModal">
+	<div class="modal-card">
+		<img class="send-img" src="../assets/PostalCard.png" />
+	</div>
+	<p class="modal-sent">Your request was sent!
+	</p>
+	<p class="modal-text">In a couple of seconds a confirmation email will be sent to your email address with all the details for you reservation. Thank you for using our services!
+	</p>
+	<button 
+	type="button" 
+	class="btn btn-secondary submit-btn btn-md" 
+	@click="hideModal">Close
+</button>
+</div>
+</b-modal>
+</div>
+</div>
 </template>
 
 <script>
-	import { required, minLength, maxLength, between, numeric, email, alpha, } from 'vuelidate/lib/validators'
-	import 'vue-awesome/icons/pencil'
-  import 'vue-awesome/icons/trash'
-  import Icon from 'vue-awesome/components/Icon'
-  import axios from 'axios'
+import { required, minLength, maxLength, between, numeric, email, alpha, } from 'vuelidate/lib/validators'
+import 'vue-awesome/icons/pencil'
+import 'vue-awesome/icons/trash'
+import Icon from 'vue-awesome/components/Icon'
+import axios from 'axios'
 
-	export default {
-		name: 'companies',
-		data() {
-			return {
-				companies: '',
-        services: '',
-				step:0,
-				name: '',
-				phone: '',
-				email: '',
-				checkSubmit: false
-			}
-		},
-		components: {
-     Icon:Icon
-      },
-    mounted() {
-      this.getCompanies();
-      },
-		methods: {
-			getCompanies() {
-				axios.get(window.ApiUrl + "companies").then((res) => {
-					this.companies = res.data;
-          console.log("companies ", res);
-          })
-				.catch((err) => {
-					console.log("err", err);
-				})
+export default {
+	name: 'companies',
+	data() {
+		return {
+			companies: '',
+			services: '',
+			selectedService: '',
+			step:0,
+			name: '',
+			phone: '',
+			email: '',
+			checkSubmit: false
+		}
+	},
+	components: {
+		Icon:Icon
+	},
+	mounted() {
+      //this.getCompanies();
+      this.getComments();
+    },
+    methods: {
+    	getCompanies() {
+    		axios.get(window.ApiUrl + "/companies").then((res) => {
+    			this.companies = res.data;
+    			console.log("companies ", res);
+    		})
+    		.catch((err) => {
+    			console.log("err", err);
+    		})
+    	},
+    	getServices() {
+    		axios.get(window.ApiUrl + "/services").then((res) => {
+    			this.services = res.data;
+    			console.log("services ", res);
+    		})
+    		.catch((err) => {
+    			console.log("err", err);
+    		})
+    	},
+    	getComments() {
+    		axios.get(window.ApiUrlTest + "/posts/1/comments").then((res) => {
+    			this.services = res.data;
+    			console.log("services ", res);
+    		})
+    		.catch((err) => {
+    			console.log("err", err);
+    		})
+    	},
+    	selectService(service) {
+    		this.selectedService = service;
+    	},
+    	deleteService(id) {
+				// + axios call - delete method
+				this.services.splice(this.services.indexOf(this.services.find((item) => {
+					return item.id === id
+				})), 1);
 			},
-			getServices() {
-				axios.get(window.ApiUrl + "services").then((res) => {
-					this.services = res.data;
-					console.log("services ", res);
-				})
-				.catch((err) => {
-					console.log("err", err);
-				})
-			},
+
 			hideModal() {
 				this.step = 0;
 				this.$root.$emit('hide::modal', 'modal1');
@@ -178,6 +205,7 @@
 			},
 			sendBooking() {
 				this.step++;
+				this.clearData();
 
 			},
 			nextStep() {
@@ -225,9 +253,13 @@
 			},
 		}
 	}
-</script>
+	</script>
 
-<style>
+	<style>
+
+	.card {
+		margin-bottom: 20px;
+	}
 	.btn-disabled: {
 		cursor: not-allowed;
 	}
@@ -423,4 +455,4 @@
 		margin-top: 60px;
 		width: 50%;
 	}
-</style>
+	</style>

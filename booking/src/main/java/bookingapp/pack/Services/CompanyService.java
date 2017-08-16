@@ -36,7 +36,7 @@ public class CompanyService {
         return companies;
     }
 
-    public boolean addCompany(String name,String email, String password) throws NoSuchAlgorithmException {
+   /* public boolean addCompany(String name,String email, String password) throws NoSuchAlgorithmException {
 
         MessageDigest md=MessageDigest.getInstance("SHA-512");
         byte[] hash=md.digest(password.getBytes());
@@ -52,7 +52,7 @@ public class CompanyService {
         }
 
 
-    }
+    }*/
 
     public boolean addCompany(Company c) throws NoSuchAlgorithmException {
 
