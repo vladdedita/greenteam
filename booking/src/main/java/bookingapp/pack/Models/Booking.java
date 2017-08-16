@@ -8,14 +8,17 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     @Column(name="id_service")
     private long id_service;
+
     @Column(name="id_user")
     private long id_user;
+
     @Column(name="date")
     private String date;
-    @Column(name="places")
 
+    @Column(name="places")
     private int places;
 
     public Booking(long id_service, long id_user, String date, int places) {
@@ -62,6 +65,13 @@ public class Booking {
     }
 
     public void setPlaces(int places) {
+        this.places = places;
+    }
+
+    protected Booking(){}
+    public Booking(long id_service, String date, int places) {
+        this.id_service = id_service;
+        this.date = date;
         this.places = places;
     }
 

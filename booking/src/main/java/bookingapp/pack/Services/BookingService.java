@@ -2,10 +2,16 @@ package bookingapp.pack.Services;
 
 
 import bookingapp.pack.Dao.BookingDao;
+import bookingapp.pack.Dao.UserDao;
 import bookingapp.pack.Models.Booking;
+import bookingapp.pack.Models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.naming.Context;
+import javax.transaction.Transaction;
+
+import javax.transaction.UserTransaction;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,8 +19,9 @@ import java.util.List;
 public class BookingService {
 
     @Autowired
-    BookingDao dao;
-
+    private BookingDao dao;
+    @Autowired
+    private UserDao udao;
 
     public List<Booking> getAllBookings()
     {
@@ -26,11 +33,15 @@ public class BookingService {
         return bookings;
     }
 
-    public boolean addBooking(Booking b)
+    public boolean addBooking(Booking b,User u)
     {
-
         try {
+
+
+            udao.save(u);
+            b.setId_user(u.getId());
             dao.save(b);
+
             return true;
         }
         catch(Exception e)

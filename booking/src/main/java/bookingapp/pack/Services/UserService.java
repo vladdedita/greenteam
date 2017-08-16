@@ -1,6 +1,8 @@
 package bookingapp.pack.Services;
 
+
 import bookingapp.pack.Dao.UserDao;
+import bookingapp.pack.Dao.BookingDao;
 import bookingapp.pack.Models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,10 +16,17 @@ public class UserService {
     @Autowired
     private UserDao dao;
 
+    @Autowired
+    private BookingDao daob;
+
+
     public boolean addUser(User u)
     {
         try{
             dao.save(u);
+
+
+
             //return true;
         }
         catch (Exception e) {
