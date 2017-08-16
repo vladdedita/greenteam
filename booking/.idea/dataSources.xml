@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="customer@127.0.01" uuid="3241cf1c-5630-44be-9991-c16248c1ee09">
+    <data-source source="LOCAL" name="gtbookingdb@localhost" uuid="70a10b7a-23ef-4433-bcb8-81cd26b8af11">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://127.0.01:5432/customer</jdbc-url>
+      <jdbc-url>jdbc:postgresql://localhost:5432/gtbookingdb</jdbc-url>
       <driver-properties>
         <property name="ApplicationName" value="DataGrip" />
       </driver-properties>
