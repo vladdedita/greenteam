@@ -12,7 +12,7 @@
 		<div class="add-new-serv">
 			<router-link to="/dashboard">
 				<span>
-					<icon class="icon-card circle" name="plus-circle" scale="5" @click="addService">
+					<icon class="icon-card circle" name="floppy-o" scale="3.5" @click="addService">
 					</icon>
 				</span>
 			</router-link>
@@ -62,7 +62,7 @@
 <script>
 import navigation from '@/components/navigation'
 import dateCard from '@/components/dateCard'
-import 'vue-awesome/icons/plus-circle'
+import 'vue-awesome/icons/floppy-o'
 import Icon from 'vue-awesome/components/Icon'
 import axios from 'axios'
 
@@ -114,6 +114,7 @@ a:focus{
 .new-serv{
 	font-size: 17px;
 	color: #4C4C4C;
+	margin-right: 25px;
 
 }
 .add-new-serv{
@@ -186,7 +187,7 @@ label{
 	margin-left: 21%;
 }
 .circle{
-	margin-left: 20px;
+	margin-right: 25px;
 	color: #DC2DE9;
 }
 </style>
