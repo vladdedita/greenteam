@@ -25,7 +25,6 @@
 
         <div class="card-block">
           <p class="card-text">
-          		Card subtitbhulhyuuhukyigtitc ivtctickvkvvvvvkkvvkvvkvhkgchvghvkvcvkgkvvvvvv vvvvvvvvvvvvvvvvvvvvvvvv vvvvvvvv vvvvvvvvvvvv vvvvvvvvvvvv vvvvvvvvvvvvvvvv vvvvvvvv vvvvvvvvv vvvvvvvvvv vvvvvvvvvvvvv vvvvvvvvvvvv vvvvvvvvvvvvv vvvvvvvvvvvv vvvvvvvvvvvv vvvvvvvvvvv vvvvvvvvv vvvvvv vvvvvvvvvvv vvvvvvvvvvv vvvvvvvvvvv vvvvvvvvvvvvvv vvvvvvvv vvvvvvvvvvvvvv vvvvvvvvvvhh hhhhhhhhhhh hhhhhhhhhhhh hhhhhhhhhhh hhhhhhhhh hhhhhh hhhhh hhhhle
           </p>
         </div>
     		<small slot="footer">
@@ -55,12 +54,18 @@
  import 'vue-awesome/icons/trash'
  import Icon from 'vue-awesome/components/Icon'
 
-	export default {
-	  name: 'dashboard',
-	  components: {
-    navigation, Icon
-  }
-	}
+export default {
+	name: 'dashboard',
+	data() {
+
+	},
+	components: {
+    	navigation, Icon
+ 	},
+ 	methods: {
+ 		
+ 	}
+}
 </script>
 <style scoped>
 	button{

@@ -107,13 +107,12 @@ export default {
       display: block;
       border-radius: 5px;
       border: transparent;
-      margin: auto;
+      margin-left: 473px;
       padding: 10px;
-        
     }
 
     .login{
-      width: 365px;
+      width: 361px;
     }
 
      /*Form style*/
