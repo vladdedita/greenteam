@@ -99,7 +99,6 @@ export default {
 				// redirect
 			})
 			.catch((err) => {
-				// ii spui ca e prost si nu stie sa salveze un serviciu
 			})
 		}
 	}
