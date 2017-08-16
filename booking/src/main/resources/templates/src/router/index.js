@@ -6,10 +6,10 @@ import Calendar from '@/components/Calendar'
 import LogIn from '@/components/LogIn'
 import Dashboard from '@/components/Dashboard'
 import AddServ from '@/components/AddServ'
-import Companies from '@/components/Companies'
+import Company from '@/components/Company'
 import Recover from '@/components/Recover'
 import Profile from '@/components/Profile'
-import Home from '@/components/Home'
+import Companies from '@/components/Companies'
 
 
 
@@ -24,6 +24,21 @@ export default new Router({
       component: Register
     },
     {
+      path: '/logIn',
+      name: 'LogIn',
+      component: LogIn
+    },
+    {
+      path: '/recover',
+      name: 'Recover',
+      component: Recover
+    },
+    {
+      path: '/dashboard',
+      name: 'Dashboard',
+      component: Dashboard
+    },
+    {
       path: '/booking',
       name: 'Booking',
       component: Booking
@@ -33,36 +48,26 @@ export default new Router({
       name: 'Calendar',
       component: Calendar
     },
-     {
-      path: '/logIn',
-      name: 'LogIn',
-      component: LogIn
-    },{
-      path: '/dashboard',
-        name: 'Dashboard',
-        component: Dashboard 
-    },{
-      path: '/addServ',
-        name: 'AddServ',
-        component: AddServ 
-    },{
-      path: '/companies',
-        name: 'Companies',
-        component: Companies 
-    },
     {
-      path: '/recover',
-      name: 'Recover',
-      component: Recover
-    },{
       path: '/profile',
       name: 'Profile',
       component: Profile
-    },{
-      path: '/home',
-      name: 'Home',
-      component: Home
+    },
+    {
+      path: '/addServ',
+      name: 'AddServ',
+      component: AddServ
+    },
+    {
+      path: '/',
+      name: 'Companies',
+      component: Companies
+    },
+    {
+      path: '/company',
+      name: 'Company',
+      component: Company
     }
   ],
-    mode: 'history'
+  mode: 'history'
 })

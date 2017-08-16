@@ -80,17 +80,17 @@
     navigation, Icon
   },
   mounted() {
-  	this.checkLoggedIn();
+  	// this.checkLoggedIn();
       //this.getCompanies();
       this.getComments();
     },
   methods: {
-  	checkLoggedIn() {
+  	// checkLoggedIn() {
           
-  		if(!this.$localStorage.get('token')) {
-  			this.$router.push('/logIn')
-  		}
-  	},
+  	// 	if(!this.$localStorage.get('token')) {
+  	// 		this.$router.push('/logIn')
+  	// 	}
+  	// },
   	getServices() {
     		axios.get(window.ApiUrl + "/services").then((res) => {
     			this.services = res.data;
