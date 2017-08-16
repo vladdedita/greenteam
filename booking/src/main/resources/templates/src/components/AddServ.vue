@@ -10,7 +10,12 @@
 			<p>Add new service</p>
 		</div> 
 		<div class="add-new-serv">
-			<router-link to="/dashboard"><button @click="addService" class="newService1">+</button></router-link>
+			<router-link to="/dashboard">
+				<span>
+					<icon class="icon-card circle" name="plus-circle" scale="5" @click="addService">
+					</icon>
+				</span>
+			</router-link>
 			<p class="new-serv">New service</p>
 		</div>
 
@@ -57,12 +62,14 @@
 <script>
 import navigation from '@/components/navigation'
 import dateCard from '@/components/dateCard'
+import 'vue-awesome/icons/plus-circle'
+import Icon from 'vue-awesome/components/Icon'
 import axios from 'axios'
 
 export default {
 	name: 'addServ',
 	components: {
-		navigation,dateCard
+		navigation,dateCard, Icon
 	},
 	data(){
 		return {
@@ -99,29 +106,6 @@ export default {
 }
 </script>
 <style scoped>
-button{
-	height: 55px;
-	background-color: #DC2DE9;
-	color: white;
-	font-size: 22px;
-	text-align: center;
-	font-family: Arial;
-	display: block;
-	border-radius: 4%;
-	border: transparent;
-	margin: auto;
-	padding: 10px;
-
-}
-.newService1{
-	height: 82px;
-	width: 82px;
-	border-radius: 100%;
-	font-family: Courier;
-	font-size: 55px;
-	cursor: pointer;
-	text-decoration: none;
-}
 a:hover{
 	text-decoration: none;
 }
@@ -137,7 +121,7 @@ a:focus{
 	margin-top: 45px;
 	width: 20%;
 	float: right;
-	margin-right: 22%;
+	margin-right: 15%;
 
 }
 .add-title{
@@ -147,6 +131,7 @@ a:focus{
 	width: 40%;
 	float: left;
 	margin-left: 8%;
+	height: 90px;
 }
 label{
 	font-size: 20px;
@@ -165,7 +150,7 @@ label{
 }
 .detail{
 	width: 361px;
-	height: 160px;
+	height: 155px;
 	border-radius: 5px;
 	border: 1px solid #8A8A8A;
 	margin-bottom: 15px;
@@ -200,5 +185,9 @@ label{
 	text-align: center;
 	width: 60%;
 	margin-left: 21%;
+}
+.circle{
+	margin-left: 20px;
+	color: #DC2DE9;
 }
 </style>
