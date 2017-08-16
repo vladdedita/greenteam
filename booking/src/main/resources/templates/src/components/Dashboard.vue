@@ -7,19 +7,28 @@
 			<p>Add new service</p>
 		</div> -->
 		<div class="add-new-serv">
-			 <router-link to="/addServ"><button class="newService1">+</button></router-link>
+			 <router-link to="/addServ">
+			 		<span>
+						<icon class="icon-card circle" name="plus-circle" scale="5">
+						</icon>
+					</span>
+				</router-link>
 			<p class="new-serv">New service</p>
 		</div>
 
 		<div class="container">
-			<b-card no-block>
+			<b-card no-block v-for="service in services">
 				<div class="row">
 					<div class="col-sm-6 text-left">
-						<h2 class="card-title">title</h2>
+						<h2 class="card-title">{{service.name}}</h2>
 					</div>
 					<div class="col-sm-6 text-right">
-						<icon class="icon-card" name="pencil" scale="2"></icon>
-						<icon class="icon-card" name="trash" scale="2"></icon>
+						<span>
+							<icon class="icon-card" name="pencil" scale="2"></icon>
+						</span>
+						<span @click="deleteService(service.id)">
+							<icon class="icon-card" name="trash" scale="2"></icon>
+						</span>
 					</div>
 				</div>
 
@@ -30,9 +39,9 @@
     		<small slot="footer">
        		<table>
        			<tr class="tab-details">
-       				<td class="td-details"></td>
-       				<td class="td-details"></td>
-       				<td class="td-details"></td>
+       				<td class="td-details">{{service.id}}</td>
+       				<td class="td-details">{{service.postId}}</td>
+       				<td class="td-details">{{service.email}}</td>
        				<td class="td-details"></td>
        			</tr>
        			<tr class="tdata">
@@ -52,22 +61,61 @@
  import navigation from '@/components/navigation'
  import 'vue-awesome/icons/pencil'
  import 'vue-awesome/icons/trash'
+ import 'vue-awesome/icons/plus-circle'
  import Icon from 'vue-awesome/components/Icon'
+ import axios from 'axios'
 
-export default {
-	name: 'dashboard',
-	data() {
+	export default {
+	  name: 'dashboard',
+	  data() {
+			return {
+				services: '',
+				selectedService: ''
+			}
+		},
+	  components: {
+    navigation, Icon
+  },
+  mounted() {
+      //this.getCompanies();
+      this.getComments();
+    },
+  methods: {
+  	getServices() {
+    		axios.get(window.ApiUrl + "/services").then((res) => {
+    			this.services = res.data;
+    			console.log("services ", res);
+    		})
+    		.catch((err) => {
+    			console.log("err", err);
+    		})
+    	},
+    	getComments() {
+    		axios.get(window.ApiUrlTest + "/posts/1/comments").then((res) => {
+    			this.services = res.data;
+    			console.log("services ", res);
+    		})
+    		.catch((err) => {
+    			console.log("err", err);
+    		})
+    	},
+    	selectService(service) {
+    		this.selectedService = service;
+    	},
+    	deleteService(id) {
+				// + axios call - delete method
+				this.services.splice(this.services.indexOf(this.services.find((item) => {
+					return item.id === id
+				})), 1);
+			},
+  }
 
-	},
-	components: {
-    	navigation, Icon
- 	},
- 	methods: {
- 		
- 	}
-}
+	}
 </script>
 <style scoped>
+	.card {
+		margin-bottom: 20px;
+	}
 	button{
 		height: 55px;
 		background-color: #DC2DE9;
@@ -80,14 +128,6 @@ export default {
 		border: transparent;
 		margin: auto;
 		padding: 10px;	    
-	}
-	.newService1{
-			height: 82px;
-			width: 82px;
-			border-radius: 100%;
-			font-family: Courier;
-			font-size: 55px;
-			cursor: pointer;
 	}
 	
 	a:hover{
@@ -125,6 +165,10 @@ export default {
 		  margin-top: 15%;
     	width: 50%;
 	}
-
+	.circle{
+		margin-left: 20px;
+		color: #DC2DE9;
+	}
+	
 
 </style>
