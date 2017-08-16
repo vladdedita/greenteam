@@ -23,9 +23,12 @@
 						<h2 class="card-title">{{service.name}}</h2>
 					</div>
 					<div class="col-sm-6 text-right">
+
+						<router-link to="/addServ">
 						<span>
 							<icon class="icon-card" name="pencil" scale="2"></icon>
 						</span>
+						</router-link>
 						<span @click="deleteService(service.id)">
 							<icon class="icon-card" name="trash" scale="2"></icon>
 						</span>
@@ -33,7 +36,7 @@
 				</div>
 
         <div class="card-block">
-          <p class="card-text">
+          <p class="card-text">{{service.body}}
           </p>
         </div>
     		<small slot="footer">
@@ -169,6 +172,7 @@
 		margin-left: 20px;
 		color: #DC2DE9;
 	}
-	
-
+	.icon-card{
+		cursor: pointer;
+	}
 </style>

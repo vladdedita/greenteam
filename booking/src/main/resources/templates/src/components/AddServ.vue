@@ -16,7 +16,7 @@
 					</icon>
 				</span>
 			</router-link>
-			<p class="new-serv">New service</p>
+			<p class="new-serv">Save changes</p>
 		</div>
 
 		<div class="add-serv-details det">
