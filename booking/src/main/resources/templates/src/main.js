@@ -15,6 +15,7 @@ Vue.config.productionTip = false
 
 window.ApiUrl = "http://localhost:8081";
 window.ApiUrlTest = "https://jsonplaceholder.typicode.com";
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

@@ -12,7 +12,7 @@
 
 		<div class="container">
 
-			<b-card no-block v-for="service in services">
+			<b-card no-block v-for="service in companyPayload.services">
 			<div class="row">
 				<div class="col-sm-6 text-left">
 					<h2 class="card-title">{{service.name}}</h2>
@@ -52,7 +52,7 @@
 		</b-card>
 		
 		<b-modal id="modal1" ref="my_modal1" hide-footer>
-		<div id="client-details" v-show="step == 0">
+		<div id="client-details" v-show="companyPayload.step == 0">
 			<p class="modal-sent">Make your booking</p>
 			<p class="info">PERSONAL DETAILS</p>
 			<form class="clearfix" @keyup.esc="clearData" @keyup.enter="nextStep">
@@ -61,19 +61,26 @@
 					<input 
 					class="register" 
 					type="text"
-					v-model="name"
-					v-on:input="$v.name.$touch"
-					v-bind:class="{error: $v.name.$error, valid: $v.name.$dirty && !$v.name.$invalid}"
+					v-model="bookingPayload.name"
+					v-on:input="$v.bookingPayload.name.$touch"
+					v-bind:class="{error: $v.bookingPayload.name.$error, valid: $v.bookingPayload.name.$dirty && !$v.bookingPayload.name.$invalid}"
 					placeholder="Name" 
 					/>
 					<label>Phone number</label>
 					<input 
 					class="register" 
 					type="phone" 
-					v-model="phone"
-					v-on:input="$v.phone.$touch"
-					v-bind:class="{error: $v.phone.$error, valid: $v.phone.$dirty && !$v.phone.$invalid}"
+					v-model="bookingPayload.phone"
+					v-on:input="$v.bookingPayload.phone.$touch"
+					v-bind:class="{error: $v.bookingPayload.phone.$error, valid: $v.bookingPayload.phone.$dirty && !$v.bookingPayload.phone.$invalid}"
 					placeholder="Phone number" 
+					/>
+					<label>Places</label>
+					<input
+							class="register"
+							type="text"
+							v-model="bookingPayload.places"
+							placeholder="Places"
 					/>
 				</div>
 
@@ -82,9 +89,9 @@
 					<input 
 					class="register" 
 					type="email"
-					v-model="email"
-					v-on:input="$v.email.$touch"
-					v-bind:class="{error: $v.email.$error, valid: $v.email.$dirty && !$v.email.$invalid}"
+					v-model="bookingPayload.email"
+					v-on:input="$v.bookingPayload.email.$touch"
+					v-bind:class="{error: $v.bookingPayload.email.$error, valid: $v.bookingPayload.email.$dirty && !$v.bookingPayload.email.$invalid}"
 					placeholder="Email@email.com"
 					/>
 					<div id="next-button">
@@ -97,7 +104,7 @@
 			</div>   
 		</form>
 	</div>
-	<div id="calendar" v-show="step == 1" @keyup.esc="clearData" @keyup.enter="sendBooking">
+	<div id="calendar" v-show="companyPayload.step == 1" @keyup.esc="clearData" @keyup.enter="sendBooking">
 		<p class="modal-sent">Make your booking</p>
 		<p class="info">BOOKING INFORMATION</p>
 		<button 
@@ -113,7 +120,7 @@
 </button>
 </div>
 
-<div id="conf" v-show="step == 2" @keyup.enter="hideModal">
+<div id="conf" v-show="companyPayload.step == 2" @keyup.enter="hideModal">
 	<div class="modal-card">
 		<img class="send-img" src="../assets/PostalCard.png" />
 	</div>
@@ -140,119 +147,206 @@ import Icon from 'vue-awesome/components/Icon'
 import axios from 'axios'
 
 export default {
-	name: 'companies',
-	data() {
-		return {
-			companies: '',
-			services: '',
-			selectedService: '',
-			step:0,
-			name: '',
-			phone: '',
-			email: '',
-			checkSubmit: false
-		}
-	},
-	components: {
-		Icon:Icon
-	},
-	mounted() {
-      //this.getCompanies();
-      this.getComments();
+    name: 'companies',
+    data() {
+        return {
+            companyPayload: {
+                companies: '',
+                services: '',
+                selectedService: '',
+                step: 0,
+                name: '',
+                phone: '',
+                email: '',
+                checkSubmit: false
+
+
+            },
+
+            bookingPayload: {
+                name: '',
+                email: '',
+                places: '',
+                phone: '',
+
+                props: {
+                    name: {
+                        required: true,
+                        alpha
+                    },
+                    email: {
+                        required,
+                        email
+                    },
+                    phone: {
+                        required,
+                        numeric,
+                        minLength: minLength(10),
+                        maxLength: maxLength(10)
+                    }
+                }
+            }
+
+        }
+
+
+    },
+    components: {
+        Icon: Icon
+    },
+    mounted() {
+        //this.getCompanies();
+        this.getComments();
     },
     methods: {
-    	getCompanies() {
-    		axios.get(window.ApiUrl + "/companies").then((res) => {
-    			this.companies = res.data;
-    			console.log("companies ", res);
-    		})
-    		.catch((err) => {
-    			console.log("err", err);
-    		})
-    	},
-    	getServices() {
-    		axios.get(window.ApiUrl + "/services").then((res) => {
-    			this.services = res.data;
-    			console.log("services ", res);
-    		})
-    		.catch((err) => {
-    			console.log("err", err);
-    		})
-    	},
-    	getComments() {
-    		axios.get(window.ApiUrlTest + "/posts/1/comments").then((res) => {
-    			this.services = res.data;
-    			console.log("services ", res);
-    		})
-    		.catch((err) => {
-    			console.log("err", err);
-    		})
-    	},
-    	selectService(service) {
-    		this.selectedService = service;
-    	},
-    	deleteService(id) {
-				// + axios call - delete method
-				this.services.splice(this.services.indexOf(this.services.find((item) => {
-					return item.id === id
-				})), 1);
-			},
+        getCompanies() {
+            axios.get(window.ApiUrl + "/companies").then((res) => {
+                this.companyPayload.companies = res.data;
+                console.log("companies ", res);
+            })
+                .catch((err) => {
+                    console.log("err", err);
+                })
+        },
+        getServices() {
+            axios.get(window.ApiUrl + "/services").then((res) => {
+                this.companyPayload.services = res.data;
+                console.log("services ", res);
+            })
+                .catch((err) => {
+                    console.log("err", err);
+                })
+        },
+        getComments() {
+            axios.get(window.ApiUrlTest + "/posts/1/comments").then((res) => {
+                this.companyPayload.services = res.data;
+                console.log("services ", res);
+            })
+                .catch((err) => {
+                    console.log("err", err);
+                })
+        },
+        selectService(service) {
+            this.companyPayload.selectedService = service;
+        },
+        deleteService(id) {
+            // + axios call - delete method
+            this.companyService.services.splice(this.companyService.services.indexOf(this.companyService.services.find((item) => {
+                return item.id === id
+            })), 1);
+        },
 
-			hideModal() {
-				this.step = 0;
-				this.$root.$emit('hide::modal', 'modal1');
-				this.clearData();
-			},
-			sendBooking() {
-				this.step++;
-				this.clearData();
+        hideModal() {
+            this.companyPayload.step = 0;
+            this.$root.$emit('hide::modal', 'modal1');
+            this.clearData();
+        },
+        sendBooking() {
 
-			},
-			nextStep() {
-				if(this.checkValidation()){
-					this.step++;
-				}
-				else{
-					alert('You must provide valid information!')
-				}
-			},
-			previousStep() {
-				if(this.step > 0 ) {
-					this.step--;
-				} 
-			},
+            //axios.post(window.ApiUrl + "/addbooking", {id_service:13,date:'111',places:10})
+            this.companyPayload.step++;
 
-			checkValidation(){
-				var validElements = document.getElementsByClassName('valid');
-				if(validElements.length === 3) {
-					return true;
-				}
-				return false;
-			},
-			clearData(){
-				this.name='';
-				this.phone='';
-				this.email='';
-			}
+
+            this.addBooking();
+            this.clearData();
+
+
+        },
+		addBooking(){
+            axios.post(window.ApiUrl + "/addbooking", {
+
+                    Booking: {
+                        id_service: 13,
+                        date: '111',
+                        places: 11
+                    },
+                    User: {
+                        name: this.bookingPayload.name,
+                        email: this.bookingPayload.email,
+                        phone: this.bookingPayload.phone
+                    }
+
+            }
+
+				).then( (res)=>{
+
+			}).catch((err) => {})
+
 		},
 
-		validations: {
-			name: {
-				required,
-				alpha,
-			},
-			phone: {
-				required,
-				numeric,
-				minLength: minLength(10),
-				maxLength: maxLength(10)
-			},
-			email: {
-				required,
-				email,
-			},
+
+		/*
+
+		addService() {
+			axios.post(window.ApiUrl + "/addservice", {
+				name:this.userPayload.name,
+				duration: this.userPayload.duration,
+				description:this.userPayload.description,
+				places: this.userPayload.places,
+				price: this.userPayload.price,
+				idCompany: 1
+			}).then((res) => {
+			    this.submitForm=true;
+				// redirect
+			})
+			.catch((err) => {
+				// ii spui ca e prost si nu stie sa salveze un serviciu
+			})
 		}
-	}
+
+		 */
+
+
+
+        nextStep() {
+            if (this.checkValidation()) {
+                this.companyPayload.step++;
+            }
+            else {
+                alert('You must provide valid information!')
+            }
+        },
+        previousStep() {
+            if (this.companyPayload.step > 0) {
+                this.companyPayload.step--;
+            }
+        },
+
+        checkValidation() {
+            var validElements = document.getElementsByClassName('valid');
+            if (validElements.length === 3) {
+                return true;
+            }
+            return false;
+        },
+        clearData() {
+            this.bookingPayload.name = '';
+            this.bookingPayload.phone = '';
+            this.bookingPayload.email = '';
+            this.bookingPayload.places = '';
+        }
+    },
+
+    validations: {
+
+        bookingPayload: {
+            name: {
+                required,
+                alpha
+            },
+            phone: {
+                required,
+                numeric,
+                minLength: minLength(10),
+                maxLength: maxLength(10)
+            },
+            email: {
+                required,
+                email
+            }
+        }
+    }
+}
 	</script>
 
 	<style>
