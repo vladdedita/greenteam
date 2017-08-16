@@ -10,8 +10,8 @@
         class="input_log" 
         type="text"
         v-model="userPayload.name"
-        v-on:input="$v.name.$touch"
-        v-bind:class="{error: $v.name.$error, valid: $v.name.$dirty && !$v.name.$invalid}"
+        v-on:input="$v.userPayload.name.$touch"
+        v-bind:class="{error: $v.userPayload.name.$error, valid: $v.userPayload.name.$dirty && !$v.userPayload.name.$invalid}"
         placeholder="Name" 
         />
       </div>
@@ -21,8 +21,8 @@
         class="input_log" 
         type="email"
         v-model="userPayload.email"
-        v-on:input="$v.email.$touch"
-        v-bind:class="{error: $v.email.$error, valid: $v.email.$dirty && !$v.email.$invalid}"
+        v-on:input="$v.userPayload.email.$touch"
+        v-bind:class="{error: $v.userPayload.email.$error, valid: $v.userPayload.email.$dirty && !$v.userPayload.email.$invalid}"
         placeholder="Email@email.com"
         />
       </div>
@@ -32,8 +32,8 @@
         class="input_log" 
         type="password"
         v-model="userPayload.password"
-        v-on:input="$v.password.$touch"
-        v-bind:class="{error: $v.password.$error, valid: $v.password.$dirty && !$v.password.$invalid}"
+        v-on:input="$v.userPayload.password.$touch"
+        v-bind:class="{error: $v.userPayload.password.$error, valid: $v.userPayload.password.$dirty && !$v.userPayload.password.$invalid}"
         />
       </div>
       <button class="log-in" @click="submitForm">REGISTER</button>
@@ -44,33 +44,33 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import VeeValidate from 'vee-validate'
-import { required, between, numeric, email, alpha, } from 'vuelidate/lib/validators'
-import axios from 'axios'
-export default {
-  name: 'logIn',
-  data () {
-    return {
-      userPayload:{
-        name: '',
-        email: '',
-        password: '',
-      },
-      formSubmitted: false
-    }
-  },
-  methods: {
-    nextStep() {
-      if(this.checkValidation()){
-        this.step++;
-      }
-      else{
-        alert('You must provide valid information!')
+  import Vue from 'vue'
+  import VeeValidate from 'vee-validate'
+  import { required, between, numeric, email, alpha, } from 'vuelidate/lib/validators'
+  import axios from 'axios'
+  export default {
+    name: 'logIn',
+    data () {
+      return {
+        userPayload:{
+          name: '',
+          email: '',
+          password: '',
+        },
+        formSubmitted: false
       }
     },
-    submitForm() {
-      axios.post(window.ApiUrl + "/register",this.userPayload).then((res) => {
+    methods: {
+      nextStep() {
+        if(this.checkValidation()){
+          this.step++;
+        }
+        else{
+          alert('You must provide valid information!')
+        }
+      },
+      submitForm() {
+        axios.post(window.ApiUrl + "/register",this.userPayload).then((res) => {
           this.submitForm=true;
           console.log("res ", res);
 
@@ -99,24 +99,26 @@ export default {
     },
 
     validations: {
-      name: {
-        required,
-        alpha,
-      },
-      email: {
-        required,
-        email
-      },
-      password: {
-        required
+      userPayload:{
+        name: {
+          required,
+          alpha,
+        },
+        email: {
+          required,
+          email
+        },
+        password: {
+          required
+        }
       }
     }
   }
 
-  </script>
+</script>
 
-  <!-- Add "scoped" attribute to limit CSS to this component only -->
-  <style scoped>
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
   .logo{
     text-align: center;
     margin-top: 115px;
@@ -181,7 +183,7 @@ export default {
     outline-color: #8E8;
   }
   .input_log{
-    width: 360px;
+    width: 100%;
     height: 53px;
     border-radius: 5px;
     border: 1px solid #8A8A8A;
@@ -197,4 +199,4 @@ export default {
    font-size: 17px;
    margin-top: 10px;
  }
- </style>
+</style>
