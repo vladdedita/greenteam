@@ -34,7 +34,6 @@
 
         <div class="card-block">
           <p class="card-text">
-          		{{service.body}}
           </p>
         </div>
     		<small slot="footer">
