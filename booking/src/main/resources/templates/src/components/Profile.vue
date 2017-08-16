@@ -28,8 +28,6 @@
       </div>
     </form>
 
-
-
   </div>
 </div>
 </template>
@@ -52,13 +50,13 @@ export default {
   components: {
     navigation: navigation
   },
-
-  logout() {
-    localStorage.removeItem('id_token')
-    localStorage.removeItem('access_token')
-    this.user.authenticated = false
-  },
-
+  methods: {
+    logout() {
+      localStorage.removeItem('id_token')
+      localStorage.removeItem('access_token')
+      this.user.authenticated = false
+    },
+  }
 }
 </script>
 
