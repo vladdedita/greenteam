@@ -17,35 +17,31 @@
       v-bind:class="{error: $v.email.$error, valid: $v.email.$dirty && !$v.email.$invalid}"
       placeholder="Email@email.com"
       >
+      <button class="login">RECOVER</button>
     </form>
-
-    <div id="space"></div>
-
-    <button class="login">RECOVER</button>
-
   </div>
 </template>
 
 <script>
-import { required, email, } from 'vuelidate/lib/validators'
+  import { required, email, } from 'vuelidate/lib/validators'
 
-export default {
-  name: 'recover',
-  data () {
-    return {
-      msg: 'recoverPage',
-      email: '',
-    }
-  },
+  export default {
+    name: 'recover',
+    data () {
+      return {
+        msg: 'recoverPage',
+        email: '',
+      }
+    },
 
-  validations: {
-    email: {
-      required,
-      email,
+    validations: {
+      email: {
+        required,
+        email,
+      }
     }
+
   }
-
-}
 
 </script>
 
@@ -53,69 +49,71 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-    #space{
-      border: none;
-      height: 20px;
-    }
+  #space{
+    border: none;
+    height: 20px;
+  }
 
-    .logo-side{
-        margin: auto;
-      }
-    .logo{
-      text-align: center;
-      margin-top: 115px;
-    }
-    .hero-title{
-      font-size: 65px;
-      color: #7E59D9;
-      text-align: center;
-      font-family: Arial,sans-serif;
-      margin-top: initial;
-      padding-top: 25px;
-    }
-    .apl{
-      color: #A68CFD;
+  .logo-side{
+    margin: auto;
+  }
+  .logo{
+    text-align: center;
+    margin-top: 115px;
+  }
+  .hero-title{
+    font-size: 65px;
+    color: #7E59D9;
+    text-align: center;
+    font-family: Arial,sans-serif;
+    margin-top: initial;
+    padding-top: 25px;
+  }
+  .apl{
+    color: #A68CFD;
 
-    }
+  }
 
-    form{
-      width: 28%;
-      margin: auto;
-      display: grid;
-    }
-    label{
-      font-size: 20px;
-      padding-bottom: 10px;
-      color: #484848;
-      text-align: left;
+  form{
+    width: 28%;
+    margin: auto;
+    display: grid;
+  }
+  label{
+    font-size: 20px;
+    padding-bottom: 10px;
+    color: #484848;
+    text-align: left;
 
-    }
-    .input_log{
-      width: 360px;
-      height: 53px;
-      border-radius: 5px;
-      border: 1px solid #8A8A8A;
-      margin-bottom: 25px;
-    }
-    button{
-      height: 55px;
-      background-color: #DC2DE9;
-      color: white;
-      font-size: 22px;
-      text-align: center;
-      font-family: Arial;
-      display: block;
-      border-radius: 5px;
-      border: transparent;
-      margin-left: 473px;
-      padding: 10px;
-    }
+  }
+  .input_log{
+    width: 100%;
+    height: 53px;
+    border-radius: 5px;
+    border: 1px solid #8A8A8A;
+    margin-bottom: 25px;
+  }
+  button{
+    height: 55px;
+    background-color: #DC2DE9;
+    color: white;
+    font-size: 22px;
+    text-align: center;
+    font-family: Arial;
+    display: block;
+    border-radius: 5px;
+    border: transparent;
+    margin: auto;
+    padding: 10px;
+    margin-top: 30px;
+  }
 
-    .login{
-      width: 361px;
-    }
+  .login{
+    width: 100%;
+    cursor: pointer;
+  }
 
-     /*Form style*/
+  /*Form style*/
   .error {
     border-color: red;
     background: #FDD;

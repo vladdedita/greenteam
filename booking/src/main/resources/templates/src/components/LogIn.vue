@@ -33,25 +33,25 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import VeeValidate from 'vee-validate'
-import { required, between, numeric, email, alpha, } from 'vuelidate/lib/validators'
-import axios from 'axios'
+  import Vue from 'vue'
+  import VeeValidate from 'vee-validate'
+  import { required, between, numeric, email, alpha, } from 'vuelidate/lib/validators'
+  import axios from 'axios'
 
-export default {
-  name: 'logIn',
-  data () {
-    return {
-      userPayload:{
-        email: '',
-        password: '',
-      },
-      user: {
-        authenticated: false
-      },
-      formSubmitted: false
-    }
-  },
+  export default {
+    name: 'logIn',
+    data () {
+      return {
+        userPayload:{
+          email: '',
+          password: '',
+        },
+        user: {
+          authenticated: false
+        },
+        formSubmitted: false
+      }
+    },
 
   //  login(context, creds, redirect) {
   //   context.$http.post(LogIn_URL, creds, (data) => {
@@ -83,52 +83,52 @@ export default {
     submitLog() {
       axios.post(window.ApiUrl + "/login",this.userPayload).then((res) => {
         //token
-          this.submitLog=true;
-          this.$localStorage.set('token', res.data)
-          this.$router.push('/dashboard')
+        this.submitLog=true;
+        this.$localStorage.set('token', res.data)
+        this.$router.push('/dashboard')
 
-          console.log("res ", res);
+        console.log("res ", res);
 
-        })
-        .catch((err) => {
-          console.log("err", err);
-        })
-      },
-      previousStep() {
-        if(this.step > 0 ) {
-          this.step--;
-        } 
-      },
-      checkValidation(){
-        var validElements = document.getElementsByClassName('valid');
-        if(validElements.length === 2) {
-          return true;
-        }
-        return false;
-      },
-      clearData(){
-        this.email='';
-        this.password='';
-      }
+      })
+      .catch((err) => {
+        console.log("err", err);
+      })
     },
+    previousStep() {
+      if(this.step > 0 ) {
+        this.step--;
+      } 
+    },
+    checkValidation(){
+      var validElements = document.getElementsByClassName('valid');
+      if(validElements.length === 2) {
+        return true;
+      }
+      return false;
+    },
+    clearData(){
+      this.email='';
+      this.password='';
+    }
+  },
 
-    validations: {
-      userPayload:{
-        email: {
-          required,
-          email
-        },
-        password: {
-          required
-        }
+  validations: {
+    userPayload:{
+      email: {
+        required,
+        email
+      },
+      password: {
+        required
       }
     }
   }
+}
 
-  </script>
+</script>
 
-  <!-- Add "scoped" attribute to limit CSS to this component only -->
-  <style scoped>
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
   .logo{
     text-align: center;
     margin-top: 115px;
@@ -161,7 +161,7 @@ export default {
     text-align: center;
     font-family: Arial;
     display: block;
-    border-radius:7px;
+    border-radius:5px;
     border: transparent;
     margin: auto;
     padding: 10px;
@@ -193,7 +193,7 @@ export default {
     outline-color: #8E8;
   }
   .input_log{
-    width: 360px;
+    width: 100%;
     height: 53px;
     border-radius: 5px;
     border: 1px solid #8A8A8A;
@@ -209,4 +209,4 @@ export default {
    font-size: 17px;
    margin-top: 10px;
  }
- </style>
+</style>
