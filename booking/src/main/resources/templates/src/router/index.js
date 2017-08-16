@@ -9,6 +9,7 @@ import AddServ from '@/components/AddServ'
 import Companies from '@/components/Companies'
 import Recover from '@/components/Recover'
 import Profile from '@/components/Profile'
+import Home from '@/components/Home'
 
 
 
@@ -57,6 +58,10 @@ export default new Router({
       path: '/profile',
       name: 'Profile',
       component: Profile
+    },{
+      path: '/home',
+      name: 'Home',
+      component: Home
     }
   ],
     mode: 'history'
