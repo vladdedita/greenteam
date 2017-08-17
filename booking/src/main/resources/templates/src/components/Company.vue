@@ -216,12 +216,7 @@ export default {
     },
     methods: {
         getCompany() {
-            axios.get(window.ApiUrl + "/companies/"+this.$localStorage.get("cpId") ,{
-                params:
-					{
-					    authorization:this.$localStorage.get('token')
-					}
-            }).then((res) => {
+            axios.get(window.ApiUrl + "/companies/"+this.$localStorage.get("cpId")).then((res) => {
                 this.companyPayload.companies = res.data;
                 console.log("companies ", res);
             })
@@ -238,6 +233,7 @@ export default {
 
                 }).catch((err)=> {})
         },
+
         getServices() {
             axios.get(window.ApiUrl + "/services/" + this.$localStorage.get("cpId")).then((res) => {
                 this.companyPayload.services = res.data;

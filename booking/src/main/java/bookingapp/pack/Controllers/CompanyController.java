@@ -81,9 +81,6 @@ public class CompanyController {
 
         String name=objectMapper.convertValue(node.get("cp_name"),String.class);
         String description=objectMapper.convertValue(node.get("cp_desc"),String.class);
-        MultipartFile file=objectMapper.convertValue(node.get("cp_logopath"),MultipartFile.class);
-
-
 
         if(!description.isEmpty())
         {

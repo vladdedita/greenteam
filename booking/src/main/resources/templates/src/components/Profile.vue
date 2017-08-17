@@ -41,7 +41,7 @@
 
 
   <div class="text">
-    <form>
+    <form @submit.prevent="sendProfile">
       <label>Company name</label>
       <input class="input_log" type="text" name="company name" v-model="companyPayload.cp_name">
 
@@ -72,7 +72,7 @@ export default {
     return {
       msg: 'profilePage',
         companyPayload: {
-          cp_id:1,
+          cp_id:'',
           cp_name:'',
             cp_desc:'',
             cp_logopath:''
@@ -89,7 +89,10 @@ export default {
     mounted()
     {
         this.checkLoggedIn();
+        this.getCompany();
         this.getLogo();
+
+
     },
       methods: {
           onChange () {
@@ -110,10 +113,21 @@ export default {
           localStorage.removeItem('cpId');
           this.user.authenticated = false
       },
+          getCompany() {
+              axios.get(window.ApiUrl + "/companies/"+this.$localStorage.get("cpId") )
+                  .then((res) => {
 
+                  this.companyPayload.cp_id=res.data.id;
+                  this.companyPayload.cp_name=res.data.name;
+                  this.companyPayload.cp_desc=res.data.description;
+
+                      console.log("companies ", res);
+              })
+                  .catch((err) => {
+                      console.log("err", err);
+                  })
+          },
       sendProfile() {
-
-
           axios.post(window.ApiUrl + "/updateProfile/" + this.$localStorage.get("cpId"),
               {
                   cp_name: this.companyPayload.cp_name,
