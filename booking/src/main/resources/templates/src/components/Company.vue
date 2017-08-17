@@ -105,6 +105,8 @@
 	<div id="calendar" v-show="companyPayload.step == 1" @keyup.esc="clearData" @keyup.enter="sendBooking">
 		<p class="modal-sent">Make your booking</p>
 		<p class="info">BOOKING INFORMATION</p>
+		<public-booking-schedule></public-booking-schedule>
+		<router-view></router-view>
 		<button 
 		type="button"
 		class="btn btn-secondary btn-md" 
@@ -142,6 +144,7 @@ import { required, minLength, maxLength, between, numeric, email, alpha, } from 
 import 'vue-awesome/icons/pencil'
 import 'vue-awesome/icons/trash'
 import Icon from 'vue-awesome/components/Icon'
+import PublicBookingSchedule from '@/components/PublicBookingSchedule'
 import axios from 'axios'
 
 export default {
@@ -198,7 +201,8 @@ export default {
 
 	},
 	components: {
-		Icon: Icon
+		Icon: Icon,
+		PublicBookingSchedule
 	},
 	mounted() {
         //this.getCompanies();
@@ -309,6 +313,7 @@ export default {
 				this.companyPayload.step++;
 			}
 			else {
+				debugger;
 				alert('You must provide valid information!')
 			}
 		},
@@ -402,7 +407,7 @@ export default {
 }
 .modal-content{
 	width: 1100px;
-	height: 650px;
+	height: 660px;
 	border: none;
 	border-radius: 5px;
 }

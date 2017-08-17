@@ -12,8 +12,6 @@ import Profile from '@/components/Profile'
 import Companies from '@/components/Companies'
 
 
-
-
 Vue.use(Router)
 
 export default new Router({
