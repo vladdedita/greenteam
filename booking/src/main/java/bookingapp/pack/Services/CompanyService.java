@@ -7,6 +7,8 @@ import bookingapp.pack.Models.Company;
 
 
 import bookingapp.pack.Models.Token;
+import org.apache.commons.lang.RandomStringUtils;
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -134,17 +137,21 @@ public class CompanyService {
 
     }
 
-    public boolean uploadFileHandler(Long id,MultipartFile file) {
+    public boolean uploadFileHandler(Long id,String file) {
 
 
         if (!file.isEmpty()) {
 
-            String name=file.getOriginalFilename();
+
             try {
-                byte[] bytes = file.getBytes();
+                String fileBase64=file.split(",")[1];
+                byte[] bytes = Base64.decodeBase64(fileBase64);
+
+
+
 
                 // Creating the directory to store file
-                String rootPath = "/home/ded/UPLOADED/";
+                String rootPath = "/home/ded/Documents/mygit/greenteam/booking/src/main/resources/templates/src/assets";
 
 
                 File dir = new File(rootPath + File.separator + "tmpFiles");
@@ -152,18 +159,16 @@ public class CompanyService {
                     dir.mkdirs();
 
                 // Create the file on server
+                String fileName=RandomStringUtils.randomAlphabetic(4)+".jpg";
                 String filePath=dir.getAbsolutePath()
-                        + File.separator + name;
-                File serverFile = new File(filePath);
+                        + File.separator + fileName;
 
 
-                BufferedOutputStream stream = new BufferedOutputStream(
-                        new FileOutputStream(serverFile));
-                stream.write(bytes);
-                stream.close();
+                new FileOutputStream(filePath).write(bytes);
+
 
                 Company c=dao.findById(id);
-                c.setLogopath(filePath);
+                c.setLogopath(file);
                 dao.save(c);
 
 

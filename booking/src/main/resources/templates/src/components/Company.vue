@@ -2,7 +2,7 @@
 	<div class="company">
 		<div class="company-details">
 			<div id='img-logo'>
-				<img id="logo-comp" src="../assets/default-logo.png" alt="logo-company"/>
+				<img id="logo-comp" :src="companyPayload.cp_logopath" style="width:140px; height:140px;" alt="logo-company"/>
 			</div>
 			<div class="details-comp">
 				<p class="add-title">{{companyPayload.companies.name}}</p>
@@ -160,7 +160,8 @@ export default {
 				phone: '',
 				email: '',
 				places: '',
-				checkSubmit: false
+				checkSubmit: false,
+				cp_logopath:''
 
 
 			},
@@ -211,6 +212,7 @@ export default {
     mounted() {
         this.getServices();
         this.getCompany();
+        this.getLogo();
     },
     methods: {
         getCompany() {
@@ -226,6 +228,15 @@ export default {
                 .catch((err) => {
                     console.log("err", err);
                 })
+        },
+        getLogo()
+        {
+            axios.get(window.ApiUrl + "/getlogo/" +this.$localStorage.get("cpId"))
+                .then((res) => {
+
+                    this.companyPayload.cp_logopath=res.data
+
+                }).catch((err)=> {})
         },
         getServices() {
             axios.get(window.ApiUrl + "/services/" + this.$localStorage.get("cpId")).then((res) => {

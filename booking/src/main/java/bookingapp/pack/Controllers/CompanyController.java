@@ -10,6 +10,7 @@ import bookingapp.pack.Services.MailService;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.bouncycastle.crypto.generators.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -69,7 +70,7 @@ public class CompanyController {
         }
     }
 
-    @RequestMapping(value="/{id}/updateProfile",method=RequestMethod.POST)
+    @RequestMapping(value="/updateProfile/{id}",method=RequestMethod.POST)
     @CrossOrigin
     public void changeInfo(@PathVariable(name="id") Long id,@RequestBody String str) throws IOException
     {
@@ -104,6 +105,24 @@ public class CompanyController {
                 System.out.println(e.toString());
             }
         }
+
+
+
+
+
+    }
+
+    @RequestMapping(value="/uploadlogo/{id}",method=RequestMethod.POST)
+    @CrossOrigin
+    public void uploadLogo(@PathVariable Long id,@RequestBody String str) throws IOException
+    {
+
+        ObjectMapper objectMapper=new ObjectMapper();
+
+        JsonNode node= objectMapper.readTree(str);
+        String file=objectMapper.convertValue(node.get("file"),String.class);
+
+
         if(!file.isEmpty())
         {
             try{
@@ -120,6 +139,13 @@ public class CompanyController {
 
 
 
+    }
+
+    @RequestMapping(value="/getlogo/{id}")
+    @CrossOrigin
+    public String getLogoPath(@PathVariable Long id)
+    {
+        return companyService.getCompanyById(id).getLogoPath().toString();
     }
 
 

@@ -4,14 +4,34 @@
     <navigation></navigation>
     <router-view></router-view>
 
-    <div class="logo" style="cursor:pointer">
+    <div class="logo">
 
       <div id="form" >
         <label for="file-input">
-        <img src="../assets/default-logo.png" style="cursor:pointer"/>
+        <img v-bind:src="companyPayload.cp_logopath" style="cursor:pointer"/>
         </label>
        <!-- <input id="file-input" style="display:none" type="file" formenctype="multipart/form-data"  v-on:change="onFileChange">
-       --> <input type="file" id="file-input" :name="uploadFieldName" :disabled="isSaving" @change="filesChange($event.target.name, $event.target.files); fileCount = $event.target.files.length" accept="image/*" class="input-file">
+       --> <!--<input type="file" id="file-input" :name="uploadFieldName" :disabled="isSaving" @change="filesChange($event.target.name, $event.target.files); fileCount = $event.target.files.length" accept="image/*" class="input-file">
+-->
+        <picture-input
+                id="file-input"
+                ref="pictureInput"
+                width="500"
+                @change="onChange"
+                removable="true"
+                removeButtonClass="ui red button"
+                height="500"
+                margin="16"
+                size="10"
+                accept="image/jpeg, image/png, image/gif"
+                buttonClass="ui button primary"
+                :customStrings="{
+                upload: '<h1>Upload it!</h1>',
+                drag: 'Drag and drop your image here'}">
+
+        </picture-input>
+        <button v-bind:class="{disabled:!image}">Upload</button>
+
 
       </div>
 
@@ -43,6 +63,7 @@
 
 import navigation from '@/components/navigation';
 import axios from 'axios';
+import PictureInput from 'vue-picture-input'
 
 export default {
   name: 'profile',
@@ -54,7 +75,7 @@ export default {
           cp_id:1,
           cp_name:'',
             cp_desc:'',
-            cp_logopath:[]
+            cp_logopath:''
         },
       user: {
         authenticated: true
@@ -62,15 +83,28 @@ export default {
     }
   },
   components: {
+      PictureInput,
     navigation: navigation
   },
     mounted()
     {
         this.checkLoggedIn();
+        this.getLogo();
     },
       methods: {
+          onChange () {
+              console.log('New picture selected!')
 
-      logout() {
+              if (this.$refs.pictureInput.image) {
+                  console.log('Picture loaded.')
+                  this.attemptUpload(this.$refs.pictureInput.image);
+
+              } else {
+                  console.log('FileReader API not supported: use the <form>, Luke!')
+              }
+          },
+
+          logout() {
           localStorage.removeItem('token');
           localStorage.removeItem('email');
           localStorage.removeItem('cpId');
@@ -90,27 +124,34 @@ export default {
           }).catch((err) => {
           })
       },
-      filesChange(fieldName, fileList) {
-          // handle file changes
-          const formData = new FormData();
+          attemptUpload(image) {
+              if (image){
+                  axios.post(window.ApiUrl +'/uploadlogo/' + this.$localStorage.get("cpId"), {
 
-          if (!fileList.length) return;
+                     file: image
 
-          // append the files to FormData
-          Array
-              .from(Array(fileList.length).keys())
-              .map(x => {
-                  formData.append(fieldName, fileList[x], fileList[x].name);
-              });
+                  })
+                      .then(response=>{
+                          if (response.data.success){
 
-          //this.companyPayload.cp_logopath=fileList[0];
+                              console.log("Image uploaded successfully ✨");
+                          }
+                      })
+                      .catch(err=>{
+                          console.error(err);
+                      });
+              }
+          },
+          getLogo()
+          {
+            axios.get(window.ApiUrl + "/getlogo/" +this.$localStorage.get("cpId"))
+                .then((res) => {
 
+                this.companyPayload.cp_logopath=res.data
 
-          // save it
-         this.save(formData);
+                }).catch((err)=> {})
+          },
 
-
-      },
           checkLoggedIn() {
 
               axios.post(window.ApiUrl + "/authorization",
@@ -121,7 +162,7 @@ export default {
                   })
                   .then((res) => {
 
-                      console.log("REEESSSSS", res);
+
                       if(res.data == true) {
 
                           this.$localStorage.set('authorized', 'true');
