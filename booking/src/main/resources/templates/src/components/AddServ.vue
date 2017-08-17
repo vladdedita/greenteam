@@ -9,15 +9,19 @@
 		<div class="add-title">
 			<p>Add new service</p>
 		</div> 
-		<div class="add-new-serv">
-			<router-link to="/dashboard">
-				<span>
-					<icon class="icon-card circle" name="plus-circle" scale="5" @click="addService">
-					</icon>
-				</span>
-			</router-link>
-			<p class="new-serv">Save changes</p>
-		</div>
+		<button 
+			type="button"
+			class="add-new-serv" 
+			@click="addService">
+			<span>
+				<icon class="icon-card circle" name="floppy-o" scale="3.5">
+				</icon>
+			</span>
+
+		</br>
+
+		<span class="new-serv">Save changes</span>
+		</button>
 
 		<div class="add-serv-details det">
 			<span id="serv-detail">Service details</span>
@@ -26,22 +30,22 @@
 
 
 				<input class="register"
-				v-model="userPayload.name">
+				v-model="service.name">
 
 
 				<label>Service description</label>
-				<textarea cols="50" class="detail" v-model="userPayload.description"></textarea>
+				<textarea cols="50" class="detail" v-model="service.description"></textarea>
 
 			</div>
 			<div class=right-side>
 				<label>Service duration</label>
-				<input class="register" v-model="userPayload.duration">
+				<input class="register" v-model="service.duration">
 
 
 				<label>Spaces</label>
-				<input class="register" v-model="userPayload.places">
+				<input class="register" v-model="service.places">
 				<label>Price</label>
-				<input class="register" v-model="userPayload.price" >
+				<input class="register" v-model="service.price" >
 			</div>
 
 		</div>
@@ -52,7 +56,7 @@
 
 		<div class="det-card">
 			<span id="serv-detail">availability</span>
-			<dateCard></dateCard>
+			<dateCard v-model="schedule"></dateCard>
 			<router-view></router-view>
 		</div>
 	</div>
@@ -62,7 +66,7 @@
 <script>
 import navigation from '@/components/navigation'
 import dateCard from '@/components/dateCard'
-import 'vue-awesome/icons/plus-circle'
+import 'vue-awesome/icons/floppy-o'
 import Icon from 'vue-awesome/components/Icon'
 import axios from 'axios'
 
@@ -73,30 +77,32 @@ export default {
 	},
 	data(){
 		return {
-		    userPayload: {
+		    service: {
                 name: '',
                 duration: '',
                 description: '',
                 places: '',
                 price: '',
-                idCompany: 1
+                idCompany: 1,
+                schedule: {}
             },
+            schedule: {
+				start: '7:00',
+				end: '18:00'
+			},
 
             formSubmitted: false
 		}
 	},
 	methods: {
 		addService() {
-			axios.post(window.ApiUrl + "/addservice", {
-				name:this.userPayload.name,
-				duration: this.userPayload.duration,
-				description:this.userPayload.description,
-				places: this.userPayload.places,
-				price: this.userPayload.price,
-				idCompany: 1
-			}).then((res) => {
-			    this.submitForm=true;
-				// redirect
+			this.service.schedule = this.schedule;
+
+			debugger;
+			axios.post(window.ApiUrl + "/addservice", this.service)
+			.then((res) => {
+			 	this.$router.push({ name: 'Dashboard' })
+			    this.submitForm = true;
 			})
 			.catch((err) => {
 			})
@@ -114,6 +120,7 @@ a:focus{
 .new-serv{
 	font-size: 17px;
 	color: #4C4C4C;
+	margin-right: 25px;
 
 }
 .add-new-serv{
@@ -121,6 +128,9 @@ a:focus{
 	width: 20%;
 	float: right;
 	margin-right: 15%;
+	    background: #FFF;
+    border: none;
+    cursor: pointer;
 
 }
 .add-title{
@@ -186,7 +196,7 @@ label{
 	margin-left: 21%;
 }
 .circle{
-	margin-left: 20px;
+	margin-right: 25px;
 	color: #DC2DE9;
 }
 </style>

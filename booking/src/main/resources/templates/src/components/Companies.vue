@@ -5,7 +5,7 @@
         <h2 id="nav-logo">Booking App</h2>
         <ul class="nav-comp">
           <li class="nav-comp-item">
-            <router-link to="/companies" exact-active-class="active">Companies</router-link>
+            <router-link to="/" exact-active-class="active">Companies</router-link>
           </li> 
           <li class="nav-comp-item">
             <router-link to="/register" exact-active-class="active">Register</router-link>
@@ -33,7 +33,7 @@
 			</div>
 			<small slot="footer">
 				
-				<button id="select-company" @click="selectCompany(company)">Select Company</button>
+				<router-link to="/company"><button id="select-company" @click="selectCompany(company)">Select Company</button></router-link>
 			</small>
 		</b-card>
 </div>
@@ -160,6 +160,7 @@ export default {
 		border: transparent;
 		margin: auto;
 		padding: 10px;
+		cursor: pointer;
 
 	}
 	.save{
