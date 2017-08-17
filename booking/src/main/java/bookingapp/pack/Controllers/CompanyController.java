@@ -1,18 +1,28 @@
 package bookingapp.pack.Controllers;
 
 
+import bookingapp.pack.Models.Booking;
 import bookingapp.pack.Models.Company;
+import bookingapp.pack.Models.Token;
+import bookingapp.pack.Models.User;
 import bookingapp.pack.Services.CompanyService;
 import bookingapp.pack.Services.MailService;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
+import org.bouncycastle.crypto.generators.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.http.RequestEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.apache.commons.lang.RandomStringUtils;
 
+import javax.mail.Multipart;
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -27,9 +37,19 @@ public class CompanyController {
 
     @RequestMapping(value="/companies")
     @CrossOrigin
-    public List<Company> getCompanies()
+    public List<Company> getCompanies(@RequestParam("authorization") String auth)
     {
+
+        System.out.println(auth);
+
         return companyService.getAllCompanies();
+    }
+
+    @RequestMapping(value="/{id}/companies")
+    @CrossOrigin
+    public Company getCompanyById(@PathVariable(name="id") Long id)
+    {
+        return companyService.getCompanyById(id);
     }
 
 
@@ -48,26 +68,59 @@ public class CompanyController {
         }
     }
 
-
-    @RequestMapping(value="/desc")
+    @RequestMapping(value="/{id}/updateProfile",method=RequestMethod.POST)
     @CrossOrigin
-    public void changeInfo(@RequestParam(name="cp_desc", required=false) String description, @RequestParam(name="cp_name", required=false) String name)
+    public void changeInfo(@PathVariable(name="id") Long id,@RequestBody String str) throws IOException
     {
+
+        ObjectMapper objectMapper=new ObjectMapper();
+
+        JsonNode node= objectMapper.readTree(str);
+
+        String name=objectMapper.convertValue(node.get("cp_name"),String.class);
+        String description=objectMapper.convertValue(node.get("cp_desc"),String.class);
+        MultipartFile file=objectMapper.convertValue(node.get("cp_logopath"),MultipartFile.class);
+
+
 
         if(!description.isEmpty())
         {
             try {
-                companyService.changeDescription(name,description);
+                companyService.changeDescription(id,description);
             }
             catch(Exception e)
             {
                 System.out.println(e.toString());
             }
         }
+        if(!name.isEmpty())
+        {
+            try {
+                companyService.changeName(id,name);
+            }
+            catch(Exception e)
+            {
+                System.out.println(e.toString());
+            }
+        }
+        if(!file.isEmpty())
+        {
+            try{
+                companyService.uploadFileHandler(id,file);
+
+            }
+            catch(Exception e)
+            {
+                System.out.println(e.toString());
+            }
+
+        }
+
 
 
 
     }
+
 
     @RequestMapping("/recovery")
     @CrossOrigin
@@ -108,6 +161,42 @@ public class CompanyController {
 
 
     }
+
+
+
+    @RequestMapping(value="/login",method=RequestMethod.POST)
+    @CrossOrigin
+    public  Token logIn(@RequestBody String str) throws IOException
+    {
+
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+
+            JsonNode node = objectMapper.readTree(str);
+
+            String email = objectMapper.convertValue(node.get("email"), String.class);
+            String password = objectMapper.convertValue(node.get("password"), String.class);
+
+            Token tk=new Token("token","Authorized");
+
+            if (companyService.checkCredentials(email, password) == true) {
+                return tk;
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println(e.toString());
+            return null;
+        }
+
+
+
+        return null;
+
+    }
+
+
+
 
 
 

@@ -204,42 +204,52 @@ export default {
 		Icon: Icon,
 		PublicBookingSchedule
 	},
-	mounted() {
-        //this.getCompanies();
+	
+    components: {
+        Icon: Icon
+    },
+    mounted() {
+        this.getCompanies();
         this.getComments();
-      },
-      methods: {
-      	getCompanies() {
-      		axios.get(window.ApiUrl + "/companies").then((res) => {
-      			this.companyPayload.companies = res.data;
-      			console.log("companies ", res);
-      		})
-      		.catch((err) => {
-      			console.log("err", err);
-      		})
-      	},
-      	getServices() {
-      		axios.get(window.ApiUrl + "/services").then((res) => {
-      			this.companyPayload.services = res.data;
-      			console.log("services ", res);
-      		})
-      		.catch((err) => {
-      			console.log("err", err);
-      		})
-      	},
-      	getComments() {
-      		axios.get(window.ApiUrlTest + "/posts/1/comments").then((res) => {
-      			this.companyPayload.services = res.data;
-      			console.log("services ", res);
-      		})
-      		.catch((err) => {
-      			console.log("err", err);
-      		})
-      	},
-      	selectService(service) {
-      		this.companyPayload.selectedService = service;
-      	},
-      	deleteService(id) {
+    },
+    methods: {
+        getCompanies() {
+            axios.get(window.ApiUrl + "/companies" ,{
+                params:
+					{
+					    authorization:this.$localStorage.get('token')
+					}
+            }).then((res) => {
+
+                this.companyPayload.companies = res.data;
+                console.log("companies ", res);
+            })
+                .catch((err) => {
+                    console.log("err", err);
+                })
+        },
+        getServices() {
+            axios.get(window.ApiUrl + "/services").then((res) => {
+                this.companyPayload.services = res.data;
+                console.log("services ", res);
+            })
+                .catch((err) => {
+                    console.log("err", err);
+                })
+        },
+        getComments() {
+            axios.get(window.ApiUrlTest + "/posts/1/comments").then((res) => {
+                this.companyPayload.services = res.data;
+                console.log("services ", res);
+            })
+                .catch((err) => {
+                    console.log("err", err);
+                })
+        },
+        selectService(service) {
+            this.companyPayload.selectedService = service;
+        },
+        deleteService(id) {
             // + axios call - delete method
             this.companyService.services.splice(this.companyService.services.indexOf(this.companyService.services.find((item) => {
             	return item.id === id

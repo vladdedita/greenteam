@@ -7,11 +7,6 @@ import bookingapp.pack.Models.Booking;
 import bookingapp.pack.Models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.naming.Context;
-import javax.transaction.Transaction;
-
-import javax.transaction.UserTransaction;
 import java.util.ArrayList;
 import java.util.List;
 

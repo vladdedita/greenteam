@@ -3,7 +3,7 @@
     <div class="logo"><img src="../assets/logo.png"/></div>
     <p class="hero-title">Booking <span class="apl">App</span></p>
 
-    <form class="clearfix" @keyup.esc="clearData" @keyup.enter="nextStep">
+    <form class="clearfix" method="post" @submit.prevent="submitLog">
       <div>
         <label>Email</label>
         <input 
@@ -72,20 +72,15 @@
 
 
   methods: {
-    nextStep() {
-      if(this.checkValidation()){
-        this.step++;
-      }
-      else{
-        alert('You must provide valid information!')
-      }
-    },
+
     submitLog() {
+
+
       axios.post(window.ApiUrl + "/login",this.userPayload).then((res) => {
         //token
-        this.submitLog=true;
-        this.$localStorage.set('token', res.data)
-        this.$router.push('/dashboard')
+        this.$localStorage.set('token', res.data.authorized);
+        this.$router.push('/dashboard');
+
 
         console.log("res ", res);
 
@@ -94,11 +89,7 @@
         console.log("err", err);
       })
     },
-    previousStep() {
-      if(this.step > 0 ) {
-        this.step--;
-      } 
-    },
+
     checkValidation(){
       var validElements = document.getElementsByClassName('valid');
       if(validElements.length === 2) {
