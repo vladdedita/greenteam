@@ -45,7 +45,7 @@ public class CompanyController {
         return companyService.getAllCompanies();
     }
 
-    @RequestMapping(value="/{id}/companies")
+    @RequestMapping(value="/companies/{id}")
     @CrossOrigin
     public Company getCompanyById(@PathVariable(name="id") Long id)
     {
@@ -158,10 +158,19 @@ public class CompanyController {
     {
 
         return new Gson().toJson(companyService.initCalendar("asd"));
-
-
     }
 
+
+
+    @RequestMapping(value="/companyid",method=RequestMethod.GET)
+    @CrossOrigin
+    public Long getCompanyId(@RequestParam(name="token") String authToken,@RequestParam(name="email")String email)
+    {
+
+        Long id=companyService.getCompanyByEmail(email).getId();
+        return id;
+
+    }
 
 
     @RequestMapping(value="/login",method=RequestMethod.POST)
@@ -180,6 +189,7 @@ public class CompanyController {
             Token tk=new Token("token","Authorized");
 
             if (companyService.checkCredentials(email, password) == true) {
+                System.out.println("Prostule");
                 return tk;
             }
         }
@@ -188,22 +198,8 @@ public class CompanyController {
             System.out.println(e.toString());
             return null;
         }
-
-
-
         return null;
 
     }
-
-
-
-
-
-
-
-    
-
-
-
 
 }

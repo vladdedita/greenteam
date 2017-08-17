@@ -75,18 +75,20 @@ export default {
           }
       },
       logout() {
-          localStorage.removeItem('token')
+          localStorage.removeItem('token');
+          localStorage.removeItem('email');
+          localStorage.removeItem('cpId');
           this.user.authenticated = false
       },
 
       sendProfile() {
 
 
-          axios.post(window.ApiUrl + "/1/updateProfile",
+          axios.post(window.ApiUrl + "/updateProfile/" + this.$localStorage.get("cpId"),
               {
                   cp_name: this.companyPayload.cp_name,
                   cp_desc: this.companyPayload.cp_desc,
-                  cp_logopath: this.companyPayload.cp_logopath
+                  //cp_logopath: this.companyPayload.cp_logopath
 
               }).then((res) => {
           }).catch((err) => {

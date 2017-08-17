@@ -2,6 +2,7 @@ package bookingapp.pack.Controllers;
 
 
 import bookingapp.pack.Models.Booking;
+import bookingapp.pack.Models.CompanyBooking;
 import bookingapp.pack.Models.User;
 import bookingapp.pack.Services.BookingService;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -42,6 +43,16 @@ public class BookingController {
 
         bookingService.addBooking(b,u);
 
+
+    }
+
+    @RequestMapping(value="/getbookings/{companyId}",method= RequestMethod.GET)
+    @CrossOrigin
+    public List<CompanyBooking> getServiceBookings(@PathVariable(name="companyId") Long companyId)
+    {
+
+
+        return bookingService.getServiceBookings(companyId);
 
     }
 

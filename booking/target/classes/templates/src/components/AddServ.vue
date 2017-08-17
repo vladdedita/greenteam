@@ -9,10 +9,19 @@
 		<div class="add-title">
 			<p>Add new service</p>
 		</div> 
-		<div class="add-new-serv">
-			<router-link to="/dashboard"><button @click="addService" class="newService1">+</button></router-link>
-			<p class="new-serv">New service</p>
-		</div>
+		<button 
+			type="button"
+			class="add-new-serv" 
+			@click="addService">
+			<span>
+				<icon class="icon-card circle" name="floppy-o" scale="3.5">
+				</icon>
+			</span>
+
+		</br>
+
+		<span class="new-serv">Save changes</span>
+		</button>
 
 		<div class="add-serv-details det">
 			<span id="serv-detail">Service details</span>
@@ -21,22 +30,22 @@
 
 
 				<input class="register"
-				v-model="userPayload.name">
+				v-model="service.name">
 
 
 				<label>Service description</label>
-				<textarea cols="50" class="detail" v-mode="userPayload.description"></textarea>
+				<textarea cols="50" class="detail" v-model="service.description">{{service.description}}</textarea>
 
 			</div>
 			<div class=right-side>
 				<label>Service duration</label>
-				<input class="register" v-model="userPayload.duration">
+				<input class="register" v-model="service.duration">
 
 
 				<label>Spaces</label>
-				<input class="register" v-model="userPayload.places">
+				<input class="register" v-model="service.places">
 				<label>Price</label>
-				<input class="register" v-model="userPayload.price" >
+				<input class="register" v-model="service.price" >
 			</div>
 
 		</div>
@@ -47,7 +56,7 @@
 
 		<div class="det-card">
 			<span id="serv-detail">availability</span>
-			<dateCard></dateCard>
+			<dateCard v-model="schedule"></dateCard>
 			<router-view></router-view>
 		</div>
 	</div>
@@ -57,71 +66,75 @@
 <script>
 import navigation from '@/components/navigation'
 import dateCard from '@/components/dateCard'
+import 'vue-awesome/icons/floppy-o'
+import Icon from 'vue-awesome/components/Icon'
 import axios from 'axios'
 
 export default {
 	name: 'addServ',
 	components: {
-		navigation,dateCard
+		navigation,dateCard, Icon
 	},
 	data(){
+
 		return {
-		    userPayload: {
+		    service: {
+
                 name: '',
                 duration: '',
                 description: '',
                 places: '',
                 price: '',
-                idCompany: 1
+                idCompany:this.$localStorage.get("cpId"),
+                //schedule: {}
             },
+            schedule: {
+				start: '7:00',
+				end: '18:00'
+			},
 
             formSubmitted: false
 		}
 	},
+	mounted()
+	{
+	    if(window.service) {
+            this.service = window.service
+        }
+
+	},
+
 	methods: {
 		addService() {
-			axios.post(window.ApiUrl + "/addservice", {
-				name:this.userPayload.name,
-				duration: this.userPayload.duration,
-				description:this.userPayload.description,
-				places: this.userPayload.places,
-				price: this.userPayload.price,
-				idCompany: 1
-			}).then((res) => {
-			    this.submitForm=true;
-				// redirect
-			})
-			.catch((err) => {
-				// ii spui ca e prost si nu stie sa salveze un serviciu
-			})
+			//this.service.schedule = this.schedule;
+
+			if(window.service) {
+                axios.put(window.ApiUrl + "/editservice/" + window.service.id, this.service)
+                    .then((res) => {
+                        this.$router.push({name: 'Dashboard'})
+                        this.submitForm = true;
+                        window.service=null;
+                    })
+                    .catch((err) => {
+                    })
+
+
+
+            }
+			else {
+                axios.post(window.ApiUrl + "/addservice", this.service)
+                    .then((res) => {
+                        this.$router.push({name: 'Dashboard'})
+                        this.submitForm = true;
+                    })
+                    .catch((err) => {
+                    })
+            }
 		}
 	}
 }
 </script>
 <style scoped>
-button{
-	height: 55px;
-	background-color: #DC2DE9;
-	color: white;
-	font-size: 22px;
-	text-align: center;
-	font-family: Arial;
-	display: block;
-	border-radius: 4%;
-	border: transparent;
-	margin: auto;
-	padding: 10px;
-
-}
-.newService1{
-	height: 82px;
-	width: 82px;
-	border-radius: 100%;
-	font-family: Courier;
-	font-size: 55px;
-	cursor: pointer;
-	text-decoration: none;
-}
 a:hover{
 	text-decoration: none;
 }
@@ -131,13 +144,17 @@ a:focus{
 .new-serv{
 	font-size: 17px;
 	color: #4C4C4C;
+	margin-right: 25px;
 
 }
 .add-new-serv{
 	margin-top: 45px;
 	width: 20%;
 	float: right;
-	margin-right: 22%;
+	margin-right: 15%;
+	    background: #FFF;
+    border: none;
+    cursor: pointer;
 
 }
 .add-title{
@@ -147,6 +164,7 @@ a:focus{
 	width: 40%;
 	float: left;
 	margin-left: 8%;
+	height: 90px;
 }
 label{
 	font-size: 20px;
@@ -165,7 +183,7 @@ label{
 }
 .detail{
 	width: 361px;
-	height: 160px;
+	height: 155px;
 	border-radius: 5px;
 	border: 1px solid #8A8A8A;
 	margin-bottom: 15px;
@@ -200,5 +218,9 @@ label{
 	text-align: center;
 	width: 60%;
 	margin-left: 21%;
+}
+.circle{
+	margin-right: 25px;
+	color: #DC2DE9;
 }
 </style>

@@ -28,12 +28,12 @@
 
 			<div class="card-block">
 				<p class="card-text">
-					{{company.body}}
+					{{company.description}}
 				</p>
 			</div>
 			<small slot="footer">
 				
-				<router-link to="/company"><button id="select-company" @click="selectCompany(company)">Select Company</button></router-link>
+				<router-link to="/company"><button id="select-company" @click="selectCompany(company.id)">Select Company</button></router-link>
 			</small>
 		</b-card>
 </div>
@@ -54,13 +54,18 @@ export default {
 		}
 	},
 	mounted() {
-      //this.getCompanies();
-      this.getComments();
+      this.getCompanies();
+      //this.getComments();
     },
     methods: {
    
     	getCompanies() {
-    		axios.get(window.ApiUrl + "/companies").then((res) => {
+    		axios.get(window.ApiUrl + "/companies" ,{
+                params:
+                    {
+                        authorization:this.$localStorage.get('token')
+                    }
+            }).then((res) => {
     			this.companies = res.data;
     			console.log("companies ", res);
     		})
@@ -77,8 +82,9 @@ export default {
     			console.log("err", err);
     		})
     	},
-    	selectCompany(company) {
-    		this.selectedCompany = company;
+    	selectCompany(id) {
+    		window.companyId= id;
+    		this.$router.push("/company");
     	},
     		
 		}

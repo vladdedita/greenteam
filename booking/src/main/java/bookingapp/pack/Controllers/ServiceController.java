@@ -5,6 +5,8 @@ import bookingapp.pack.Services.ServiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 public class ServiceController {
@@ -36,12 +38,35 @@ public class ServiceController {
         return null;
     }
 
-    @RequestMapping(value="/editservice")
+    @RequestMapping(value="/editservice/{id}",method=RequestMethod.PUT)
     @CrossOrigin
-    public cService editService(@RequestBody cService s)
+    public boolean editService(@PathVariable Long id,@RequestBody cService s)
     {
-        return s;
+        try {
+            s.setId(id);
+            System.out.println(serviceService.updateService(s));
+            return true;
+        }
+        catch(Exception e)
+        {
+
+            System.out.println(e.toString());
+            return false;
+        }
+
     }
+
+
+
+    @RequestMapping(value="/services/{id}")
+    @CrossOrigin
+    public List<cService> getCompanyServices(@PathVariable long id)
+    {
+        return serviceService.getServiceByCompanyId(id);
+    }
+
+
+
 
     @RequestMapping(value="/updateservice",method = RequestMethod.PUT)
     @CrossOrigin

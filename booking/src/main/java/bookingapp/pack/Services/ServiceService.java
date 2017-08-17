@@ -28,6 +28,22 @@ public class ServiceService {
         return services.toString();
     }
 
+    public List<cService> getServiceByCompanyId(long id)
+    {
+
+        List<cService> services=new ArrayList<cService>();
+
+        for(cService s:dao.findAll())
+        {
+            if(s.getIdCompany() == id)
+                services.add(s);
+        }
+
+        return services;
+
+    }
+
+
     public boolean addCservice(cService s)
     {
         try{
@@ -45,11 +61,6 @@ public class ServiceService {
         for(cService s : dao.findAll())
             if(s.getId()==service.getId() && !s.equals(service)) {
                 try{
-
-                    for(cService serv: dao.findAll())
-                        if(serv.getName().equals(service.getName()))
-                            return "Nume deja existent";
-
 
                     s.setName(service.getName());
                     s.setDescription(service.getDescription());
@@ -75,7 +86,6 @@ public class ServiceService {
             if(s.getId()==id)
                 try{
                     dao.delete(id);
-
                     return true;
                 }
                 catch (Exception e){
