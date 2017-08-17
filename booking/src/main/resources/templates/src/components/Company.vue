@@ -195,12 +195,18 @@ export default {
         Icon: Icon
     },
     mounted() {
-        //this.getCompanies();
+        this.getCompanies();
         this.getComments();
     },
     methods: {
         getCompanies() {
-            axios.get(window.ApiUrl + "/companies").then((res) => {
+            axios.get(window.ApiUrl + "/companies" ,{
+                params:
+					{
+					    authorization:this.$localStorage.get('token')
+					}
+            }).then((res) => {
+
                 this.companyPayload.companies = res.data;
                 console.log("companies ", res);
             })
