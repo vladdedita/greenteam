@@ -76,11 +76,11 @@
     submitLog() {
 
 
-      axios.post(window.ApiUrl + "/login",this.userPayload).then((res) => {
+      axios.post(window.ApiUrl + "/login", this.userPayload).then((res) => {
         //token
         this.$localStorage.set('token', res.data.authorized);
+        this.$localStorage.set('email',this.userPayload.email);
         this.$router.push('/dashboard');
-
 
         console.log("res ", res);
 

@@ -34,7 +34,7 @@
 
 
 				<label>Service description</label>
-				<textarea cols="50" class="detail" v-model="service.description"></textarea>
+				<textarea cols="50" class="detail" v-model="service.description">{{service.description}}</textarea>
 
 			</div>
 			<div class=right-side>
@@ -76,15 +76,17 @@ export default {
 		navigation,dateCard, Icon
 	},
 	data(){
+
 		return {
 		    service: {
+
                 name: '',
                 duration: '',
                 description: '',
                 places: '',
                 price: '',
-                idCompany: 1,
-                schedule: {}
+                idCompany:this.$localStorage.get("cpId"),
+                //schedule: {}
             },
             schedule: {
 				start: '7:00',
@@ -94,18 +96,40 @@ export default {
             formSubmitted: false
 		}
 	},
+	mounted()
+	{
+	    if(window.service) {
+            this.service = window.service
+        }
+
+	},
+
 	methods: {
 		addService() {
-			this.service.schedule = this.schedule;
+			//this.service.schedule = this.schedule;
 
-			debugger;
-			axios.post(window.ApiUrl + "/addservice", this.service)
-			.then((res) => {
-			 	this.$router.push({ name: 'Dashboard' })
-			    this.submitForm = true;
-			})
-			.catch((err) => {
-			})
+			if(window.service) {
+                axios.put(window.ApiUrl + "/editservice/" + window.service.id, this.service)
+                    .then((res) => {
+                        this.$router.push({name: 'Dashboard'})
+                        this.submitForm = true;
+                        window.service=null;
+                    })
+                    .catch((err) => {
+                    })
+
+
+
+            }
+			else {
+                axios.post(window.ApiUrl + "/addservice", this.service)
+                    .then((res) => {
+                        this.$router.push({name: 'Dashboard'})
+                        this.submitForm = true;
+                    })
+                    .catch((err) => {
+                    })
+            }
 		}
 	}
 }

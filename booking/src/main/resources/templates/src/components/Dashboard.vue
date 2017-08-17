@@ -24,11 +24,11 @@
 					</div>
 					<div class="col-sm-6 text-right">
 
-						<router-link to="/addServ">
-						<span>
-							<icon class="icon-card" name="pencil" scale="2"></icon>
+
+						<span @click="editService(service)">
+							<icon class="icon-card" name="pencil" scale="2"> </icon>
 						</span>
-						</router-link>
+
 						<span @click="deleteService(service.id)">
 							<icon class="icon-card" name="trash" scale="2"></icon>
 						</span>
@@ -36,16 +36,16 @@
 				</div>
 
         <div class="card-block">
-          <p class="card-text">{{service.body}}
+          <p class="card-text">{{service.description}}
           </p>
         </div>
     		<small slot="footer">
        		<table>
        			<tr class="tab-details">
-       				<td class="td-details">{{service.id}}</td>
-       				<td class="td-details">{{service.postId}}</td>
-       				<td class="td-details">{{service.email}}</td>
-       				<td class="td-details"></td>
+       				<td class="td-details">{{service.available}}</td>
+       				<td class="td-details">{{service.places}}</td>
+       				<td class="td-details">{{service.duration}}</td>
+       				<td class="td-details">{{service.price}}</td>
        			</tr>
        			<tr class="tdata">
        				<td class="td-details">Availability</td>
@@ -72,8 +72,9 @@
 	  name: 'dashboard',
 	  data() {
 			return {
-				services: '',
-				selectedService: ''
+				services: [],
+				selectedService: '',
+                companyId:this.$localStorage.get("cpId")
 			}
 		},
 	  components: {
@@ -82,41 +83,66 @@
   mounted() {
 	  this.checkLoggedIn();
       //this.getCompanies();
-      this.getComments();
+      //this.getComments();
+      this.getCompanyId();
+      this.getServices();
     },
   methods: {
+	  getCompanyId() {
+          axios.get(window.ApiUrl+"/companyid", {
+              params: {
+                  token: this.$localStorage.get('token'),
+                  email: this.$localStorage.get('email')
+              }
+          })
+              .then((res) => {
+                  this.$localStorage.set("cpId",res.data);
+                  //console.log("IDUL !!!!",window.companyId);
+
+                  }
+              ).catch((err) => {
+              console.log("err: ", err)
+          })
+
+	  },
   	 checkLoggedIn() {
-          
   	 	if(!this.$localStorage.get('token')) {
   	 		this.$router.push('/logIn')
   	 	}
   	 },
-  	getServices() {
-    		axios.get(window.ApiUrl + "/services").then((res) => {
-    			this.services = res.data;
-    			console.log("services ", res);
-    		})
-    		.catch((err) => {
-    			console.log("err", err);
-    		})
-    	},
-    	getComments() {
-    		axios.get(window.ApiUrlTest + "/posts/1/comments").then((res) => {
-    			this.services = res.data;
-    			console.log("services ", res);
-    		})
-    		.catch((err) => {
-    			console.log("err", err);
-    		})
-    	},
-    	selectService(service) {
-    		this.selectedService = service;
-    	},
+      getServices() {
+          axios.get(window.ApiUrl + "/services/" +this.$localStorage.get("cpId")).then((res) => {
+              this.services = res.data;
+              console.log("services *******", res);
+          })
+              .catch((err) => {
+                  console.log("err", err);
+              })
+      },
+    	editService(thisService) {
+    	    window.service=thisService;
+    	    this.$router.push("/addServ");
+        },
     	deleteService(id) {
 				// + axios call - delete method
-				this.services.splice(this.services.indexOf(this.services.find((item) => {
-					return item.id === id
-				})), 1);
+
+            axios.delete(window.ApiUrl + "/deleteservice/" + id, this.service)
+                .then((res) => {
+                    this.$router.push({name: 'Dashboard'})
+                    this.submitForm = true;
+
+
+                    this.services.splice(this.services.indexOf(this.services.find((item) => {
+                        return item.id === id
+                    })), 1);
+
+
+
+                })
+                .catch((err) => {
+                })
+
+
 			},
   }
 

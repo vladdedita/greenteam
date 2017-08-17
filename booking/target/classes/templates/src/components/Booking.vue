@@ -13,49 +13,19 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>Name</th>
+          <th>Service name</th>
+          <th>Customer name</th>
           <th>Email</th>
           <th>Phone No</th>
-          <th>Availability</th>
         </tr>
       </thead>
+
       <tbody>
-        <tr>
-          <td>Default</td>
-          <td>def@somemail.com</td>
-          <td>Defaultson</td>
-          <td>sdaf</td>
-        </tr>      
-        <tr>
-          <td>Success</td>
-          <td>john@example.com</td>
-          <td>Doe</td>
-          <td>sad</td>
-        </tr>
-        <tr class="danger">
-          <td>Danger</td>
-          <td>mary@example.com</td>
-          <td>Moe</td>
-          <td></td>
-        </tr>
-        <tr class="info">
-          <td>Info</td>
-          <td>july@example.com</td>
-          <td>Dooley</td>
-          <td></td>
-        </tr>
-        <tr class="warning">
-          <td>Warning</td>
-          <td>bo@example.com</td>
-          <td>Refs</td>
-          <td></td>
-        </tr>
-        <tr class="active">
-          <td>Active</td>
-          <td>act@example.com</td>
-          <td>Activeson</td>
-          <td></td>
-        </tr>
+      <tr v-for="booking in bookings">
+        <td>{{bookings.serviceName}}</td>
+
+      </tr>
+
       </tbody>
     </table>
   </div>
@@ -64,6 +34,7 @@
 
 <script>
 import navigation from '@/components/navigation'
+import axios from 'axios'
 export default {
   name: 'booking',
   components: {
@@ -86,9 +57,27 @@ export default {
       }, {
         text: 'This is another option',
         value: 'c'
-      }]   
+      }]   ,
+
+        bookings:[],
     }
-  }
+  },
+  mounted()
+  {
+      this.getBookings();
+  },
+    methods:{
+      getBookings(){
+          axios.get(window.ApiUrl + /getbookings/ + this.$localStorage.get("cpId"))
+              .then((res) =>
+                  {
+                      this.bookings=res.data;
+
+                      console.log(this.bookings);
+                  }
+              ).catch((err)=> {console.log("err ",err)})
+      }
+    }
 }
 </script>
 
