@@ -2,19 +2,19 @@ package bookingapp.pack.Services;
 
 
 import bookingapp.pack.Dao.CompanyDao;
+import bookingapp.pack.Dao.TokenDao;
 import bookingapp.pack.Models.Company;
 
 
+import bookingapp.pack.Models.Token;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,6 +29,10 @@ public class CompanyService {
 
     @Autowired
     CompanyDao dao;
+
+
+    @Autowired
+    TokenDao tdao;
 
     private BCryptPasswordEncoder pw=new BCryptPasswordEncoder();
 
@@ -204,7 +208,6 @@ public class CompanyService {
         {
             if(c.getName().equals(name))
             {
-
                 dao.save(c);
                 return true;
             }
@@ -261,14 +264,26 @@ public class CompanyService {
     }
 
 
-    public boolean checkCredentials(String email, String password)
+    public String checkCredentials(String email, String password)
     {
 
         Company c=dao.findByEmail(email);
 
         if(pw.matches(password,c.getPassword()))
-            return true;
-        return false;
+        {
+
+            Token tk=new Token();
+            tk.generateAuthToken(email);
+            tdao.save(tk);
+
+            c.setTokenId(tk.getId());
+
+            dao.save(c);
+
+            return tk.getToken();
+
+        }
+        return null;
 
     }
 
