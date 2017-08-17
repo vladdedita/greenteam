@@ -30,7 +30,7 @@
 
 
 				<label>Service description</label>
-				<textarea cols="50" class="detail" v-mode="userPayload.description"></textarea>
+				<textarea cols="50" class="detail" v-model="userPayload.description"></textarea>
 
 			</div>
 			<div class=right-side>

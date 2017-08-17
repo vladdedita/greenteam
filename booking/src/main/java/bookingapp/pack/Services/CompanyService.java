@@ -6,8 +6,14 @@ import bookingapp.pack.Models.Company;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -20,8 +26,15 @@ import java.util.Map;
 public class CompanyService {
 
 
+
     @Autowired
     CompanyDao dao;
+
+    private BCryptPasswordEncoder pw=new BCryptPasswordEncoder();
+
+    private static String UPLOADED_FOLDER = "/home/ded/APP_FILE_UPLOADS/";
+
+
 
 
     public List<Company> getAllCompanies()
@@ -34,6 +47,16 @@ public class CompanyService {
         }
 
         return companies;
+    }
+
+    public Company getCompanyById(Long id)
+    {
+        return dao.findById(id);
+    }
+
+    public Company getCompanyByEmail(String email)
+    {
+        return dao.findByEmail(email);
     }
 
    /* public boolean addCompany(String name,String email, String password) throws NoSuchAlgorithmException {
@@ -57,12 +80,8 @@ public class CompanyService {
     public boolean addCompany(Company c) throws NoSuchAlgorithmException {
 
 
-
-        MessageDigest md=MessageDigest.getInstance("SHA-512");
-        byte[] hash=md.digest(c.getPassword().getBytes());
-
         try{
-            dao.save(new Company(c.getName() ,c.getName(), hash.toString()));
+            dao.save(new Company(c.getName() ,c.getEmail(), pw.encode(c.getPassword())));
             return true;
         }
         catch(Exception e)
@@ -74,34 +93,89 @@ public class CompanyService {
 
     }
 
-    public boolean changeDescription(String name,String description)
+    public boolean changeDescription(Long id,String description)
     {
 
 
-        List<Company> companies=new ArrayList<Company>();
-
-        for(Company c : dao.findAll())
+        try {
+            Company c=dao.findById(id);
+            c.setDescription(description);
+            dao.save(c);
+            return true;
+        }
+        catch(Exception e)
         {
-            if(c.getName().equals(name))
-            {
-                c.setDescription(description);
-                dao.save(c);
-                return true;
-            }
+            System.out.println(e.toString());
+            return false;
         }
 
-        return false;
 
+    }
+    public boolean changeName(Long id,String name)
+    {
+
+    try {
+        Company c=dao.findById(id);
+        c.setName(name);
+        dao.save(c);
+        return true;
+    }
+    catch(Exception e)
+    {
+        System.out.println(e.toString());
+        return false;
+    }
+
+
+
+    }
+
+    public boolean uploadFileHandler(Long id,MultipartFile file) {
+
+
+        if (!file.isEmpty()) {
+
+            String name=file.getOriginalFilename();
+            try {
+                byte[] bytes = file.getBytes();
+
+                // Creating the directory to store file
+                String rootPath = "/home/ded/UPLOADED/";
+
+
+                File dir = new File(rootPath + File.separator + "tmpFiles");
+                if (!dir.exists())
+                    dir.mkdirs();
+
+                // Create the file on server
+                String filePath=dir.getAbsolutePath()
+                        + File.separator + name;
+                File serverFile = new File(filePath);
+
+
+                BufferedOutputStream stream = new BufferedOutputStream(
+                        new FileOutputStream(serverFile));
+                stream.write(bytes);
+                stream.close();
+
+                Company c=dao.findById(id);
+                c.setLogopath(filePath);
+                dao.save(c);
+
+
+                return true;
+            } catch (Exception e) {
+                System.out.println(e.toString());
+                return false;
+            }
+        } else {
+            System.out.println("Empty file");
+            return false;
+        }
     }
 
     public boolean changePassword (String email,String password) throws NoSuchAlgorithmException
     {
-
-        MessageDigest md=MessageDigest.getInstance("SHA-512");
-
-        byte[] hash= md.digest(password.getBytes());
-
-
 
         List<Company> companies=new ArrayList<Company>();
 
@@ -109,7 +183,7 @@ public class CompanyService {
         {
             if(c.getEmail().equals(email))
             {
-                c.setPassword(hash.toString());
+                c.setPassword(pw.encode(password));
                 dao.save(c);
                 return true;
             }
@@ -183,6 +257,18 @@ public class CompanyService {
 
 
 
+
+    }
+
+
+    public boolean checkCredentials(String email, String password)
+    {
+
+        Company c=dao.findByEmail(email);
+
+        if(pw.matches(password,c.getPassword()))
+            return true;
+        return false;
 
     }
 

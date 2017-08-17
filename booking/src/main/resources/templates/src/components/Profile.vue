@@ -4,10 +4,15 @@
     <navigation></navigation>
     <router-view></router-view>
 
-    <div class="logo">
+    <div class="logo" style="cursor:pointer">
 
-      <div id="form">
-        <img src="../assets/default-logo.png"/> 
+      <div id="form" >
+        <label for="file-input">
+        <img src="../assets/default-logo.png" style="cursor:pointer"/>
+        </label>
+       <!-- <input id="file-input" style="display:none" type="file" formenctype="multipart/form-data"  v-on:change="onFileChange">
+       --> <input type="file" id="file-input" :name="uploadFieldName" :disabled="isSaving" @change="filesChange($event.target.name, $event.target.files); fileCount = $event.target.files.length" accept="image/*" class="input-file">
+
       </div>
 
     <div id="submit">Upload Image</div> 
@@ -18,13 +23,13 @@
   <div class="text">
     <form>
       <label>Company name</label>
-      <input class="input_log" type="text" name="company name">
+      <input class="input_log" type="text" name="company name" v-model="companyPayload.cp_name">
 
       <label>Company description</label>
-      <textarea class="detail" name="description" rows="10" cols="30" />
+      <textarea class="detail" name="description" rows="10" cols="30" v-model="companyPayload.cp_desc"/>
       <div class="space">
          <router-link to="/logIn"><button class="save" id="out" @click="logout">Sign Out</button></router-link>
-        <button class="save" id="ok">Save</button>
+        <button class="save" id="ok" @click="sendProfile">Save</button>
       </div>
     </form>
 
@@ -37,6 +42,7 @@
 <script>
 
 import navigation from '@/components/navigation';
+import axios from 'axios';
 
 export default {
   name: 'profile',
@@ -44,22 +50,76 @@ export default {
     // imageData: ""  // we will store base64 format of image in this string
     return {
       msg: 'profilePage',
+        companyPayload: {
+          cp_id:1,
+          cp_name:'',
+            cp_desc:'',
+            cp_logopath:[]
+        },
       user: {
-        authenticated: false
+        authenticated: true
       },
     }
   },
   components: {
     navigation: navigation
   },
+    mounted()
+    {
+        this.checkLoggedIn();
+    },
+      methods: {
+      checkLoggedIn() {
+          if(!this.$localStorage.get('token')) {
+              this.$router.push('/logIn')
+          }
+      },
+      logout() {
+          localStorage.removeItem('token')
+          this.user.authenticated = false
+      },
 
-  logout() {
-    localStorage.removeItem('id_token')
-    localStorage.removeItem('access_token')
-    this.user.authenticated = false
-  },
+      sendProfile() {
+
+
+          axios.post(window.ApiUrl + "/1/updateProfile",
+              {
+                  cp_name: this.companyPayload.cp_name,
+                  cp_desc: this.companyPayload.cp_desc,
+                  cp_logopath: this.companyPayload.cp_logopath
+
+              }).then((res) => {
+          }).catch((err) => {
+          })
+      },
+      filesChange(fieldName, fileList) {
+          // handle file changes
+          const formData = new FormData();
+
+          if (!fileList.length) return;
+
+          // append the files to FormData
+          Array
+              .from(Array(fileList.length).keys())
+              .map(x => {
+                  formData.append(fieldName, fileList[x], fileList[x].name);
+              });
+
+          //this.companyPayload.cp_logopath=fileList[0];
+
+
+          // save it
+         this.save(formData);
+
+
+      }
+
+
+  }
 
 }
+
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
