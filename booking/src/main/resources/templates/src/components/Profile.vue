@@ -69,11 +69,7 @@ export default {
         this.checkLoggedIn();
     },
       methods: {
-      checkLoggedIn() {
-          if(!this.$localStorage.get('token')) {
-              this.$router.push('/logIn')
-          }
-      },
+
       logout() {
           localStorage.removeItem('token');
           localStorage.removeItem('email');
@@ -114,7 +110,38 @@ export default {
          this.save(formData);
 
 
-      }
+      },
+          checkLoggedIn() {
+
+              axios.post(window.ApiUrl + "/authorization",
+                  {
+
+                      token:this.$localStorage.get('token')
+
+                  })
+                  .then((res) => {
+
+                      console.log("REEESSSSS", res);
+                      if(res.data == true) {
+
+                          this.$localStorage.set('authorized', 'true');
+                      }
+                      else
+                      {
+                          this.$localStorage.set('authorized','false');
+                          this.$router.push("/logIn");
+                      }
+
+                  })
+                  .catch((err) => {
+                      this.$localStorage.set('authorized','false');
+                      this.$router.push("/logIn");
+                  })
+
+
+
+
+          }
 
 
   }

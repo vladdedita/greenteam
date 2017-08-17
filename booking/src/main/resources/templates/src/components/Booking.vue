@@ -67,7 +67,12 @@ export default {
   },
   mounted()
   {
+      this.checkLoggedIn();
+
+      //setTimeout(this.checkAuth(),1000);
+
       this.getBookings();
+
   },
     methods:{
       getBookings(){
@@ -79,8 +84,40 @@ export default {
                       console.log(this.bookings);
                   }
               ).catch((err)=> {console.log("err ",err)})
-      }
-    }
+      },
+      checkLoggedIn() {
+
+          axios.post(window.ApiUrl + "/authorization",
+              {
+
+                  token:this.$localStorage.get('token')
+
+              })
+              .then((res) => {
+
+                  console.log("REEESSSSS", res);
+                  if(res.data == true) {
+
+                      this.$localStorage.set('authorized', 'true');
+                  }
+                  else
+                  {
+                      this.$localStorage.set('authorized','false');
+                      this.$router.push("/logIn");
+                  }
+
+              })
+              .catch((err) => {
+                  this.$localStorage.set('authorized','false');
+                  this.$router.push("/logIn");
+              })
+
+
+
+
+          }
+
+}
 }
 </script>
 

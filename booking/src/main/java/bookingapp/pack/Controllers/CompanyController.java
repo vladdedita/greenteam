@@ -35,6 +35,7 @@ public class CompanyController {
     private CompanyService companyService;
 
 
+
     @RequestMapping(value="/companies")
     @CrossOrigin
     public List<Company> getCompanies(@RequestParam("authorization") String auth)
@@ -127,23 +128,27 @@ public class CompanyController {
     public void sendMail(@RequestParam(name = "email") String email)
     {
 
-        String configFile="email-bean.xml";
-
-        ConfigurableApplicationContext context = new ClassPathXmlApplicationContext(configFile);
-
-        MailService ms = (MailService) context.getBean("gtEmail");
 
 
         try {
 
+            if(companyService.getCompanyByEmail(email) != null) {
 
-            String newPassword= RandomStringUtils.random(16);
 
-            String mailBody=" Hello. Your new password is:" + newPassword;
+                String configFile="email-bean.xml";
 
-            if(companyService.changePassword(email,newPassword) == true)
-                ms.sendSimpleMessage(email,"Booking App Password Recovery", mailBody);
+                ConfigurableApplicationContext context = new ClassPathXmlApplicationContext(configFile);
 
+                MailService ms = (MailService) context.getBean("gtEmail");
+
+                
+                String newPassword = RandomStringUtils.randomAlphabetic(16);
+
+                String mailBody = " Hello. Your new password is:" + newPassword;
+
+                if (companyService.changePassword(email, newPassword) == true)
+                    ms.sendSimpleMessage(email, "Booking App Password Recovery", mailBody);
+            }
 
         }
         catch(Exception e)
@@ -175,9 +180,8 @@ public class CompanyController {
 
     @RequestMapping(value="/login",method=RequestMethod.POST)
     @CrossOrigin
-    public  Token logIn(@RequestBody String str) throws IOException
+    public String logIn(@RequestBody String str) throws IOException
     {
-
         try {
             ObjectMapper objectMapper = new ObjectMapper();
 
@@ -186,20 +190,14 @@ public class CompanyController {
             String email = objectMapper.convertValue(node.get("email"), String.class);
             String password = objectMapper.convertValue(node.get("password"), String.class);
 
-            Token tk=new Token("token","Authorized");
+            return companyService.checkCredentials(email, password);
 
-            if (companyService.checkCredentials(email, password) == true) {
-                System.out.println("Prostule");
-                return tk;
-            }
         }
         catch(Exception e)
         {
             System.out.println(e.toString());
             return null;
         }
-        return null;
-
     }
 
 }

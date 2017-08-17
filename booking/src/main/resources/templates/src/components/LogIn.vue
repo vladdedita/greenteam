@@ -78,7 +78,7 @@
 
       axios.post(window.ApiUrl + "/login", this.userPayload).then((res) => {
         //token
-        this.$localStorage.set('token', res.data.authorized);
+        this.$localStorage.set('token', res.data);
         this.$localStorage.set('email',this.userPayload.email);
         this.$router.push('/dashboard');
 

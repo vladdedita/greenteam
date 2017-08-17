@@ -1,8 +1,6 @@
 package bookingapp.pack.Models;
 
 
-import javassist.bytecode.ByteArray;
-
 import javax.persistence.*;
 
 @Entity
@@ -26,6 +24,10 @@ public class Company {
     @Column(name="password")
     private String password;
 
+    @Column(name="id_token")
+    private Long tokenId;
+
+
     @Column(name="logopath")
     private String logopath;
 
@@ -35,7 +37,6 @@ public class Company {
 
     public Company(String name,  String email, String password) {
         this.name = name;
-
         this.email = email;
         this.password = password;
     }
@@ -90,6 +91,14 @@ public class Company {
 
     public void setLogopath(String logopath) {
         this.logopath = logopath;
+    }
+
+    public Long getTokenId() {
+        return tokenId;
+    }
+
+    public void setTokenId(Long tokenId) {
+        this.tokenId = tokenId;
     }
 
     @Override
