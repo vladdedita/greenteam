@@ -60,7 +60,6 @@ public class BookingService {
         List<CompanyBooking> obj=new ArrayList<CompanyBooking>();
 
 
-
         for(Booking b : dao.findAll()){
 
             cService s=sdao.findById(b.getId_service());
@@ -71,7 +70,7 @@ public class BookingService {
                     if (b.getId_user() == u.getId()) {
 
 
-                        obj.add(new CompanyBooking(s.getName(),u.getName(),u.getEmail(),u.getPhone()));
+                        obj.add(new CompanyBooking(s.getName(),u.getName(),u.getEmail(),u.getPhone(),b.getDate()));
 
                     }
                 }

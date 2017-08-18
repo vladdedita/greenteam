@@ -3,49 +3,32 @@
    <navigation></navigation>
    <router-view></router-view>  
    <div class="calendar-nav">
-    <span class="left-btn"><icon name="angle-left" aria-hidden="true" scale="3.5"></icon>
-      <h6>Prev.week</h6></span>
+
       <p>Date</p>
-      <span><icon name="angle-right" aria-hidden="true" scale="3.5"></icon>
-        <h6>Next.week</h6></span>
+
       </div>
         <div class="container">
     <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Monday</th>
-        </tr>
-      </thead>
+
+
+
       <tbody>
-        <tr>
-          <td>name</td>
-          <td>email</td>
-          <td>phone</td>
-          <td>time</td>
-          <td>service name</td>
-        </tr>       <tr>
-          <td>name</td>
-          <td>email</td>
-          <td>phone</td>
-          <td>time</td>
-          <td>service name</td>
-        </tr>       <tr>
-          <td>name</td>
-          <td>email</td>
-          <td>phone</td>
-          <td>time</td>
-          <td>service name</td>
-        </tr>       <tr>
-          <td>name</td>
-          <td>email</td>
-          <td>phone</td>
-          <td>time</td>
-          <td>service name</td>
-        </tr>      
-        
+      <tr v-for="itemDay in days"><th>{{itemDay}}</th>
+      <table>
+        <tr v-for="item in bookings">
+          <td v-if="itemDay == item.date.split(' ')[0]">{{item.serviceName}}</td>
+          <td v-if="itemDay == item.date.split(' ')[0]">{{item.userName}}</td>
+          <td v-if="itemDay == item.date.split(' ')[0]">{{item.date.split(" ")[1]}}:00</td>
+
+        </tr>
+      </table>
+
+      </tr>
+
+
       </tbody>
     </table>
-    </form>
+
   </div>
     </div>
   </template>
@@ -55,11 +38,82 @@
   import 'vue-awesome/icons/angle-right'
   import 'vue-awesome/icons/angle-left'
   import Icon from 'vue-awesome/components/Icon'
+  import axios from 'axios'
   export default {
     name: 'calendar',
+      data() {
+        return {
+
+            bookings:'',
+            hour:'',
+            day:'',
+            days:[
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday"
+            ]
+
+        }
+
+      },
     components: {
       navigation, Icon
     }
+    ,
+     mounted()
+     {
+         this.checkLoggedIn();
+         this.getBookings();
+     },
+      methods:
+          {
+              checkLoggedIn() {
+
+                  axios.post(window.ApiUrl + "/authorization",
+                      {
+
+                          token:this.$localStorage.get('token')
+
+                      })
+                      .then((res) => {
+
+                          console.log("REEESSSSS", res);
+                          if(res.data == true) {
+
+                              this.$localStorage.set('authorized', 'true');
+                          }
+                          else
+                          {
+                              this.$localStorage.set('authorized','false');
+                              this.$router.push("/logIn");
+                          }
+
+                      })
+                      .catch((err) => {
+                          this.$localStorage.set('authorized','false');
+                          this.$router.push("/logIn");
+                      })
+
+
+
+
+              },
+              getBookings(){
+                  axios.get(window.ApiUrl + /getbookings/ + this.$localStorage.get("cpId"))
+                      .then((res) =>
+                          {
+                              this.bookings=res.data;
+
+                              console.log(this.bookings);
+                          }
+                      ).catch((err)=> {console.log("err ",err)})
+              }
+
+          }
   }
   </script>
   <style scoped>

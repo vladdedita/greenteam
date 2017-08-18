@@ -3,7 +3,7 @@
     <div class="logo"><img src="../assets/logo.png"/></div>
     <p class="hero-title">Booking <span class="apl">App</span></p>
 
-    <form class="clearfix" @keyup.esc="clearData" @keyup.enter="nextStep">
+    <form class="clearfix" @keyup.esc="clearData" @keyup.enter="nextStep" @submit.prevent="submitForm">
       <div>
         <label>Name</label>
         <input 
@@ -73,6 +73,7 @@
         axios.post(window.ApiUrl + "/register",this.userPayload).then((res) => {
           this.submitForm=true;
           console.log("res ", res);
+          this.$router.push("/logIn");
 
         })
         .catch((err) => {

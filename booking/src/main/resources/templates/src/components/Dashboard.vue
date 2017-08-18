@@ -83,10 +83,12 @@
   },
   mounted() {
 	  this.checkLoggedIn();
-      //this.getCompanies();
-      //this.getComments();
       this.getCompanyId();
       this.getServices();
+      //this.getCompanies();
+      //this.getComments();
+
+
     },
   methods: {
 	  getCompanyId() {
@@ -140,7 +142,7 @@
       getServices() {
           axios.get(window.ApiUrl + "/services/" +this.$localStorage.get("cpId")).then((res) => {
               this.services = res.data;
-              console.log("services *******", res);
+
           })
               .catch((err) => {
                   console.log("err", err);

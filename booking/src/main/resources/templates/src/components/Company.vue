@@ -48,7 +48,7 @@
 				<small slot="footer">
 					<table>
 						<tr class="tab-details">
-							<td class="td-details">{{service.available}}</td>
+							<td class="td-details">Available</td>
 							<td class="td-details">{{service.places}}</td>
 							<td class="td-details">{{service.duration}}</td>
 							<td class="td-details">{{service.price}}</td>
@@ -187,6 +187,7 @@
             return {
                 selectedDay:'0',
 				selectedHour:'0',
+
                 days: [
                     {
                         text: 'Monday',
@@ -326,7 +327,7 @@
         },
         methods: {
             getCompany() {
-                axios.get(window.ApiUrl + "/companies/"+this.$localStorage.get("cpId")).then((res) => {
+                axios.get(window.ApiUrl + "/companies/" + window.companyId).then((res) => {
                     this.companyPayload.companies = res.data;
                     console.log("companies ", res);
                 })
@@ -336,7 +337,7 @@
             },
             getLogo()
             {
-                axios.get(window.ApiUrl + "/getlogo/" +this.$localStorage.get("cpId"))
+                axios.get(window.ApiUrl + "/getlogo/" +window.companyId)
                     .then((res) => {
 
                         this.companyPayload.cp_logopath=res.data
@@ -345,7 +346,7 @@
             },
 
             getServices() {
-                axios.get(window.ApiUrl + "/services/" + this.$localStorage.get("cpId")).then((res) => {
+                axios.get(window.ApiUrl + "/services/" + window.companyId).then((res) => {
                     this.companyPayload.services = res.data;
                     console.log("services ", res);
                 })
