@@ -710,4 +710,8 @@
 		background-color: #FFF;
 		cursor: pointer;
 	}
+	.modal{
+		margin-left: 15%;
+		display: block;
+	}
 </style>

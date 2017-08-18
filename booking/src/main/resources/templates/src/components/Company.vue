@@ -615,8 +615,8 @@
 	}
 	/*Company details*/
 	.company-details{
-		width: 70%;
-		margin-left: 20%;
+		width: 50%;
+		margin-left: 26%;
 		display: flex;
 		margin-top: 65px;
 	}
@@ -627,13 +627,15 @@
 		float: left;
 	}
 	.details-comp{
-		width: 50%;
+		width: 111%;
 		margin-top: 35px;
+		margin-right: 4%;
 	}
 	.add-title{
 		color: #DB2FE8 ;
 		font-size: 25px;
 		float: left;
+
 	}
 	#img-logo{
 		width: 30%;
@@ -644,6 +646,7 @@
 		text-align: left;
 		color: #BABABA ;
 		font-size: 15px;
+		width: 100%;
 	}
 	button{
 		height: 55px;
@@ -709,5 +712,9 @@
 		text-decoration: none;
 		background-color: #FFF;
 		cursor: pointer;
+	}
+	.modal{
+		margin-left: 15%;
+		display: block;
 	}
 </style>

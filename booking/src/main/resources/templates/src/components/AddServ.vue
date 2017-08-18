@@ -175,14 +175,14 @@ label{
 
 }
 .register{
-	width: 360px;
+	width: 100%;
 	height: 53px;
 	border-radius: 5px;
 	border: 1px solid #8A8A8A;
 	margin-bottom: 15px;
 }
 .detail{
-	width: 361px;
+	width: 100%;
 	height: 155px;
 	border-radius: 5px;
 	border: 1px solid #8A8A8A;
@@ -193,19 +193,20 @@ label{
 	margin-left: 21%;
 }
 .left-side{
-	width: 50%;
+	width: 47%;
 	float: left;
 	text-align: left;
 }
 .right-side{
-	width: 50%;
+	width: 46%;
 	float: right;
 	text-align: left;
+	margin-right: 55px;
 }
 
-.det{
-	padding-bottom: 43%;
-}
+/*.det{*/
+	/*padding-bottom: 43%;*/
+/*}*/
 #serv-detail{
 	font-size: 12px;
 	color: #BFBFBF;
