@@ -8,7 +8,7 @@
       <p class="hero-title">Booking <span class="apl">App</span></p>
     </div>
 
-    <form>
+    <form @submit.prevent="sendMail">
       <label >Email address</label>
       <input 
       class="input_log"
@@ -24,6 +24,7 @@
 
 <script>
   import { required, email, } from 'vuelidate/lib/validators'
+  import axios from 'axios'
 
   export default {
     name: 'recover',
@@ -33,6 +34,19 @@
         email: '',
       }
     },
+    methods:{
+        sendMail()
+        {
+            axios.get(window.ApiUrl + "/recovery", {
+
+                params:{
+                    email:this.email
+                }
+            }).then((res)=> {})
+                .catch((err)=>{})
+        }
+
+        },
 
     validations: {
       email: {

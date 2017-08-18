@@ -4,9 +4,9 @@
     <router-view></router-view>
     <div class="b-select">
 
-      <b-dropdown id="ddown5" text="Service name" class="m-md-2">
-      <b-dropdown-item-button v-for="item in options">{{item.text}}</b-dropdown-item-button>
-    </b-dropdown>
+      <select id="ddown5" text="Service name" class="m-md-2" v-model="selected">
+      <option v-for="item in options" v-bind:value="item.value">{{item.text}}</option>
+    </select>
     
   </div>
   <div class="container">
@@ -21,7 +21,7 @@
       </thead>
 
       <tbody>
-      <tr v-for="booking in bookings">
+      <tr v-for="booking in sortings">
 
         <td>{{booking.serviceName}}</td>
         <td>{{booking.userName}}</td>
@@ -38,6 +38,8 @@
 <script>
 import navigation from '@/components/navigation'
 import axios from 'axios'
+import sortBy from 'lodash'
+import orderBy from 'lodash'
 export default {
   name: 'booking',
   components: {
@@ -45,28 +47,30 @@ export default {
   },
   data() {
     return {
-      selected: null,
+      selected: "serviceName",
       options: [
       {
-        text: 'Select service',
-        value: null
+        text: 'Service name',
+        value: 'serviceName'
+      },
+          {
+        text: 'Customer name',
+        value: 'userName'
+      }, {
+        text: 'E-mail',
+        value: 'email'
       },
       {
-        text: 'This is First option',
-        value: 'a'
-      }, {
-        text: 'Default Selected Option',
-        value: 'b'
-      }, {
-        text: 'This is another option',
-        value: 'c'
-      }]   ,
+      text: 'Phone',
+      value: 'phone'
+      }],
 
         bookings:[],
     }
   },
   mounted()
   {
+
       this.checkLoggedIn();
 
       //setTimeout(this.checkAuth(),1000);
@@ -74,6 +78,14 @@ export default {
       this.getBookings();
 
   },
+    computed: {
+        sortings:
+            function(value) {
+
+            return _.orderBy(this.bookings,this.selected);
+        }
+    }
+    ,
     methods:{
       getBookings(){
           axios.get(window.ApiUrl + /getbookings/ + this.$localStorage.get("cpId"))
@@ -85,8 +97,8 @@ export default {
                   }
               ).catch((err)=> {console.log("err ",err)})
       },
-      checkLoggedIn() {
 
+      checkLoggedIn() {
           axios.post(window.ApiUrl + "/authorization",
               {
 

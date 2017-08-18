@@ -1,8 +1,17 @@
 <template>
+
     <div class="navigations">
       <nav>
-        <h2>Booking App</h2>
+        <h2>
+          <router-link to="/dashboard">
+            Booking<b>App</b>
+          </router-link>
+        </h2>
         <ul>
+
+          <li>
+            <router-link to="/profile" exact-active-class="active" style="font-size:10px; text-decoration:underline; omargin-right: 10px;">Welcome {{this.$localStorage.get("email")}}</router-link>
+          </li>
           <li>
             <router-link to="/dashboard" exact-active-class="active">Dashboard</router-link>
           </li> <li>
@@ -31,7 +40,9 @@
   .active {
     font-weight: bold;
   }
-
+  h2{
+    font-family:Neuton;
+  }
   p{
     color: red;
   }
@@ -39,6 +50,7 @@
     margin: 0;
   }
   li{
+
     list-style-type: none;
     display: inline;
     color: #FFF;
@@ -54,7 +66,7 @@
     margin: 0;
   }
   h2{
-        position: absolute;
+    position: absolute;
     color: #FFF;
     margin: 25px 0 10px 25px;
   }
