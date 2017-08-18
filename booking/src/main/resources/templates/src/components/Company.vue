@@ -1,5 +1,21 @@
 <template>
 	<div class="company">
+		<div class="navigations-company">
+      <nav>
+        <h2 id="nav-logo">Booking App</h2>
+        <ul class="nav-comp">
+          <li class="nav-comp-item">
+            <router-link to="/" exact-active-class="active">Companies</router-link>
+          </li> 
+          <li class="nav-comp-item">
+            <router-link to="/register" exact-active-class="active">Register</router-link>
+          </li>
+          <li class="nav-comp-item">
+            <router-link to="/logIn" exact-active-class="active-comp">LogIn</router-link>
+          </li>
+        </ul>
+      </nav>
+    </div>
 		<div class="company-details">
 			<div id='img-logo'>
 				<img id="logo-comp" :src="companyPayload.cp_logopath" style="width:140px; height:140px;" alt="logo-company"/>
@@ -585,4 +601,34 @@ button{
 	margin-top: 60px;
 	width: 50%;
 }
+  .nav-comp-item{
+    list-style-type: none;
+    display: inline;
+    color: #FFF;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .nav-comp{
+    background-color: #7B90E0;
+    padding: 37px 20px 10px 0;
+    font-size: 14px;
+    text-align: right;
+    word-spacing: 18px;
+    margin: 0;
+  }
+   #nav-logo{
+        position: absolute;
+    color: #FFF;
+    margin: 25px 0 10px 25px;
+  }
+  	.active-comp {
+    font-weight: bold;
+  }
+  a{
+    color: #FFF;
+  }
+  a:hover{
+    text-decoration: none;
+		color:#fff;
+  }
 </style>
