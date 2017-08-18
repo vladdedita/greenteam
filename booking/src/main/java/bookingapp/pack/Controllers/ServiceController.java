@@ -2,10 +2,12 @@ package bookingapp.pack.Controllers;
 
 import bookingapp.pack.Models.cService;
 import bookingapp.pack.Services.ServiceService;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -17,7 +19,7 @@ public class ServiceController {
 
     @RequestMapping("/services")
     @CrossOrigin
-    public String getServices()
+    public List<cService> getServices()
     {
         return serviceService.getAllServices();
     }
@@ -55,6 +57,16 @@ public class ServiceController {
         }
 
     }
+
+
+    @RequestMapping("/calendar/{id}")
+    public String getCalendar(@PathVariable Long id)
+    {
+
+        return new Gson().toJson(serviceService.getCalendar(id));
+        //return new Gson().toJson(serviceService.getCalendar(id).get("0").get(7));
+    }
+
 
 
 

@@ -181,12 +181,7 @@ public class CompanyController {
 
     }
 
-    @RequestMapping("/calendar")
-    public  String getCalendar()
-    {
 
-        return new Gson().toJson(companyService.initCalendar("asd"));
-    }
 
 
 
