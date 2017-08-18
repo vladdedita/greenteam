@@ -1,6 +1,7 @@
 <template>
 	<div class="dashboard">
-		<navigation></navigation>
+		<navigation>
+		</navigation>
     	<router-view></router-view>
 		
 		<!-- <div class="add-title">

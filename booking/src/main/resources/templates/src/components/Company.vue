@@ -535,9 +535,10 @@ label{
 	display: flex;
 	margin-top: 65px;
 }
-.logo-comp{
+#logo-comp{
 	width: 170px;
 	height: 170px;
+	border-radius: 100%;
 	float: left;
 }
 .details-comp{
@@ -551,6 +552,7 @@ label{
 }
 #img-logo{
 	width: 30%;
+
 }
 .add-details{
 	display: inline-table;
