@@ -48,149 +48,112 @@
         <item name="gtbookingdb" type="e3449647:DbNodeDescriptor" />
         <item name="public" type="e3449647:DbNodeDescriptor" />
         <item name="" type="fce03ad6:DatabaseStructure$GroupNode" />
-        <item name="booking" type="e3449647:DbNodeDescriptor" />
-      </path>
-      <path>
-        <item name="" type="eadb38e5:DatabaseStructure$Root" />
-        <item name="gtbookingdb@localhost" type="e3449647:DbNodeDescriptor" />
-        <item name="gtbookingdb" type="e3449647:DbNodeDescriptor" />
-        <item name="public" type="e3449647:DbNodeDescriptor" />
-        <item name="" type="fce03ad6:DatabaseStructure$GroupNode" />
-        <item name="service" type="e3449647:DbNodeDescriptor" />
-      </path>
-      <path>
-        <item name="" type="eadb38e5:DatabaseStructure$Root" />
-        <item name="gtbookingdb@localhost" type="e3449647:DbNodeDescriptor" />
-        <item name="gtbookingdb" type="e3449647:DbNodeDescriptor" />
-        <item name="public" type="e3449647:DbNodeDescriptor" />
-        <item name="" type="fce03ad6:DatabaseStructure$GroupNode" />
-        <item name="users" type="e3449647:DbNodeDescriptor" />
+        <item name="company" type="e3449647:DbNodeDescriptor" />
       </path>
     </expand>
     <select />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Booking.vue" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/src/components/Booking.vue">
+      <file leaf-file-name="CompanyController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Controllers/CompanyController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="28" column="21" lean-forward="false" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
-              <folding>
-                <element signature="n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-                <element signature="n#b-dropdown#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-                <element signature="e#840#888#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="booking" pinned="false" current-in-tab="false">
-        <entry file="das://table:/5799ccbd/70a10b7a-23ef-4433-bcb8-81cd26b8af11/gtbookingdb.public.booking">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BookingController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Controllers/BookingController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="485">
-              <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ServiceService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Services/ServiceService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="94" column="21" lean-forward="true" selection-start-line="84" selection-start-column="7" selection-end-line="94" selection-end-column="21" />
-              <folding>
-                <element signature="e#706#716#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BookingService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Services/BookingService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1445">
-              <caret line="86" column="0" lean-forward="true" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+            <state relative-caret-position="0">
+              <caret line="47" column="5" lean-forward="false" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1343#1359#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Booking.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Models/Booking.java">
+      <file leaf-file-name="Profile.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/src/components/Profile.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="7" column="7" lean-forward="false" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CompanyBooking.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Models/CompanyBooking.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="449">
-              <caret line="43" column="92" lean-forward="false" selection-start-line="43" selection-start-column="92" selection-end-line="43" selection-end-column="92" />
+            <state relative-caret-position="2214">
+              <caret line="125" column="34" lean-forward="false" selection-start-line="125" selection-start-column="34" selection-end-line="125" selection-end-column="34" />
               <folding>
-                <element signature="e#183#184#0" expanded="true" />
-                <element signature="e#217#218#0" expanded="true" />
-                <element signature="e#271#272#0" expanded="true" />
-                <element signature="e#317#318#0" expanded="true" />
-                <element signature="e#352#353#0" expanded="true" />
-                <element signature="e#383#384#0" expanded="true" />
-                <element signature="e#431#432#0" expanded="true" />
-                <element signature="e#471#472#0" expanded="true" />
-                <element signature="e#503#504#0" expanded="true" />
-                <element signature="e#531#532#0" expanded="true" />
-                <element signature="e#573#574#0" expanded="true" />
-                <element signature="e#607#608#0" expanded="true" />
-                <element signature="e#639#640#0" expanded="true" />
-                <element signature="e#667#668#0" expanded="true" />
-                <element signature="e#709#710#0" expanded="true" />
-                <element signature="e#743#744#0" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#label#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="e#2023#2072#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ServiceDao.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Dao/ServiceDao.java">
+      <file leaf-file-name="Dashboard.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/src/components/Dashboard.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="8" column="29" lean-forward="false" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
+            <state relative-caret-position="36">
+              <caret line="2" column="20" lean-forward="false" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserDao.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Dao/UserDao.java">
+      <file leaf-file-name="AddServ.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/src/components/AddServ.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+            <state relative-caret-position="990">
+              <caret line="55" column="0" lean-forward="true" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CompanyDao.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Dao/CompanyDao.java">
+      <file leaf-file-name="Company.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/src/components/Company.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="11" column="28" lean-forward="false" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+            <state relative-caret-position="595">
+              <caret line="129" column="39" lean-forward="false" selection-start-line="129" selection-start-column="39" selection-end-line="129" selection-end-column="39" />
+              <folding>
+                <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="e#5607#5713#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/src/router/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="navigation.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/src/components/navigation.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="5" column="38" lean-forward="false" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
+              <folding>
+                <element signature="n#style#0;n#router-link#0;n#li#0;n#ul#0;n#nav#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Booking.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/src/components/Booking.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <folding>
+                <element signature="e#845#893#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="calendaroption.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/src/components/calendaroption.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="779">
+              <caret line="117" column="1" lean-forward="true" selection-start-line="109" selection-start-column="4" selection-end-line="117" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -210,6 +173,8 @@
     <findStrings>
       <find>step</find>
       <find>$v</find>
+      <find>assets</find>
+      <find>defau</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -220,10 +185,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/bookingapp/pack/BookingApp.java" />
-        <option value="$PROJECT_DIR$/src/main/java/bookingapp/pack/Models/Service.java" />
-        <option value="$PROJECT_DIR$/src/main/java/bookingapp/pack/Models/Company.java" />
-        <option value="$PROJECT_DIR$/src/main/java/bookingapp/pack/Dao/BookingDao.java" />
         <option value="$PROJECT_DIR$/src/Spring-Mail.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/applicationContext.fxml" />
         <option value="$PROJECT_DIR$/src/main/resources/Spring-Mail.xml" />
@@ -247,24 +208,34 @@
         <option value="$PROJECT_DIR$/src/main/java/bookingapp/pack/Configs/MyAuthenticationFilter.java" />
         <option value="$PROJECT_DIR$/src/main/java/bookingapp/pack/Controllers/UploadController.java" />
         <option value="$PROJECT_DIR$/src/main/java/bookingapp/pack/Dao/CompanyDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/bookingapp/pack/Services/CompanyService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/bookingapp/pack/Models/Token.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/src/components/Companies.vue" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/bookingapp/pack/Controllers/CompanyController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/src/components/Company.vue" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/src/components/LogIn.vue" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/src/components/Profile.vue" />
         <option value="$PROJECT_DIR$/src/main/java/bookingapp/pack/Controllers/ServiceController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/src/components/AddServ.vue" />
         <option value="$PROJECT_DIR$/src/main/java/bookingapp/pack/Services/ServiceService.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/src/components/Dashboard.vue" />
         <option value="$PROJECT_DIR$/src/main/java/bookingapp/pack/Dao/UserDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/bookingapp/pack/Dao/ServiceDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/bookingapp/pack/Models/CompanyBooking.java" />
         <option value="$PROJECT_DIR$/src/main/java/bookingapp/pack/Controllers/BookingController.java" />
         <option value="$PROJECT_DIR$/src/main/java/bookingapp/pack/Services/BookingService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/src/components/LogIn.vue" />
+        <option value="$PROJECT_DIR$/src/main/java/bookingapp/pack/Models/Company.java" />
+        <option value="$PROJECT_DIR$/src/main/java/bookingapp/pack/Models/Token.java" />
+        <option value="$PROJECT_DIR$/src/main/java/bookingapp/pack/Dao/TokenDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/bookingapp/pack/Services/TokenService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/bookingapp/pack/Controllers/AuthController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/src/components/Recover.vue" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/src/components/upload.js" />
+        <option value="$PROJECT_DIR$/src/main/java/bookingapp/pack/Services/CompanyService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/bookingapp/pack/Controllers/CompanyController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/src/components/Profile.vue" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/src/components/Dashboard.vue" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/src/App.vue" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/index.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/src/components/navigation.vue" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/src/components/Booking.vue" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/src/router/index.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/src/components/Company.vue" />
       </list>
     </option>
   </component>
@@ -287,6 +258,12 @@
         <option name="importAutomatically" value="true" />
       </MavenImportingSettings>
     </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
   </component>
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/src/main/resources/templates/node_modules" />
@@ -312,8 +289,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="AndroidView" />
       <pane id="Scope" />
       <pane id="ProjectPane">
@@ -427,12 +402,24 @@
             <path>
               <item name="booking" type="b2602c69:ProjectViewProjectNode" />
               <item name="booking" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="router" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="booking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="booking" type="462c0819:PsiDirectoryNode" />
               <item name="target" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -444,11 +431,14 @@
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="bookingapp.pack.Dao" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/resources" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/bookingapp/pack/Models" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -598,12 +588,16 @@
       <workItem from="1502910412782" duration="7377000" />
       <workItem from="1502950191319" duration="11554000" />
       <workItem from="1502966327352" duration="5177000" />
-      <workItem from="1502971539174" duration="11353000" />
+      <workItem from="1502971539174" duration="14234000" />
+      <workItem from="1502997068859" duration="7710000" />
+      <workItem from="1503006239842" duration="7939000" />
+      <workItem from="1503036265284" duration="5345000" />
+      <workItem from="1503041639645" duration="1791000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="107066000" />
+    <option name="totallyTimeSpent" value="132732000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -621,30 +615,30 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32963374" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291536" sideWeight="0.49087894" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23197491" sideWeight="0.3034826" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18297403" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23197491" sideWeight="0.6965174" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23406479" sideWeight="0.6965174" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32963374" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18960752" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23659481" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19845219" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23659481" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3291536" sideWeight="0.49806523" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2498618" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2498618" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30512017" sideWeight="0.48258707" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291536" sideWeight="0.49806523" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -692,97 +686,19 @@
           <option name="timeStamp" value="53" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="54" />
+      <option name="time" value="65" />
     </breakpoint-manager>
     <watches-manager />
   </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.idea/dataSources.local.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Configs/SecurityConfig.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Configs/MyAuthenticationFilter.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Controllers/UploadController.java" />
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/70a10b7a-23ef-4433-bcb8-81cd26b8af11/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/src/components/Recover.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/src/components/Register.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="73" column="31" lean-forward="false" selection-start-line="73" selection-start-column="31" selection-end-line="73" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/src/components/Calendar.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/dataSources.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Controllers/WebController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="9" column="24" lean-forward="false" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
-          <folding>
-            <element signature="e#250#251#0" expanded="false" />
-            <element signature="e#280#281#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/5799ccbd/70a10b7a-23ef-4433-bcb8-81cd26b8af11/gtbookingdb.public.company">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.3.10.RELEASE/spring-aop-4.3.10.RELEASE.jar!/org/springframework/aop/framework/JdkDynamicAopProxy.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1450">
-          <caret line="82" column="0" lean-forward="false" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="17" column="11" lean-forward="false" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.10.RELEASE/spring-web-4.3.10.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -793,31 +709,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.10.RELEASE/spring-web-4.3.10.RELEASE.jar!/org/springframework/web/filter/OncePerRequestFilter.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-162">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.10.RELEASE/spring-web-4.3.10.RELEASE.jar!/org/springframework/web/filter/RequestContextFilter.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="43">
-          <caret line="34" column="157" lean-forward="false" selection-start-line="34" selection-start-column="157" selection-end-line="34" selection-end-column="157" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.10.RELEASE/spring-web-4.3.10.RELEASE.jar!/org/springframework/web/filter/HttpPutFormContentFilter.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="169">
           <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.10.RELEASE/spring-webmvc-4.3.10.RELEASE.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestMappingHandlerAdapter.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="465" column="19" lean-forward="true" selection-start-line="465" selection-start-column="19" selection-end-line="465" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -832,65 +727,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
           <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.10.RELEASE/spring-webmvc-4.3.10.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="411" column="0" lean-forward="false" selection-start-line="411" selection-start-column="0" selection-end-line="411" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.10.RELEASE/spring-webmvc-4.3.10.RELEASE.jar!/org/springframework/web/servlet/FrameworkServlet.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="407" column="0" lean-forward="false" selection-start-line="407" selection-start-column="0" selection-end-line="407" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.16/tomcat-embed-core-8.5.16.jar!/org/apache/catalina/core/ApplicationFilterChain.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Models/Token.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="828">
-          <caret line="56" column="5" lean-forward="true" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/src/router/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-487">
-          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#21#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="24" column="28" lean-forward="true" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Models/Company.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="810">
-          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding>
-            <element signature="e#918#919#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -909,6 +745,114 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Models/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" column="19" lean-forward="false" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Controllers/ServiceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-127">
+          <caret line="40" column="70" lean-forward="false" selection-start-line="40" selection-start-column="70" selection-end-line="40" selection-end-column="70" />
+          <folding>
+            <element signature="e#1460#1461#0" expanded="false" />
+            <element signature="e#1523#1524#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Models/Booking.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="7" lean-forward="false" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Models/CompanyBooking.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="449">
+          <caret line="43" column="92" lean-forward="false" selection-start-line="43" selection-start-column="92" selection-end-line="43" selection-end-column="92" />
+          <folding>
+            <element signature="e#183#184#0" expanded="false" />
+            <element signature="e#217#218#0" expanded="false" />
+            <element signature="e#271#272#0" expanded="false" />
+            <element signature="e#317#318#0" expanded="false" />
+            <element signature="e#352#353#0" expanded="false" />
+            <element signature="e#383#384#0" expanded="false" />
+            <element signature="e#431#432#0" expanded="false" />
+            <element signature="e#471#472#0" expanded="false" />
+            <element signature="e#503#504#0" expanded="false" />
+            <element signature="e#531#532#0" expanded="false" />
+            <element signature="e#573#574#0" expanded="false" />
+            <element signature="e#607#608#0" expanded="false" />
+            <element signature="e#639#640#0" expanded="false" />
+            <element signature="e#667#668#0" expanded="false" />
+            <element signature="e#709#710#0" expanded="false" />
+            <element signature="e#743#744#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/5799ccbd/70a10b7a-23ef-4433-bcb8-81cd26b8af11/gtbookingdb.public.booking">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Services/BookingService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1445">
+          <caret line="86" column="0" lean-forward="false" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1343#1359#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Controllers/BookingController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="485">
+          <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Dao/CompanyDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="11" column="28" lean-forward="false" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Dao/ServiceDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="8" column="29" lean-forward="false" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Dao/UserDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="8" column="34" lean-forward="false" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Dao/BookingDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Models/cService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -917,21 +861,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Services/CompanyService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Models/Company.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3267">
-          <caret line="269" column="0" lean-forward="false" selection-start-line="269" selection-start-column="0" selection-end-line="269" selection-end-column="0" />
+        <state relative-caret-position="415">
+          <caret line="27" column="14" lean-forward="false" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="16" />
+          <folding>
+            <element signature="e#1792#1793#0" expanded="false" />
+            <element signature="e#1830#1831#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Models/Token.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="94" column="60" lean-forward="false" selection-start-line="94" selection-start-column="60" selection-end-line="94" selection-end-column="60" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Controllers/CompanyController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Services/TokenService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="190" column="75" lean-forward="true" selection-start-line="190" selection-start-column="75" selection-end-line="190" selection-end-column="75" />
+        <state relative-caret-position="594">
+          <caret line="39" column="9" lean-forward="false" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#439#440#0" expanded="false" />
+            <element signature="e#484#485#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Dao/TokenDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="9" column="43" lean-forward="false" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/5799ccbd/70a10b7a-23ef-4433-bcb8-81cd26b8af11/gtbookingdb.public.token">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Controllers/AuthController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="29" column="57" lean-forward="true" selection-start-line="29" selection-start-column="57" selection-end-line="29" selection-end-column="57" />
         </state>
       </provider>
     </entry>
@@ -945,164 +923,200 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/src/components/LogIn.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="81" column="56" lean-forward="false" selection-start-line="81" selection-start-column="56" selection-end-line="81" selection-end-column="56" />
+        <state relative-caret-position="90">
+          <caret line="5" column="68" lean-forward="false" selection-start-line="5" selection-start-column="41" selection-end-line="5" selection-end-column="68" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/src/components/Company.vue">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/src/components/upload.js" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Services/ServiceService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-54">
-          <caret line="230" column="83" lean-forward="false" selection-start-line="230" selection-start-column="83" selection-end-line="230" selection-end-column="83" />
+        <state relative-caret-position="377">
+          <caret line="86" column="20" lean-forward="true" selection-start-line="86" selection-start-column="20" selection-end-line="86" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/src/components/Profile.vue">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.10.RELEASE/spring-webmvc-4.3.10.RELEASE.jar!/org/springframework/web/servlet/FrameworkServlet.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="86" column="86" lean-forward="false" selection-start-line="86" selection-start-column="86" selection-end-line="86" selection-end-column="86" />
-          <folding />
+        <state relative-caret-position="194">
+          <caret line="493" column="0" lean-forward="false" selection-start-line="493" selection-start-column="0" selection-end-line="493" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/src/components/AddServ.vue">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.10.RELEASE/spring-web-4.3.10.RELEASE.jar!/org/springframework/web/filter/RequestContextFilter.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="118" column="22" lean-forward="true" selection-start-line="111" selection-start-column="16" selection-end-line="118" selection-end-column="22" />
-          <folding />
+        <state relative-caret-position="259">
+          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/src/components/Dashboard.vue">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.10.RELEASE/spring-web-4.3.10.RELEASE.jar!/org/springframework/web/filter/OncePerRequestFilter.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="135" column="45" lean-forward="true" selection-start-line="135" selection-start-column="45" selection-end-line="135" selection-end-column="45" />
-          <folding />
+        <state relative-caret-position="18">
+          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Models/User.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.16/tomcat-embed-core-8.5.16.jar!/org/apache/catalina/core/StandardWrapperValve.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="14" column="19" lean-forward="false" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
-          <folding />
+        <state relative-caret-position="302">
+          <caret line="170" column="0" lean-forward="false" selection-start-line="170" selection-start-column="0" selection-end-line="170" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Controllers/ServiceController.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.16/tomcat-embed-core-8.5.16.jar!/org/apache/catalina/core/ApplicationFilterChain.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-127">
-          <caret line="40" column="70" lean-forward="false" selection-start-line="40" selection-start-column="70" selection-end-line="40" selection-end-column="70" />
-          <folding>
-            <element signature="e#1460#1461#0" expanded="true" />
-            <element signature="e#1523#1524#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="212">
+          <caret line="95" column="0" lean-forward="false" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Dao/CompanyDao.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.10.RELEASE/spring-webmvc-4.3.10.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="11" column="28" lean-forward="false" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
-          <folding />
+        <state relative-caret-position="212">
+          <caret line="406" column="0" lean-forward="false" selection-start-line="406" selection-start-column="0" selection-end-line="406" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Dao/UserDao.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.10.RELEASE/spring-webmvc-4.3.10.RELEASE.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestMappingHandlerAdapter.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="212">
+          <caret line="531" column="0" lean-forward="false" selection-start-line="531" selection-start-column="0" selection-end-line="531" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Dao/ServiceDao.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.10.RELEASE/spring-web-4.3.10.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="8" column="29" lean-forward="false" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
-          <folding />
+        <state relative-caret-position="248">
+          <caret line="125" column="0" lean-forward="false" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Models/Booking.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="7" lean-forward="false" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Models/CompanyBooking.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="43" column="92" lean-forward="false" selection-start-line="43" selection-start-column="92" selection-end-line="43" selection-end-column="92" />
-          <folding>
-            <element signature="e#183#184#0" expanded="true" />
-            <element signature="e#217#218#0" expanded="true" />
-            <element signature="e#271#272#0" expanded="true" />
-            <element signature="e#317#318#0" expanded="true" />
-            <element signature="e#352#353#0" expanded="true" />
-            <element signature="e#383#384#0" expanded="true" />
-            <element signature="e#431#432#0" expanded="true" />
-            <element signature="e#471#472#0" expanded="true" />
-            <element signature="e#503#504#0" expanded="true" />
-            <element signature="e#531#532#0" expanded="true" />
-            <element signature="e#573#574#0" expanded="true" />
-            <element signature="e#607#608#0" expanded="true" />
-            <element signature="e#639#640#0" expanded="true" />
-            <element signature="e#667#668#0" expanded="true" />
-            <element signature="e#709#710#0" expanded="true" />
-            <element signature="e#743#744#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/5799ccbd/70a10b7a-23ef-4433-bcb8-81cd26b8af11/gtbookingdb.public.booking">
+    <entry file="das://table:/5799ccbd/70a10b7a-23ef-4433-bcb8-81cd26b8af11/gtbookingdb.public.company">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Services/ServiceService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Services/CompanyService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="94" column="21" lean-forward="true" selection-start-line="84" selection-start-column="7" selection-end-line="94" selection-end-column="21" />
+        <state relative-caret-position="1458">
+          <caret line="108" column="42" lean-forward="false" selection-start-line="108" selection-start-column="42" selection-end-line="108" selection-end-column="42" />
           <folding>
-            <element signature="e#706#716#0" expanded="true" />
+            <element signature="method#initCalendar#0;class#CompanyService#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Controllers/BookingController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/src/components/Recover.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="485">
-          <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+        <state relative-caret-position="180">
+          <caret line="10" column="35" lean-forward="false" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Services/BookingService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/src/components/Dashboard.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1445">
-          <caret line="86" column="0" lean-forward="true" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+        <state relative-caret-position="36">
+          <caret line="2" column="20" lean-forward="false" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/src/App.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="17" column="2" lean-forward="false" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="81" lean-forward="false" selection-start-line="3" selection-start-column="81" selection-end-line="3" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bookingapp/pack/Controllers/CompanyController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="47" column="5" lean-forward="false" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1343#1359#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/src/components/Profile.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2214">
+          <caret line="125" column="34" lean-forward="false" selection-start-line="125" selection-start-column="34" selection-end-line="125" selection-end-column="34" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#label#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#2023#2072#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/src/components/AddServ.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="990">
+          <caret line="55" column="0" lean-forward="true" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/src/router/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/src/components/navigation.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="38" lean-forward="false" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
+          <folding>
+            <element signature="n#style#0;n#router-link#0;n#li#0;n#ul#0;n#nav#0;n#div#0;n#template#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/src/components/Booking.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="28" column="21" lean-forward="false" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
+        <state relative-caret-position="378">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding>
-            <element signature="n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#b-dropdown#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#840#888#0" expanded="true" />
+            <element signature="e#845#893#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/src/components/calendaroption.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="779">
+          <caret line="117" column="1" lean-forward="true" selection-start-line="109" selection-start-column="4" selection-end-line="117" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/src/components/Company.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="129" column="39" lean-forward="false" selection-start-line="129" selection-start-column="39" selection-end-line="129" selection-end-column="39" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#5607#5713#0" expanded="true" />
           </folding>
         </state>
       </provider>

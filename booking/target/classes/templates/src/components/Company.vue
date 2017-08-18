@@ -2,7 +2,7 @@
 	<div class="company">
 		<div class="company-details">
 			<div id='img-logo'>
-				<img id="logo-comp" src="../assets/default-logo.png" alt="logo-company"/>
+				<img id="logo-comp" :src="companyPayload.cp_logopath" style="width:140px; height:140px;" alt="logo-company"/>
 			</div>
 			<div class="details-comp">
 				<p class="add-title">{{companyPayload.companies.name}}</p>
@@ -160,12 +160,14 @@ export default {
 				phone: '',
 				email: '',
 				places: '',
-				checkSubmit: false
+				checkSubmit: false,
+				cp_logopath:''
 
 
 			},
 
 			bookingPayload: {
+			    id_service:'',
 				name: '',
 				email: '',
 				places: '',
@@ -211,15 +213,11 @@ export default {
     mounted() {
         this.getServices();
         this.getCompany();
+        this.getLogo();
     },
     methods: {
         getCompany() {
-            axios.get(window.ApiUrl + "/companies/"+this.$localStorage.get("cpId") ,{
-                params:
-					{
-					    authorization:this.$localStorage.get('token')
-					}
-            }).then((res) => {
+            axios.get(window.ApiUrl + "/companies/"+this.$localStorage.get("cpId")).then((res) => {
                 this.companyPayload.companies = res.data;
                 console.log("companies ", res);
             })
@@ -227,6 +225,16 @@ export default {
                     console.log("err", err);
                 })
         },
+        getLogo()
+        {
+            axios.get(window.ApiUrl + "/getlogo/" +this.$localStorage.get("cpId"))
+                .then((res) => {
+
+                    this.companyPayload.cp_logopath=res.data
+
+                }).catch((err)=> {})
+        },
+
         getServices() {
             axios.get(window.ApiUrl + "/services/" + this.$localStorage.get("cpId")).then((res) => {
                 this.companyPayload.services = res.data;
@@ -262,10 +270,7 @@ export default {
           },
           sendBooking() {
 
-            //axios.post(window.ApiUrl + "/addbooking", {id_service:13,date:'111',places:10})
             this.companyPayload.step++;
-
-
             this.addBooking();
             this.clearData();
 
@@ -275,9 +280,9 @@ export default {
           	axios.post(window.ApiUrl + "/addbooking", {
 
           		Booking: {
-          			id_service: 13,
+          			id_service: this.companyPayload.selectedService.id,
           			date: '111',
-          			places: 11
+          			places: this.companyPayload.places
           		},
           		User: {
           			name: this.bookingPayload.name,
@@ -292,30 +297,6 @@ export default {
           	}).catch((err) => {})
 
           },
-
-
-		/*
-
-		addService() {
-			axios.post(window.ApiUrl + "/addservice", {
-				name:this.userPayload.name,
-				duration: this.userPayload.duration,
-				description:this.userPayload.description,
-				places: this.userPayload.places,
-				price: this.userPayload.price,
-				idCompany: 1
-			}).then((res) => {
-			    this.submitForm=true;
-				// redirect
-			})
-			.catch((err) => {
-				// ii spui ca e prost si nu stie sa salveze un serviciu
-			})
-		}
-
-		*/
-
-
 
 		nextStep() {
 			if (this.checkValidation()) {
@@ -528,9 +509,10 @@ label{
 	display: flex;
 	margin-top: 65px;
 }
-.logo-comp{
+#logo-comp{
 	width: 170px;
 	height: 170px;
+	border-radius: 100%;
 	float: left;
 }
 .details-comp{
@@ -544,6 +526,7 @@ label{
 }
 #img-logo{
 	width: 30%;
+
 }
 .add-details{
 	display: inline-table;

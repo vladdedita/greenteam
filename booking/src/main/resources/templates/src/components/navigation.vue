@@ -2,7 +2,11 @@
 
     <div class="navigations">
       <nav>
-        <h2>Booking<b>App</b></h2>
+        <h2>
+          <router-link to="/dashboard">
+            Booking<b>App</b>
+          </router-link>
+        </h2>
         <ul>
 
           <li>
@@ -46,7 +50,7 @@
     margin: 0;
   }
   li{
-    
+
     list-style-type: none;
     display: inline;
     color: #FFF;

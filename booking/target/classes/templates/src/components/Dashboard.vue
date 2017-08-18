@@ -1,6 +1,7 @@
 <template>
 	<div class="dashboard">
-		<navigation></navigation>
+		<navigation>
+		</navigation>
     	<router-view></router-view>
 		
 		<!-- <div class="add-title">
@@ -105,11 +106,37 @@
           })
 
 	  },
-  	 checkLoggedIn() {
-  	 	if(!this.$localStorage.get('token')) {
-  	 		this.$router.push('/logIn')
-  	 	}
-  	 },
+      checkLoggedIn() {
+
+          axios.post(window.ApiUrl + "/authorization",
+              {
+
+                  token:this.$localStorage.get('token')
+
+              })
+              .then((res) => {
+
+                  console.log("REEESSSSS", res);
+                  if(res.data == true) {
+
+                      this.$localStorage.set('authorized', 'true');
+                  }
+                  else
+                  {
+                      this.$localStorage.set('authorized','false');
+                      this.$router.push("/logIn");
+                  }
+
+              })
+              .catch((err) => {
+                  this.$localStorage.set('authorized','false');
+                  this.$router.push("/logIn");
+              })
+
+
+
+
+      },
       getServices() {
           axios.get(window.ApiUrl + "/services/" +this.$localStorage.get("cpId")).then((res) => {
               this.services = res.data;
