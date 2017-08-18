@@ -39,12 +39,10 @@ public class CompanyController {
 
     @RequestMapping(value="/companies")
     @CrossOrigin
-    public List<Company> getCompanies(@RequestParam("authorization") String auth)
+    public List<Company> getCompanies()
     {
 
-        System.out.println(auth);
-
-        return companyService.getAllCompanies();
+       return companyService.getAllCompanies();
     }
 
     @RequestMapping(value="/companies/{id}")

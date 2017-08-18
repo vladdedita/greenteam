@@ -2,7 +2,7 @@
 	<div class="companies">
 		<div class="navigations-company">
       <nav>
-        <h2 id="nav-logo">Booking App</h2>
+		  <h2 id="nav-logo">Booking<b>App</b></h2>
         <ul class="nav-comp">
           <li class="nav-comp-item">
             <router-link to="/" exact-active-class="active">Companies</router-link>

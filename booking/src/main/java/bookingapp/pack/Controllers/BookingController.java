@@ -60,12 +60,37 @@ public class BookingController {
         Map<Integer,Integer> a=calendar.get(day);
 
 
-        Integer ai=a.get(7);
-
-
         calendar.get(day).put(hour,calendar.get(day).get(hour)-b.getPlaces());
 
         s.setCalendar(new Gson().toJson(calendar));
+
+        String sday=new String();
+
+        if(day.equals("0"))
+            sday="Monday";
+        else
+        if(day.equals("1"))
+            sday="Tuesday";
+        else
+
+        if(day.equals("2"))
+            sday="Wednesday";
+        else
+        if(day.equals("3"))
+            sday="Thursday";
+        else
+        if(day.equals("4"))
+            sday="Friday";
+        else
+        if(day.equals("5"))
+            sday="Saturday";
+        else
+        if(day.equals("6"))
+            sday="Sunday";
+
+
+        b.setDate(sday+ " " + hour.toString());
+
         serviceService.updateService(s);
 
 

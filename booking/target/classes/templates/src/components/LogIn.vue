@@ -1,5 +1,32 @@
 <template>
   <div class="logIn">
+
+    <div class="company">
+      <div class="navigations-company">
+        <nav><router-link to="/">
+          <h2 id="nav-logo">
+
+              Booking<b>App</b>
+
+          </h2>
+        </router-link>
+
+          <ul class="nav-comp">
+            <li class="nav-comp-item">
+              <router-link to="/" exact-active-class="active">Companies</router-link>
+            </li>
+            <li class="nav-comp-item">
+              <router-link to="/register" exact-active-class="active">Register</router-link>
+            </li>
+            <li class="nav-comp-item">
+              <router-link to="/logIn" exact-active-class="active-comp">LogIn</router-link>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+
     <div class="logo"><img src="../assets/logo.png"/></div>
     <p class="hero-title">Booking <span class="apl">App</span></p>
 
@@ -199,5 +226,39 @@
    color: #4C4C4C;
    font-size: 17px;
    margin-top: 10px;
+
+
+
  }
+
+  .nav-comp-item{
+    list-style-type: none;
+    display: inline;
+    color: #FFF;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .nav-comp{
+    background-color: #7B90E0;
+    padding: 37px 20px 10px 0;
+    font-size: 14px;
+    text-align: right;
+    word-spacing: 18px;
+    margin: 0;
+  }
+  #nav-logo{
+    position: absolute;
+    color: #FFF;
+    margin: 25px 0 10px 25px;
+  }
+  .active-comp {
+    font-weight: bold;
+  }
+  a{
+    color: #FFF;
+  }
+  a:hover{
+    text-decoration: none;
+    color:#fff;
+  }
 </style>

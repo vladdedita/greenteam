@@ -9,6 +9,16 @@ public class CompanyBooking {
     String phone;
 
 
+
+    String date;
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
     public String getServiceName() {
         return serviceName;
     }
@@ -41,10 +51,11 @@ public class CompanyBooking {
         this.phone = phone;
     }
 
-    public CompanyBooking(String serviceName, String userName, String email, String phone) {
+    public CompanyBooking(String serviceName, String userName, String email, String phone,String date) {
         this.serviceName = serviceName;
         this.userName = userName;
         this.email = email;
         this.phone = phone;
+        this.date=date;
     }
 }
