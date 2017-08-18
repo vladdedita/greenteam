@@ -3,7 +3,13 @@ package bookingapp.pack.Models;
 
 
 
+import com.google.gson.Gson;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Entity
 @Table(name="service")
@@ -117,6 +123,34 @@ public class cService {
 
     protected cService(){
 
+        Map<String,Map<Integer,Integer>> calendar=new HashMap<String, Map<Integer, Integer>>();
+
+        List<String> zi=new ArrayList<String>();
+
+        zi.add("0");
+        zi.add("1");
+        zi.add("2");
+        zi.add("3");
+        zi.add("4");
+        zi.add("5");
+        zi.add("6");
+
+        Map<Integer,Integer> ora=new HashMap<Integer, Integer>();
+
+
+        for(int i=7;i<=18;i++)
+        {
+            ora.put(i,10);
+        }
+
+        for(String s : zi)
+        {
+            calendar.put(s,ora);
+        }
+
+        this.calendar=new Gson().toJson(calendar);
+
+
     }
     public cService(String name, String description, Integer duration, Integer places, Integer price, int available, long idCompany) {
         this.name = name;
@@ -126,6 +160,10 @@ public class cService {
         this.price = price;
         this.available = available;
         this.idCompany = idCompany;
+
+
+
+
     }
 
 }

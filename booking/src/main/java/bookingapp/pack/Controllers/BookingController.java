@@ -4,14 +4,21 @@ package bookingapp.pack.Controllers;
 import bookingapp.pack.Models.Booking;
 import bookingapp.pack.Models.CompanyBooking;
 import bookingapp.pack.Models.User;
+import bookingapp.pack.Models.cService;
 import bookingapp.pack.Services.BookingService;
+import bookingapp.pack.Services.ServiceService;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class BookingController {
@@ -19,6 +26,8 @@ public class BookingController {
 
     @Autowired
     BookingService bookingService;
+    @Autowired
+    ServiceService serviceService;
 
     @RequestMapping("/bookings")
     @CrossOrigin
@@ -39,6 +48,25 @@ public class BookingController {
 
         User u=objectMapper.convertValue(node.get("User"),User.class);
         Booking b=objectMapper.convertValue(node.get("Booking"),Booking.class);
+        String day=objectMapper.convertValue(node.get("day"),String.class);
+        Integer hour=objectMapper.convertValue(node.get("hour"),Integer.class);
+
+
+        cService s=serviceService.getServiceById(b.getId_service());
+
+        Type type = new TypeToken<Map<String,Map<Integer,Integer>>>(){}.getType();
+        Map<String,Map<Integer,Integer>> calendar= new Gson().fromJson(s.getCalendar(),type );
+
+        Map<Integer,Integer> a=calendar.get(day);
+
+
+        Integer ai=a.get(7);
+
+
+        calendar.get(day).put(hour,calendar.get(day).get(hour)-b.getPlaces());
+
+        s.setCalendar(new Gson().toJson(calendar));
+        serviceService.updateService(s);
 
 
         bookingService.addBooking(b,u);

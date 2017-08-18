@@ -127,19 +127,20 @@
 					<div class="calendaroption">
 						<div class="b-select">
 
-							<b-dropdown id="ddown5" text="Select day" class="m-md-2">
-								<b-dropdown-item-button v-for="item in days">{{item.text}}</b-dropdown-item-button>
-							</b-dropdown>
+						<select id="ddown5" text="Select day" class="m-md-2" v-model="selectedDay">
+							<option v-for="item in days" v-bind:value="item.value">{{item.text}}</option>
+						</select>
 
 
 						</div>
 						<div class="b-select">
 
-							<b-dropdown id="ddown5" text="Select time" class="m-md-2">
-								<b-dropdown-item-button v-for="item in hours">{{item.text}}</b-dropdown-item-button>
-							</b-dropdown>
+							<select id="ddown5" text="Select time" class="m-md-2" v-model="selectedHour">
+								<option v-for="item in hours" v-bind:value="item.value">{{item.text}}</option>
+							</select>
 						</div>
 					</div>
+					<br>
 					<button
 							type="button"
 							class="btn btn-secondary btn-md"
@@ -184,6 +185,8 @@
         name: 'company',
         data() {
             return {
+                selectedDay:'0',
+				selectedHour:'0',
                 days: [
                     {
                         text: 'Monday',
@@ -387,15 +390,17 @@
 
                         Booking: {
                             id_service: this.companyPayload.selectedService.id,
-                            date: '111',
-                            places: this.companyPayload.places
+                            date: '',
+                            places: this.bookingPayload.places
+
                         },
                         User: {
                             name: this.bookingPayload.name,
                             email: this.bookingPayload.email,
                             phone: this.bookingPayload.phone
-                        }
-
+                        },
+                        day:this.selectedDay,
+                        hour:this.selectedHour
                     }
 
                 ).then( (res)=>{
@@ -610,8 +615,8 @@
 	}
 	/*Company details*/
 	.company-details{
-		width: 70%;
-		margin-left: 20%;
+		width: 50%;
+		margin-left: 26%;
 		display: flex;
 		margin-top: 65px;
 	}
@@ -622,13 +627,15 @@
 		float: left;
 	}
 	.details-comp{
-		width: 50%;
+		width: 111%;
 		margin-top: 35px;
+		margin-right: 4%;
 	}
 	.add-title{
 		color: #DB2FE8 ;
 		font-size: 25px;
 		float: left;
+
 	}
 	#img-logo{
 		width: 30%;
@@ -639,6 +646,7 @@
 		text-align: left;
 		color: #BABABA ;
 		font-size: 15px;
+		width: 100%;
 	}
 	button{
 		height: 55px;
@@ -704,5 +712,9 @@
 		text-decoration: none;
 		background-color: #FFF;
 		cursor: pointer;
+	}
+	.modal{
+		margin-left: 15%;
+		display: block;
 	}
 </style>

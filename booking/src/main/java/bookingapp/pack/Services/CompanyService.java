@@ -222,53 +222,6 @@ public class CompanyService {
 
     }
 
-
-    public String getCalendar(String name)
-    {
-
-
-        return null;
-
-
-    }
-
-    public  Map<String,Map<Integer,Integer>> initCalendar(String name)
-    {
-
-
-        Map<String,Map<Integer,Integer>> calendar=new HashMap<String, Map<Integer, Integer>>();
-
-        List<String> zi=new ArrayList<String>();
-
-        zi.add("Monday");
-        zi.add("Tuesday");
-        zi.add("Wednesday");
-        zi.add("Thursday");
-        zi.add("Friday");
-        zi.add("Saturday");
-        zi.add("Sunday");
-
-        Map<Integer,Integer> ora=new HashMap<Integer, Integer>();
-        for(int i=8;i<=23;i++)
-        {
-            ora.put(i,0);
-        }
-
-        for(String s : zi)
-        {
-            calendar.put(s,ora);
-        }
-
-
-
-        return calendar;
-
-
-
-
-    }
-
-
     public String checkCredentials(String email, String password)
     {
 

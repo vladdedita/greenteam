@@ -10,7 +10,6 @@ import Company from '@/components/Company'
 import Recover from '@/components/Recover'
 import Profile from '@/components/Profile'
 import Companies from '@/components/Companies'
-import PublicBookingSchedule from '@/components/PublicBookingSchedule'
 
 
 Vue.use(Router)
@@ -27,11 +26,7 @@ export default new Router({
       name: 'LogIn',
       component: LogIn
     },
-    {
-      path: '/PublicBookingSchedule',
-      name: 'PublicBookingSchedule',
-      component: PublicBookingSchedule
-    },
+
     {
       path: '/recover',
       name: 'Recover',
